@@ -4,14 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "bun --hot src/index.tsx",
+    "dev": "bun --hot src/api/index.tsx",
     "build": "bun build ./src/index.html --outdir=dist --sourcemap --target=browser --minify --define:process.env.NODE_ENV='\"production\"' --env='BUN_PUBLIC_*'",
-    "start": "NODE_ENV=production bun src/index.tsx"
+    "compile": "bun build ./src/api/index.tsx --compile --outfile bin/recipe-box",
+    "start": "NODE_ENV=production bun src/api/index.tsx",
+    "format": "bunx biome format --write src/ test/"
   },
   "dependencies": {
-    "@codemirror/language": "^6.11.3",
-    "@codemirror/legacy-modes": "^6.5.1",
-    "@uiw/react-codemirror": "^4.25.1",
     "react": "^19",
     "react-dom": "^19"
   },
