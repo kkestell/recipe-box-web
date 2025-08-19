@@ -85,6 +85,7 @@ video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -123,7 +124,9 @@ table {
 	border-spacing: 0;
 }
 
+/* ============== */
+
 body {
-	font-family: system-ui;
-    font-size: 14px;
+    font-family: "Inter", system-ui;
 }
+

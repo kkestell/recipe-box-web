@@ -11,6 +11,9 @@
     "format": "bunx biome format --write src/ test/"
   },
   "dependencies": {
+    "@codemirror/language": "^6.11.3",
+    "@codemirror/legacy-modes": "^6.5.1",
+    "@uiw/react-codemirror": "^4.25.1",
     "react": "^19",
     "react-dom": "^19"
   },
