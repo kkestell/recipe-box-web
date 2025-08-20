@@ -1,12 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 type Props = {
 	onSuccess: (user: { id: number; username: string }) => void;
-	switchToLogin: () => void;
-	showHomepage: () => void;
 };
 
-export function SignupForm({ onSuccess, switchToLogin, showHomepage }: Props) {
+export function SignupForm({ onSuccess }: Props) {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
@@ -25,8 +24,8 @@ export function SignupForm({ onSuccess, switchToLogin, showHomepage }: Props) {
 				const data = await res.json();
 				onSuccess(data);
 			} else {
-				const data = await res.json();
-				setError(data.error || "Signup failed. Please try again.");
+				const message = await res.text();
+				setError(message || "Signup failed. Please try again.");
 			}
 		} catch (err) {
 			setError("An error occurred. Please try again later.");
@@ -63,12 +62,12 @@ export function SignupForm({ onSuccess, switchToLogin, showHomepage }: Props) {
 					<button type="submit">Sign Up</button>
 				</form>
 				<div className="auth-links">
-					<button onClick={switchToLogin} className="text">
+					<Link to="/log-in" className="text">
 						Already have an account?
-					</button>
-					<button className="text" onClick={showHomepage}>
+					</Link>
+					<Link to="/" className="text">
 						Back to Home
-					</button>
+					</Link>
 				</div>
 			</div>
 		</main>

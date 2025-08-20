@@ -41,9 +41,9 @@ export class Recipe {
 		this.components = components;
 	}
 
-    get public(): boolean {
-        return this.metadata["public"] === "true";
-    }
+	get public(): boolean {
+		return this.metadata["public"] === "true";
+	}
 
 	get draft(): boolean {
 		return this.metadata["draft"] === "true";

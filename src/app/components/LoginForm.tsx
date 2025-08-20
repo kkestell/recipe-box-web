@@ -1,12 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 type Props = {
 	onSuccess: (user: { id: number; username: string }) => void;
-	switchToSignup: () => void;
-	showHomepage: () => void;
 };
 
-export function LoginForm({ onSuccess, switchToSignup, showHomepage }: Props) {
+export function LoginForm({ onSuccess }: Props) {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
@@ -62,12 +61,12 @@ export function LoginForm({ onSuccess, switchToSignup, showHomepage }: Props) {
 					<button type="submit">Log In</button>
 				</form>
 				<div className="auth-links">
-					<button className="text" onClick={switchToSignup}>
+					<Link to="/sign-up" className="text">
 						Need an account?
-					</button>
-					<button className="text" onClick={showHomepage}>
+					</Link>
+					<Link to="/" className="text">
 						Back to Home
-					</button>
+					</Link>
 				</div>
 			</div>
 		</main>
