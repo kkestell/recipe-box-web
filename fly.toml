@@ -1,8 +1,3 @@
-# fly.toml app configuration file generated for recipe-box-web on 2025-08-20T09:21:38-05:00
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
-
 app = 'recipe-box-web'
 primary_region = 'ord'
 

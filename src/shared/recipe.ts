@@ -41,12 +41,16 @@ export class Recipe {
 		this.components = components;
 	}
 
-	get draft(): string | undefined {
-		return this.metadata["draft"];
+    get public(): boolean {
+        return this.metadata["public"] === "true";
+    }
+
+	get draft(): boolean {
+		return this.metadata["draft"] === "true";
 	}
 
-	get favorite(): string | undefined {
-		return this.metadata["favorite"];
+	get favorite(): boolean {
+		return this.metadata["favorite"] === "true";
 	}
 
 	get notes(): string | undefined {
