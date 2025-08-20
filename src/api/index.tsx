@@ -8,15 +8,15 @@ import homepage from "@/index.html";
 import { Recipe } from "@/shared/recipe.ts";
 
 // --- Database Setup ---
-const DB_PATH = join(process.cwd(), "recipes.sqlite");
+const DB_PATH = join(process.cwd(), "data", "recipes.sqlite");
 const db = new Database(DB_PATH, { create: true });
 db.exec("PRAGMA journal_mode = WAL;");
 
 db.run(`
     CREATE TABLE IF NOT EXISTS users (
-                                         id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                         username TEXT NOT NULL UNIQUE,
-                                         password_hash TEXT NOT NULL
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT NOT NULL UNIQUE,
+        password_hash TEXT NOT NULL
     );
 `);
 
@@ -43,229 +43,227 @@ db.run(`
 
 // --- Utilities ---
 function makeSession(user_id: number) {
-    const token = randomBytes(32).toString("hex");
-    db.prepare("INSERT INTO sessions (user_id, token) VALUES (?, ?)").run(
-        user_id,
-        token,
-    );
-    return token;
+	const token = randomBytes(32).toString("hex");
+	db.prepare("INSERT INTO sessions (user_id, token) VALUES (?, ?)").run(
+		user_id,
+		token,
+	);
+	return token;
 }
 
 function getUserFromRequest(req: Request) {
-    const cookie = req.headers.get("cookie") || "";
-    const match = cookie.match(/session_token=([a-f0-9]+)/);
-    if (!match) return null;
-    const token = match[1];
-    const row = db
-        .query("SELECT user_id FROM sessions WHERE token = ?")
-        .get(token!) as { user_id: number } | undefined;
-    if (!row) return null;
-    return row.user_id;
+	const cookie = req.headers.get("cookie") || "";
+	const match = cookie.match(/session_token=([a-f0-9]+)/);
+	if (!match) return null;
+	const token = match[1];
+	const row = db
+		.query("SELECT user_id FROM sessions WHERE token = ?")
+		.get(token!) as { user_id: number } | undefined;
+	if (!row) return null;
+	return row.user_id;
 }
 
 function authFail() {
-    return new Response("Unauthorized", { status: 401 });
+	return new Response("Unauthorized", { status: 401 });
 }
 
 function setSessionCookie(token: string) {
-    return `session_token=${token}; HttpOnly; Secure; SameSite=Strict; Path=/`;
+	return `session_token=${token}; HttpOnly; Secure; SameSite=Strict; Path=/`;
 }
 
-// --- Import existing recipes from filesystem ---
-(async () => {
-    const RECIPES_DIR = join(homedir(), "Documents", "Recipes");
-    console.log(`Checking for recipes to import from ${RECIPES_DIR}...`);
-
-    try {
-        const files = await readdir(RECIPES_DIR);
-        const recipeFiles = files.filter((file) => file.endsWith(".txt"));
-
-        for (const file of recipeFiles) {
-            const filePath = join(RECIPES_DIR, file);
-            const content = await Bun.file(filePath).text();
-
-            try {
-                const recipe = Recipe.parse(content);
-                // Imported recipes will belong to user_id=1 (first user must exist)
-                const existing = db
-                    .query("SELECT id FROM recipes WHERE title = ?")
-                    .get(recipe.title);
-
-                if (!existing) {
-                    db.prepare(
-                        "INSERT INTO recipes (title, category, content, user_id) VALUES (?, ?, ?, 1)",
-                    ).run(recipe.title, recipe.category, content);
-                    console.log(`- Imported "${recipe.title}"`);
-                }
-            } catch (parseError) {
-                console.error(`Could not parse recipe file: ${file}`, parseError);
-            }
-        }
-    } catch (readDirError) {
-        console.warn(
-            `Could not read recipe directory at ${RECIPES_DIR}. Skipping import.`,
-        );
-    }
-})();
+// // --- Import existing recipes from filesystem ---
+// (async () => {
+//     const RECIPES_DIR = join(homedir(), "Documents", "Recipes");
+//     console.log(`Checking for recipes to import from ${RECIPES_DIR}...`);
+//
+//     try {
+//         const files = await readdir(RECIPES_DIR);
+//         const recipeFiles = files.filter((file) => file.endsWith(".txt"));
+//
+//         for (const file of recipeFiles) {
+//             const filePath = join(RECIPES_DIR, file);
+//             const content = await Bun.file(filePath).text();
+//
+//             try {
+//                 const recipe = Recipe.parse(content);
+//                 // Imported recipes will belong to user_id=1 (first user must exist)
+//                 const existing = db
+//                     .query("SELECT id FROM recipes WHERE title = ?")
+//                     .get(recipe.title);
+//
+//                 if (!existing) {
+//                     db.prepare(
+//                         "INSERT INTO recipes (title, category, content, user_id) VALUES (?, ?, ?, 1)",
+//                     ).run(recipe.title, recipe.category, content);
+//                     console.log(`- Imported "${recipe.title}"`);
+//                 }
+//             } catch (parseError) {
+//                 console.error(`Could not parse recipe file: ${file}`, parseError);
+//             }
+//         }
+//     } catch (readDirError) {
+//         console.warn(
+//             `Could not read recipe directory at ${RECIPES_DIR}. Skipping import.`,
+//         );
+//     }
+// })();
 
 // --- Server ---
 const server = serve({
-    development: true,
-    routes: {
-        "/": homepage,
+	development: true,
+	routes: {
+		"/": homepage,
 
-        // --- Auth Routes ---
-        "/api/signup": {
-            async POST(req) {
-                const { username, password } = await req.json();
-                const hash = await Bun.password.hash(password, {
-                    algorithm: "bcrypt",
-                });
-                try {
-                    const result = db
-                        .prepare(
-                            "INSERT INTO users (username, password_hash) VALUES (?, ?)",
-                        )
-                        .run(username, hash);
+		// --- Auth Routes ---
+		"/api/signup": {
+			async POST(req) {
+				const { username, password } = await req.json();
+				const hash = await Bun.password.hash(password, {
+					algorithm: "bcrypt",
+				});
+				try {
+					const result = db
+						.prepare(
+							"INSERT INTO users (username, password_hash) VALUES (?, ?)",
+						)
+						.run(username, hash);
 
-                    const token = makeSession(Number(result.lastInsertRowid));
-                    return new Response(
-                        JSON.stringify({ id: result.lastInsertRowid, username }),
-                        {
-                            status: 201,
-                            headers: {
-                                "Content-Type": "application/json",
-                                "Set-Cookie": setSessionCookie(token),
-                            },
-                        },
-                    );
-                } catch {
-                    return new Response("Username already exists", {
-                        status: 400,
-                    });
-                }
-            },
-        },
+					const token = makeSession(Number(result.lastInsertRowid));
+					return new Response(
+						JSON.stringify({ id: result.lastInsertRowid, username }),
+						{
+							status: 201,
+							headers: {
+								"Content-Type": "application/json",
+								"Set-Cookie": setSessionCookie(token),
+							},
+						},
+					);
+				} catch {
+					return new Response("Username already exists", {
+						status: 400,
+					});
+				}
+			},
+		},
 
-        "/api/login": {
-            async POST(req) {
-                const { username, password } = await req.json();
-                const row = db
-                    .query("SELECT id, password_hash FROM users WHERE username = ?")
-                    .get(username) as { id: number; password_hash: string } | undefined;
-                if (!row) return authFail();
+		"/api/login": {
+			async POST(req) {
+				const { username, password } = await req.json();
+				const row = db
+					.query("SELECT id, password_hash FROM users WHERE username = ?")
+					.get(username) as { id: number; password_hash: string } | undefined;
+				if (!row) return authFail();
 
-                const valid = await Bun.password.verify(password, row.password_hash);
-                if (!valid) return authFail();
+				const valid = await Bun.password.verify(password, row.password_hash);
+				if (!valid) return authFail();
 
-                const token = makeSession(row.id);
-                return new Response(
-                    JSON.stringify({ id: row.id, username }),
-                    {
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Set-Cookie": setSessionCookie(token),
-                        },
-                    },
-                );
-            },
-        },
+				const token = makeSession(row.id);
+				return new Response(JSON.stringify({ id: row.id, username }), {
+					headers: {
+						"Content-Type": "application/json",
+						"Set-Cookie": setSessionCookie(token),
+					},
+				});
+			},
+		},
 
-        "/api/logout": {
-            POST(req) {
-                const cookie = req.headers.get("cookie") || "";
-                const match = cookie.match(/session_token=([a-f0-9]+)/);
-                if (match) {
-                    db.prepare("DELETE FROM sessions WHERE token = ?").run(match[1]!);
-                }
-                return new Response("Logged out", {
-                    headers: {
-                        "Set-Cookie":
-                            "session_token=; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=0",
-                    },
-                });
-            },
-        },
+		"/api/logout": {
+			POST(req) {
+				const cookie = req.headers.get("cookie") || "";
+				const match = cookie.match(/session_token=([a-f0-9]+)/);
+				if (match) {
+					db.prepare("DELETE FROM sessions WHERE token = ?").run(match[1]!);
+				}
+				return new Response("Logged out", {
+					headers: {
+						"Set-Cookie":
+							"session_token=; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=0",
+					},
+				});
+			},
+		},
 
-        "/api/me": {
-            GET(req) {
-                const user_id = getUserFromRequest(req);
-                if (!user_id) return authFail();
-                const row = db
-                    .query("SELECT id, username FROM users WHERE id = ?")
-                    .get(user_id);
-                return Response.json(row);
-            },
-        },
+		"/api/me": {
+			GET(req) {
+				const user_id = getUserFromRequest(req);
+				if (!user_id) return authFail();
+				const row = db
+					.query("SELECT id, username FROM users WHERE id = ?")
+					.get(user_id);
+				return Response.json(row);
+			},
+		},
 
-        // --- Recipe Routes ---
-        "/api/users/:user_id/recipes": {
-            GET(req) {
-                const user_id = getUserFromRequest(req);
-                if (!user_id) return authFail();
-                if (String(user_id) !== req.params.user_id) return authFail();
+		// --- Recipe Routes ---
+		"/api/users/:user_id/recipes": {
+			GET(req) {
+				const user_id = getUserFromRequest(req);
+				if (!user_id) return authFail();
+				if (String(user_id) !== req.params.user_id) return authFail();
 
-                const recipes = db
-                    .query(
-                        "SELECT id, title, category, content FROM recipes WHERE user_id = ?",
-                    )
-                    .all(user_id);
-                return Response.json(recipes);
-            },
-            async POST(req) {
-                const user_id = getUserFromRequest(req);
-                if (!user_id) return authFail();
-                if (String(user_id) !== req.params.user_id) return authFail();
+				const recipes = db
+					.query(
+						"SELECT id, title, category, content FROM recipes WHERE user_id = ?",
+					)
+					.all(user_id);
+				return Response.json(recipes);
+			},
+			async POST(req) {
+				const user_id = getUserFromRequest(req);
+				if (!user_id) return authFail();
+				if (String(user_id) !== req.params.user_id) return authFail();
 
-                const { content } = await req.json();
-                const recipe = Recipe.parse(content);
+				const { content } = await req.json();
+				const recipe = Recipe.parse(content);
 
-                const result = db
-                    .prepare(
-                        "INSERT INTO recipes (title, category, content, user_id) VALUES (?, ?, ?, ?)",
-                    )
-                    .run(recipe.title, recipe.category, content, user_id);
+				const result = db
+					.prepare(
+						"INSERT INTO recipes (title, category, content, user_id) VALUES (?, ?, ?, ?)",
+					)
+					.run(recipe.title, recipe.category, content, user_id);
 
-                const newRecipe = {
-                    id: result.lastInsertRowid,
-                    title: recipe.title,
-                    category: recipe.category,
-                    content,
-                };
-                return Response.json(newRecipe, { status: 201 });
-            },
-        },
+				const newRecipe = {
+					id: result.lastInsertRowid,
+					title: recipe.title,
+					category: recipe.category,
+					content,
+				};
+				return Response.json(newRecipe, { status: 201 });
+			},
+		},
 
-        "/api/users/:user_id/recipes/:id": {
-            async PUT(req) {
-                const user_id = getUserFromRequest(req);
-                if (!user_id) return authFail();
-                if (String(user_id) !== req.params.user_id) return authFail();
+		"/api/users/:user_id/recipes/:id": {
+			async PUT(req) {
+				const user_id = getUserFromRequest(req);
+				if (!user_id) return authFail();
+				if (String(user_id) !== req.params.user_id) return authFail();
 
-                const { id } = req.params;
-                const content = await req.text();
-                const recipe = Recipe.parse(content);
+				const { id } = req.params;
+				const content = await req.text();
+				const recipe = Recipe.parse(content);
 
-                db.prepare(
-                    "UPDATE recipes SET title = ?, category = ?, content = ? WHERE id = ? AND user_id = ?",
-                ).run(recipe.title, recipe.category, content, id, user_id);
+				db.prepare(
+					"UPDATE recipes SET title = ?, category = ?, content = ? WHERE id = ? AND user_id = ?",
+				).run(recipe.title, recipe.category, content, id, user_id);
 
-                return new Response(`Recipe '${id}' updated.`);
-            },
-            DELETE(req) {
-                const user_id = getUserFromRequest(req);
-                if (!user_id) return authFail();
-                if (String(user_id) !== req.params.user_id) return authFail();
+				return new Response(`Recipe '${id}' updated.`);
+			},
+			DELETE(req) {
+				const user_id = getUserFromRequest(req);
+				if (!user_id) return authFail();
+				if (String(user_id) !== req.params.user_id) return authFail();
 
-                const { id } = req.params;
-                db.prepare(
-                    "DELETE FROM recipes WHERE id = ? AND user_id = ?",
-                ).run(id, user_id);
-                return new Response(`Recipe '${id}' deleted.`);
-            },
-        },
-    },
-    error: () => new Response("Not Found", { status: 404 }),
+				const { id } = req.params;
+				db.prepare("DELETE FROM recipes WHERE id = ? AND user_id = ?").run(
+					id,
+					user_id,
+				);
+				return new Response(`Recipe '${id}' deleted.`);
+			},
+		},
+	},
+	error: () => new Response("Not Found", { status: 404 }),
 });
 
 console.log(`Listening on ${server.url}`);
