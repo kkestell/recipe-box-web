@@ -203,7 +203,7 @@ describe("Recipe properties", () => {
 	});
 
 	test("should return correct string properties", () => {
-		expect(recipe.favorite).toBe("true");
+		expect(recipe.favorite).toBe(true);
 		expect(recipe.yields).toBe("4 servings");
 		expect(recipe.cuisine).toBe("Italian");
 		expect(recipe.source).toBe("Grandma's cookbook");
