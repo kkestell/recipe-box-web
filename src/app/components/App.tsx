@@ -1,119 +1,157 @@
 import { useState, useEffect, useMemo } from "react";
-import { Header } from './Header.tsx'
+import { Header } from "./Header.tsx";
 import { Sidebar } from "./Sidebar.tsx";
 import { Editor } from "./Editor.tsx";
+import { LoginForm } from "./LoginForm.tsx";
+import { SignupForm } from "./SignupForm.tsx";
+import { Homepage } from "./Homepage.tsx";
 import { Recipe } from "@/shared/recipe.ts";
-import "@/app/css/reset.css"
-import "@/app/css/main.css"
+import "@/app/css/reset.css";
+import "@/app/css/main.css";
+
+type User = { id: number; username: string };
+type View = "home" | "login" | "signup";
 
 export function App() {
-	// State to hold all recipes fetched from the server.
-	const [recipes, setRecipes] = useState<Recipe[]>([]);
-	// State to track which recipe is currently selected in the UI.
-	const [selectedId, setSelectedId] = useState<number | null>(null);
-	// State to track if we are in "new recipe" mode.
-	const [isCreating, setIsCreating] = useState(false);
+    const [user, setUser] = useState<User | null>(null);
+    const [recipes, setRecipes] = useState<Recipe[]>([]);
+    const [selectedId, setSelectedId] = useState<number | null>(null);
+    const [isCreating, setIsCreating] = useState(false);
+    const [view, setView] = useState<View>("home");
 
-	// On the initial component mount, fetch the list of all recipes.
-	useEffect(() => {
-		fetch("/api/recipes")
-			.then((res) => res.json())
-			.then((data) => setRecipes(data));
-	}, []);
+    // Check for an active session when the app loads
+    useEffect(() => {
+        fetch("/api/me").then(async (res) => {
+            if (res.ok) {
+                const data = await res.json();
+                setUser(data);
+            }
+        });
+    }, []);
 
-	// Memoize the selected recipe object to avoid re-calculating on every render.
-	const selectedRecipe = useMemo(
-		() => recipes.find((r) => r.id === selectedId) || null,
-		[recipes, selectedId],
-	);
+    // Fetch recipes when the user logs in
+    useEffect(() => {
+        if (!user) return;
+        fetch(`/api/users/${user.id}/recipes`)
+            .then((res) => res.json())
+            .then((data) => setRecipes(data));
+    }, [user]);
 
-	// Handles selecting an existing recipe from the sidebar.
-	const handleSelectRecipe = (id: number) => {
-		setSelectedId(id);
-		setIsCreating(false);
-	};
+    const selectedRecipe = useMemo(
+        () => recipes.find((r) => r.id === selectedId) || null,
+        [recipes, selectedId],
+    );
 
-	// Handles clicking the "New Recipe" button.
-	const handleNewRecipe = () => {
-		setSelectedId(null);
-		setIsCreating(true);
-	};
+    const handleSelectRecipe = (id: number) => {
+        setSelectedId(id);
+        setIsCreating(false);
+    };
 
-	// Handles saving content from the editor, for both new and existing recipes.
-	const handleSave = async (id: number | null, content: string) => {
-		if (id === null) {
-			// This is a new recipe, so we POST it to the server.
-			const res = await fetch(`/api/recipes`, {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ content }),
-			});
-			const newRecipe = await res.json();
+    const handleNewRecipe = () => {
+        setSelectedId(null);
+        setIsCreating(true);
+    };
 
-			// Add the new recipe to our local state and select it.
-			setRecipes([...recipes, newRecipe]);
-			setSelectedId(newRecipe.id);
-			setIsCreating(false);
-		} else {
-			// This is an existing recipe, so we PUT the updated content.
-			await fetch(`/api/recipes/${id}`, {
-				method: "PUT",
-				body: content,
-			});
+    const handleSave = async (id: number | null, content: string) => {
+        if (!user) return;
 
-			// Optimistically update the local state for a responsive UI.
-			const updatedRecipe = Recipe.parse(content);
-			// Preserve the original ID on the newly parsed recipe object.
-			(updatedRecipe as any).id = id;
-			const updatedRecipes = recipes.map((r) =>
-				r.id === id ? updatedRecipe : r,
-			);
-			setRecipes(updatedRecipes);
-		}
-	};
+        if (id === null) {
+            const res = await fetch(`/api/users/${user.id}/recipes`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ content }),
+            });
+            const newRecipe = await res.json();
+            setRecipes([...recipes, newRecipe]);
+            setSelectedId(newRecipe.id);
+            setIsCreating(false);
+        } else {
+            await fetch(`/api/users/${user.id}/recipes/${id}`, {
+                method: "PUT",
+                body: content,
+            });
+            const updatedRecipe = Recipe.parse(content);
+            (updatedRecipe as any).id = id;
+            const updatedRecipes = recipes.map((r) =>
+                r.id === id ? updatedRecipe : r,
+            );
+            setRecipes(updatedRecipes);
+        }
+    };
 
-    // Handles deleting a recipe.
     const handleDelete = async (id: number) => {
-        await fetch(`/api/recipes/${id}`, {
+        if (!user) return;
+        await fetch(`/api/users/${user.id}/recipes/${id}`, {
             method: "DELETE",
         });
-
-        // After successful deletion, remove the recipe from the local state
-        // and clear the selection.
         setRecipes(recipes.filter((r) => r.id !== id));
         setSelectedId(null);
     };
 
-	// A placeholder recipe object for the editor when creating a new recipe.
-	const newRecipePlaceholder = useMemo(() => {
-		// Create a valid Recipe instance from default content.
-		const recipe = Recipe.parse("= Title\n\n# Step\n\n- Ingredient");
-		// Manually set the id to null to signify this is a new recipe.
-		// This is crucial for the handleSave logic to correctly identify a new recipe.
-		(recipe as any).id = null;
-		return recipe;
-	}, []);
+    const handleLogout = async () => {
+        await fetch("/api/logout", { method: "POST" });
+        setUser(null);
+        setRecipes([]);
+        setSelectedId(null);
+        setIsCreating(false);
+        setView("home"); // Return to homepage on logout
+    };
 
-	return (
-		<main className="app-container">
-            <Header />
-            <div className="container">
-                <Sidebar
-                    recipes={recipes}
-                    selectedId={selectedId}
-                    onSelectRecipe={handleSelectRecipe}
-                    onNewRecipe={handleNewRecipe}
-                />
-                {/* Render the Editor if a recipe is selected OR if we are creating a new one. */}
-                {(selectedRecipe || isCreating) && (
-                    <Editor
-                        key={selectedRecipe?.id ?? "new"}
-                        recipe={selectedRecipe ?? newRecipePlaceholder}
-                        onSave={handleSave}
-                        onDelete={handleDelete}
+    const newRecipePlaceholder = useMemo(() => {
+        const recipe = Recipe.parse("= Title\n\n# Step\n\n- Ingredient");
+        (recipe as any).id = null;
+        return recipe;
+    }, []);
+
+    // If a user is logged in, show the main application
+    if (user) {
+        return (
+            <main className="app-container">
+                <Header onLogout={handleLogout} />
+                <div className="container">
+                    <Sidebar
+                        recipes={recipes}
+                        selectedId={selectedId}
+                        onSelectRecipe={handleSelectRecipe}
+                        onNewRecipe={handleNewRecipe}
                     />
-                )}
-            </div>
-		</main>
-	);
+                    {(selectedRecipe || isCreating) && (
+                        <Editor
+                            key={selectedRecipe?.id ?? "new"}
+                            recipe={selectedRecipe ?? newRecipePlaceholder}
+                            onSave={handleSave}
+                            onDelete={handleDelete}
+                        />
+                    )}
+                </div>
+            </main>
+        );
+    }
+
+    // If no user, show the appropriate auth screen
+    switch (view) {
+        case "login":
+            return (
+                <LoginForm
+                    onSuccess={setUser}
+                    switchToSignup={() => setView("signup")}
+                    showHomepage={() => setView("home")}
+                />
+            );
+        case "signup":
+            return (
+                <SignupForm
+                    onSuccess={setUser}
+                    switchToLogin={() => setView("login")}
+                    showHomepage={() => setView("home")}
+                />
+            );
+        default:
+            return (
+                <Homepage
+                    showLogin={() => setView("login")}
+                    showSignup={() => setView("signup")}
+                />
+            );
+    }
 }
