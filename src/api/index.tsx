@@ -69,7 +69,9 @@ function authFail() {
 }
 
 function setSessionCookie(token: string) {
-	return `session_token=${token}; HttpOnly; Secure; SameSite=Strict; Path=/`;
+    const isProduction = process.env.NODE_ENV === 'production';
+    const secure = isProduction ? 'Secure; ' : '';
+    return `session_token=${token}; HttpOnly; ${secure}SameSite=Strict; Path=/`;
 }
 
 // --- Server ---
