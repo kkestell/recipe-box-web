@@ -57,6 +57,11 @@ export function Editor({ recipe, onSave, onDelete }: EditorProps) {
 	// Handle parsing the recipe content for title and errors after edits.
 	useEffect(() => {
 		const handler = setTimeout(() => {
+			// Prevent showing validation errors for new recipes
+			if (content.trim().length === 0) {
+				setError("");
+				return;
+			}
 			try {
 				const parsedRecipe = Recipe.parse(content);
 				setTitle(parsedRecipe.title || "Untitled Recipe");
@@ -71,7 +76,7 @@ export function Editor({ recipe, onSave, onDelete }: EditorProps) {
 	}, [content]);
 
 	// Derive the dirty state on every render.
-	const isDirty = content !== recipe.content;
+	const isDirty = content.trim() !== recipe.content.trim();
 
 	const handleSave = () => {
 		onSave(recipe.id!, content);

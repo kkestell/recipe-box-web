@@ -19,23 +19,27 @@ export class Component {
 }
 
 export class Recipe {
-	readonly id?: number;
-	readonly title: string;
+	readonly id: number | null = null;
+	readonly username: string | null = null;
+	readonly title: string | null = null;
 	readonly metadata: Record<string, string>;
 	readonly components: Component[];
 
 	constructor({
-		id,
-		title = "Untitled",
+		id = null,
+		username = null,
+		title = null,
 		metadata = {},
 		components = [],
 	}: {
-		id?: number;
-		title?: string;
+		id?: number | null;
+		username?: string | null;
+		title?: string | null;
 		metadata?: Record<string, string>;
 		components?: Component[];
 	}) {
 		this.id = id;
+		this.username = username || null;
 		this.title = title;
 		this.metadata = metadata;
 		this.components = components;
@@ -91,6 +95,10 @@ export class Recipe {
 
 	get content(): string {
 		return this.serialize();
+	}
+
+	static new(): Recipe {
+		return new Recipe({});
 	}
 
 	static parse(recipeText: string): Recipe {
@@ -198,7 +206,7 @@ export class Recipe {
 		}
 
 		if (finalComponents.length === 0) {
-			throw new Error("Recipe content is missing or invalid.");
+			throw new Error("Recipes need at least one step.");
 		}
 
 		return new Recipe({
@@ -238,7 +246,9 @@ export class Recipe {
 			lines.push("---", "");
 		}
 
-		lines.push(`= ${this.title}`);
+		if (this.title) {
+			lines.push(`= ${this.title}`);
+		}
 
 		if (notes) {
 			lines.push("");

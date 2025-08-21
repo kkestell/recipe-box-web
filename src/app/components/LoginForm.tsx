@@ -64,9 +64,11 @@ export function LoginForm({ onSuccess }: Props) {
 					<Link to="/sign-up" className="text">
 						Need an account?
 					</Link>
-					<Link to="/" className="text">
-						Back to Home
-					</Link>
+					<small>
+						<Link to="/" className="text">
+							&larr; Home
+						</Link>
+					</small>
 				</div>
 			</div>
 		</main>

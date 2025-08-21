@@ -96,7 +96,6 @@ function AppContent() {
 
 	const libraryPage = (
 		<main className="app-container">
-			<Header onLogout={handleLogout} />
 			<div className="container">
 				<Sidebar
 					recipes={recipes}
@@ -107,7 +106,7 @@ function AppContent() {
 				{(selectedRecipe || isCreating) && (
 					<Editor
 						key={selectedRecipe?.id ?? "new"}
-						recipe={selectedRecipe ?? newRecipePlaceholder}
+						recipe={selectedRecipe ?? Recipe.new()}
 						onSave={handleSave}
 						onDelete={handleDelete}
 					/>
@@ -117,25 +116,28 @@ function AppContent() {
 	);
 
 	return (
-		<Routes>
-			<Route path="/" element={<Homepage />} />
-			<Route
-				path="/log-in"
-				element={<LoginForm onSuccess={handleLoginSuccess} />}
-			/>
-			<Route
-				path="/sign-up"
-				element={<SignupForm onSuccess={handleLoginSuccess} />}
-			/>
-			<Route
-				path="/library"
-				element={
-					<ProtectedRoute user={user} isLoading={isLoading}>
-						{libraryPage}
-					</ProtectedRoute>
-				}
-			/>
-		</Routes>
+		<>
+			<Header user={user} onLogout={handleLogout} />
+			<Routes>
+				<Route path="/" element={<Homepage />} />
+				<Route
+					path="/log-in"
+					element={<LoginForm onSuccess={handleLoginSuccess} />}
+				/>
+				<Route
+					path="/sign-up"
+					element={<SignupForm onSuccess={handleLoginSuccess} />}
+				/>
+				<Route
+					path="/library"
+					element={
+						<ProtectedRoute user={user} isLoading={isLoading}>
+							{libraryPage}
+						</ProtectedRoute>
+					}
+				/>
+			</Routes>
+		</>
 	);
 }
 

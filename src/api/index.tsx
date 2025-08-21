@@ -18,6 +18,7 @@ function getUserFromRequest(req: Request) {
 	const match = cookie.match(/session_token=([a-f0-9]+)/);
 	if (!match) return null;
 	const token = match[1];
+	if (!token) return null;
 	return db.getUserIdBySessionToken(token);
 }
 

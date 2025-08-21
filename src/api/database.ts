@@ -101,7 +101,7 @@ export class Database {
 				"INSERT INTO recipes (title, category, content, is_public, user_id) VALUES (?, ?, ?, ?, ?)",
 			)
 			.run(
-				recipe.title,
+				recipe.title!,
 				recipe.category,
 				content,
 				recipe.public ? 1 : 0,
@@ -120,7 +120,7 @@ export class Database {
 				"UPDATE recipes SET title = ?, category = ?, content = ?, is_public = ? WHERE id = ? AND user_id = ?",
 			)
 			.run(
-				recipe.title,
+				recipe.title!,
 				recipe.category,
 				content,
 				recipe.public ? 1 : 0,

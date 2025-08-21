@@ -118,9 +118,7 @@ describe("Recipe.parse", () => {
 
 	test("should throw an error if content is missing", () => {
 		const text = `= My Title`;
-		expect(() => Recipe.parse(text)).toThrow(
-			"Recipe content is missing or invalid.",
-		);
+		expect(() => Recipe.parse(text)).toThrow("Recipes need at least one step.");
 	});
 
 	test("should throw an error for an ingredient without a step", () => {

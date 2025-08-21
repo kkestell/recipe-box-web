@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { Recipe } from "@/shared/recipe.ts";
 
 export function Homepage() {
@@ -12,13 +11,7 @@ export function Homepage() {
 	}, []);
 
 	return (
-		<main>
-			<Link to="/log-in">
-				<button>Log In</button>
-			</Link>
-			<Link to="/sign-up">
-				<button>Sign Up</button>
-			</Link>
+		<main className="homepage">
 			<h2>Public Recipes</h2>
 			<ul>
 				{recipes.map((recipe) => (

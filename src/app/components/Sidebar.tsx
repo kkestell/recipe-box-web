@@ -17,7 +17,7 @@ export function Sidebar({
 	const [searchQuery, setSearchQuery] = useState("");
 
 	const filteredRecipes = recipes.filter((recipe) =>
-		recipe.title.toLowerCase().includes(searchQuery.toLowerCase()),
+		recipe.title!.toLowerCase().includes(searchQuery.toLowerCase()),
 	);
 
 	const recipesByCategory = filteredRecipes.reduce(
