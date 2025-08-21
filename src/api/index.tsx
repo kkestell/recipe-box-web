@@ -6,9 +6,15 @@ import { join } from "node:path";
 import { randomBytes } from "node:crypto";
 import homepage from "@/index.html";
 import { Recipe } from "@/shared/recipe.ts";
+import { unlinkSync } from "node:fs";
 
 // --- Database Setup ---
 const DB_PATH = join(process.cwd(), "data", "recipes.sqlite");
+try {
+    unlinkSync(DB_PATH);
+} catch (e) {
+    // File doesn't exist, that's fine
+}
 const db = new Database(DB_PATH, { create: true });
 db.exec("PRAGMA journal_mode = WAL;");
 
