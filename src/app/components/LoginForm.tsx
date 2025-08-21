@@ -36,9 +36,9 @@ export function LoginForm({ onSuccess }: Props) {
 			<div className="auth-wrapper">
 				<h1>Log In</h1>
 				<form
-					onSubmit={(e) => {
+					onSubmit={async (e) => {
 						e.preventDefault();
-						handleLogin();
+						await handleLogin();
 					}}
 				>
 					{error && <p className="error-message">{error}</p>}

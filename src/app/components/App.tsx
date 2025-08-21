@@ -39,7 +39,6 @@ function ProtectedRoute({
 	return children;
 }
 
-// The main application logic, which can now use router hooks.
 function AppContent() {
 	const { user, setUser, logout, isLoading } = useAuth();
 	const { recipes, saveRecipe, deleteRecipe, setRecipes } = useRecipes(user);
@@ -76,8 +75,8 @@ function AppContent() {
 		setSelectedId(null);
 	};
 
-	const handleLogout = () => {
-		logout();
+	const handleLogout = async () => {
+		await logout();
 		setRecipes([]);
 		setSelectedId(null);
 		setIsCreating(false);
@@ -140,7 +139,6 @@ function AppContent() {
 	);
 }
 
-// The top-level component that provides the router context.
 export function App() {
 	return (
 		<BrowserRouter>
