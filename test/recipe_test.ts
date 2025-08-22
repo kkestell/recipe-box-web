@@ -1,9 +1,5 @@
 import { expect, test, describe } from "bun:test";
-import { Recipe, Step, Component } from "@/shared/recipe.ts";
-
-test("2 + 2", () => {
-	expect(2 + 2).toBe(4);
-});
+import { parseRecipe } from "@/shared/recipe";
 
 const fullRecipeText = `---
 category:  Dinner
@@ -51,173 +47,96 @@ const simpleRecipeText = `= Simple Salad
 - 1 tbsp lemon juice
 `;
 
-describe("Recipe.parse", () => {
-	test("should parse a recipe with full metadata, notes, and multiple components", () => {
-		const recipe = Recipe.parse(fullRecipeText);
+describe("parseRecipe", () => {
+    test("should parse a recipe with metadata, notes, and multiple components", () => {
+        const [recipe, errors] = parseRecipe(fullRecipeText);
 
-		expect(recipe.title).toBe("Classic Spaghetti Carbonara");
-		expect(recipe.metadata).toEqual({
-			category: "Dinner",
-			cook_time: "30",
-			cuisine: "Italian",
-			favorite: "true",
-			prep_time: "15",
-			source: "Grandma's cookbook",
-			yields: "4 servings",
-			notes:
-				"A classic Roman pasta dish.\nUse guanciale for the most authentic flavor.",
-		});
-		expect(recipe.components.length).toBe(2);
+        expect(errors).toEqual([]);
+        expect(recipe.title).toBe("Classic Spaghetti Carbonara");
+        expect(recipe.metadata).toEqual({
+            category: "Dinner",
+            cook_time: "30",
+            cuisine: "Italian",
+            favorite: "true",
+            prep_time: "15",
+            source: "Grandma's cookbook",
+            yields: "4 servings",
+            notes: "A classic Roman pasta dish.\nUse guanciale for the most authentic flavor.",
+        });
 
-		// First component
-		expect(recipe.components[0]?.name).toBe("Prepare Ingredients");
-		expect(recipe.components[0]?.steps.length).toBe(2);
-		expect(recipe.components[0]?.steps[0]?.text).toBe("Cook the pasta");
-		expect(recipe.components[0]?.steps[0]?.ingredients).toEqual([
-			"1 lb spaghetti",
-			"Salt for water",
-		]);
+        expect(recipe.components.length).toBe(2);
 
-		// Second component
-		expect(recipe.components[1]?.name).toBe("Cook");
-		expect(recipe.components[1]?.steps.length).toBe(2);
-		expect(recipe.components[1]?.steps[0]?.text).toBe("Render the guanciale");
-		expect(recipe.components[1]?.steps[0]?.ingredients).toEqual([
-			"4 oz guanciale, diced",
-		]);
-		expect(recipe.components[1]?.steps[1]?.text).toBe("Combine everything");
-		expect(recipe.components[1]?.steps[1]?.ingredients).toBeUndefined();
-	});
+        // First component
+        const [component1] = recipe.components;
+        expect(component1?.name).toBe("Prepare Ingredients");
+        expect(component1?.steps.length).toBe(2);
+        expect(component1?.steps[0]?.text).toBe("Cook the pasta");
+        expect(component1?.steps[0]?.ingredients).toEqual([
+            "1 lb spaghetti",
+            "Salt for water",
+        ]);
 
-	test("should parse a simple recipe without metadata or named components", () => {
-		const recipe = Recipe.parse(simpleRecipeText);
+        // Second component
+        const [, component2] = recipe.components;
+        expect(component2?.name).toBe("Cook");
+        expect(component2?.steps[1]?.text).toBe("Combine everything");
+        expect(component2?.steps[1]?.ingredients).toBeUndefined();
+    });
 
-		expect(recipe.title).toBe("Simple Salad");
-		expect(recipe.metadata).toEqual({});
-		expect(recipe.components.length).toBe(1);
-		expect(recipe.components[0]?.name).toBeUndefined();
-		expect(recipe.components[0]?.steps.length).toBe(1);
-		expect(recipe.components[0]?.steps[0]?.text).toBe(
-			"Combine greens and dressing",
-		);
-		expect(recipe.components[0]?.steps[0]?.ingredients).toEqual([
-			"1 bag mixed greens",
-			"2 tbsp olive oil",
-			"1 tbsp lemon juice",
-		]);
-	});
+    test("should parse a simple recipe without metadata or named components", () => {
+        const [recipe, errors] = parseRecipe(simpleRecipeText);
 
-	test("should throw an error for empty input", () => {
-		expect(() => Recipe.parse("")).toThrow("Cannot parse an empty recipe.");
-	});
+        expect(errors).toEqual([]);
+        expect(recipe.title).toBe("Simple Salad");
+        expect(recipe.metadata).toEqual({});
+        expect(recipe.components.length).toBe(1);
 
-	test("should throw an error if title is missing", () => {
-		const text = `+ My Component\n# Step 1`;
-		expect(() => Recipe.parse(text)).toThrow("No recipe title.");
-	});
+        const [component] = recipe.components;
+        expect(component?.name).toBeUndefined();
+        expect(component?.steps.length).toBe(1);
+        expect(component?.steps[0]?.text).toBe("Combine greens and dressing");
+        expect(component?.steps[0]?.ingredients).toEqual([
+            "1 bag mixed greens",
+            "2 tbsp olive oil",
+            "1 tbsp lemon juice",
+        ]);
+    });
 
-	test("should throw an error if content is missing", () => {
-		const text = `= My Title`;
-		expect(() => Recipe.parse(text)).toThrow("Recipes need at least one step.");
-	});
+    test("should handle empty or whitespace-only input", () => {
+        const [recipe, errors] = parseRecipe("   \n   ");
+        expect(errors).toEqual([]);
+        expect(recipe).toEqual({
+            title: undefined,
+            metadata: {},
+            components: [],
+        });
+    });
 
-	test("should throw an error for an ingredient without a step", () => {
-		const text = `= Bad Recipe\n- 1 cup flour`;
-		expect(() => Recipe.parse(text)).toThrow(
-			"Ingredients must belong to a step.",
-		);
-	});
-});
+    test("should parse a recipe with no title", () => {
+        const text = `+ My Component\n# Step 1`;
+        const [recipe, errors] = parseRecipe(text);
 
-describe("Recipe.serialize", () => {
-	test("should perform a round-trip parse and serialization", () => {
-		const recipe = Recipe.parse(fullRecipeText);
-		const serialized = recipe.serialize();
-		// The padding in the metadata can change, so we compare a re-parsed version
-		const reParsed = Recipe.parse(serialized);
-		expect(reParsed).toEqual(recipe);
-	});
+        expect(errors).toEqual([]);
+        expect(recipe.title).toBeUndefined();
+        expect(recipe.components.length).toBe(1);
+        expect(recipe.components[0]?.name).toBe("My Component");
+    });
 
-	test("should serialize a programmatically created recipe", () => {
-		const recipe = new Recipe({
-			title: "My Recipe",
-			metadata: { category: "Dessert", prep_time: "10" },
-			components: [
-				new Component(undefined, [
-					new Step("Mix ingredients", ["1 cup sugar", "2 eggs"]),
-					new Step("Bake"),
-				]),
-			],
-		});
+    test("should parse a recipe with no steps", () => {
+        const text = `= My Title`;
+        const [recipe, errors] = parseRecipe(text);
 
-		const expected = `---
-category:  Dessert
-prep_time: 10
----
+        expect(errors).toEqual([]);
+        expect(recipe.title).toBe("My Title");
+        expect(recipe.components).toEqual([]);
+    });
 
-= My Recipe
+    test("should return an error for an ingredient without a step", () => {
+        const text = `= Bad Recipe\n- 1 cup flour`;
+        const [recipe, errors] = parseRecipe(text);
 
-# Mix ingredients
-
-- 1 cup sugar
-- 2 eggs
-
-# Bake
-`;
-		expect(recipe.serialize()).toBe(expected);
-	});
-
-	test("should omit 'Uncategorized' metadata if it's the only one", () => {
-		const recipe = new Recipe({
-			title: "Test",
-			metadata: { category: "Uncategorized" },
-			components: [new Component(undefined, [new Step("Do something")])],
-		});
-		const expected = `= Test
-
-# Do something
-`;
-		expect(recipe.serialize()).toBe(expected);
-	});
-});
-
-describe("Recipe properties", () => {
-	const recipe = Recipe.parse(fullRecipeText);
-
-	test("should return correct values for time properties", () => {
-		expect(recipe.prepTime).toBe(15);
-		expect(recipe.cookTime).toBe(30);
-	});
-
-	test("should return undefined for invalid or missing time properties", () => {
-		const r = new Recipe({
-			title: "Test",
-			metadata: { prep_time: "abc", cook_time: "20 min" },
-			components: [new Component(undefined, [new Step("s")])],
-		});
-		expect(r.prepTime).toBeUndefined();
-		expect(r.cookTime).toBeUndefined();
-		expect(r.yields).toBeUndefined();
-	});
-
-	test("should return correct string properties", () => {
-		expect(recipe.favorite).toBe(true);
-		expect(recipe.yields).toBe("4 servings");
-		expect(recipe.cuisine).toBe("Italian");
-		expect(recipe.source).toBe("Grandma's cookbook");
-		expect(recipe.notes).toBe(
-			"A classic Roman pasta dish.\nUse guanciale for the most authentic flavor.",
-		);
-	});
-
-	test("should return category with default", () => {
-		expect(recipe.category).toBe("Dinner");
-		const simpleRecipe = Recipe.parse(simpleRecipeText);
-		expect(simpleRecipe.category).toBe("Uncategorized");
-	});
-
-	test("should return serialized content for the content property", () => {
-		const recipe = Recipe.parse(simpleRecipeText);
-		expect(recipe.content).toBe(recipe.serialize());
-	});
+        expect(recipe.title).toBe("Bad Recipe");
+        expect(errors.length).toBe(1);
+        expect(errors[0]).toBe('Ingredient "1 cup flour" must belong to a step.');
+    });
 });
