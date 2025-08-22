@@ -12,13 +12,6 @@ export function useAuth() {
 				if (res.ok) {
 					const data = await res.json();
 					setUser(data);
-				} else {
-					// Consume the response body to prevent Safari from choking
-					try {
-						await res.text();
-					} catch (e) {
-						// Ignore if we can't even read it as text
-					}
 				}
 				setIsLoading(false);
 			})

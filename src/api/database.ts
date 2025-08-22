@@ -1,19 +1,19 @@
 import { Database as BunDatabase } from "bun:sqlite";
 import { join } from "node:path";
-import { Recipe } from "@/shared/recipe.ts";
+import {type Recipe, ParsedRecipe, serializeRecipe, type NewRecipe} from "@/shared/recipe.ts";
 
 const DB_PATH = join(process.cwd(), "data", "recipes.sqlite");
 
 export class Database {
-	private db: BunDatabase;
+    private db: BunDatabase;
 
-	constructor() {
-		this.db = new BunDatabase(DB_PATH, { create: true });
-		this.db.exec("PRAGMA journal_mode = WAL;");
-	}
+    constructor() {
+        this.db = new BunDatabase(DB_PATH, { create: true });
+        this.db.exec("PRAGMA journal_mode = WAL;");
+    }
 
-	public init_db() {
-		this.db.run(`
+    public init_db() {
+        this.db.run(`
             CREATE TABLE IF NOT EXISTS users (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 username TEXT NOT NULL UNIQUE,
@@ -21,7 +21,7 @@ export class Database {
             );
         `);
 
-		this.db.run(`
+        this.db.run(`
             CREATE TABLE IF NOT EXISTS sessions (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 user_id INTEGER NOT NULL,
@@ -31,7 +31,7 @@ export class Database {
             );
         `);
 
-		this.db.run(`
+        this.db.run(`
             CREATE TABLE IF NOT EXISTS recipes (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 title TEXT NOT NULL,
@@ -43,95 +43,109 @@ export class Database {
             );
         `);
 
-		console.log("Database initialized.");
-	}
+        console.log("Database initialized.");
+    }
 
-	public createUser(username: string, password_hash: string) {
-		return this.db
-			.prepare("INSERT INTO users (username, password_hash) VALUES (?, ?)")
-			.run(username, password_hash);
-	}
+    public createUser(username: string, password_hash: string) {
+        return this.db
+            .prepare("INSERT INTO users (username, password_hash) VALUES (?, ?)")
+            .run(username, password_hash);
+    }
 
-	public getUserByUsername(username: string) {
-		return this.db
-			.query("SELECT id, password_hash FROM users WHERE username = ?")
-			.get(username) as { id: number; password_hash: string } | undefined;
-	}
+    public getUserByUsername(username: string) {
+        return this.db
+            .query("SELECT id, password_hash FROM users WHERE username = ?")
+            .get(username) as { id: number; password_hash: string } | undefined;
+    }
 
-	public getUserById(id: number) {
-		return this.db.query("SELECT id, username FROM users WHERE id = ?").get(id);
-	}
+    public getUserById(id: number) {
+        return this.db.query("SELECT id, username FROM users WHERE id = ?").get(id) as { id: number, username: string } | undefined;
+    }
 
-	public createSession(user_id: number, token: string) {
-		return this.db
-			.prepare("INSERT INTO sessions (user_id, token) VALUES (?, ?)")
-			.run(user_id, token);
-	}
+    public createSession(user_id: number, token: string) {
+        return this.db
+            .prepare("INSERT INTO sessions (user_id, token) VALUES (?, ?)")
+            .run(user_id, token);
+    }
 
-	public getUserIdBySessionToken(token: string) {
-		const row = this.db
-			.query("SELECT user_id FROM sessions WHERE token = ?")
-			.get(token) as { user_id: number } | undefined;
-		return row?.user_id ?? null;
-	}
+    public getUserIdBySessionToken(token: string) {
+        const row = this.db
+            .query("SELECT user_id FROM sessions WHERE token = ?")
+            .get(token) as { user_id: number } | undefined;
+        return row?.user_id ?? null;
+    }
 
-	public deleteSession(token: string) {
-		return this.db.prepare("DELETE FROM sessions WHERE token = ?").run(token);
-	}
+    public deleteSession(token: string) {
+        return this.db.prepare("DELETE FROM sessions WHERE token = ?").run(token);
+    }
 
-	public getPublicRecipes() {
-		return this.db
-			.query(
-				"SELECT id, title, category, content FROM recipes WHERE is_public = 1",
-			)
-			.all();
-	}
+    public getPublicRecipes(): Recipe[] {
+        const rows = this.db
+            .query(
+                "SELECT id, user_id, title, category, is_public, content FROM recipes WHERE is_public = 1",
+            )
+            .all() as (Omit<Recipe, 'is_public'> & { is_public: 0 | 1 })[];
 
-	public getUserRecipes(user_id: number) {
-		return this.db
-			.query(
-				"SELECT id, title, category, content FROM recipes WHERE user_id = ?",
-			)
-			.all(user_id);
-	}
+        return rows.map(row => ({
+            ...row,
+            is_public: row.is_public === 1,
+        }));
+    }
 
-	public createRecipe(recipe: Recipe, content: string, user_id: number) {
-		return this.db
-			.prepare(
-				"INSERT INTO recipes (title, category, content, is_public, user_id) VALUES (?, ?, ?, ?, ?)",
-			)
-			.run(
-				recipe.title!,
-				recipe.category,
-				content,
-				recipe.public ? 1 : 0,
-				user_id,
-			);
-	}
+    public getUserRecipes(user_id: number): Recipe[] {
+        const rows = this.db
+            .query(
+                "SELECT id, user_id, title, category, is_public, content FROM recipes WHERE user_id = ?",
+            )
+            .all(user_id) as (Omit<Recipe, 'is_public'> & { is_public: 0 | 1 })[];
 
-	public updateRecipe(
-		id: number,
-		recipe: Recipe,
-		content: string,
-		user_id: number,
-	) {
-		return this.db
-			.prepare(
-				"UPDATE recipes SET title = ?, category = ?, content = ?, is_public = ? WHERE id = ? AND user_id = ?",
-			)
-			.run(
-				recipe.title!,
-				recipe.category,
-				content,
-				recipe.public ? 1 : 0,
-				id,
-				user_id,
-			);
-	}
+        return rows.map(row => ({
+            ...row,
+            is_public: row.is_public === 1,
+        }));
+    }
 
-	public deleteRecipe(id: number, user_id: number) {
-		return this.db
-			.prepare("DELETE FROM recipes WHERE id = ? AND user_id = ?")
-			.run(id, user_id);
-	}
+    public createRecipe(recipe: NewRecipe): Recipe {
+        const result = this.db
+            .prepare(
+                "INSERT INTO recipes (title, category, content, is_public, user_id) VALUES (?, ?, ?, ?, ?)",
+            )
+            .run(
+                recipe.title,
+                recipe.category,
+                recipe.content,
+                recipe.is_public ? 1 : 0,
+                recipe.user_id,
+            );
+
+        return {
+            id: Number(result.lastInsertRowid),
+            title: recipe.title,
+            user_id: recipe.user_id,
+            category: recipe.category,
+            content: recipe.content,
+            is_public: recipe.is_public,
+        }
+    }
+
+    public updateRecipe(recipe: Recipe) {
+        return this.db
+            .prepare(
+                "UPDATE recipes SET title = ?, category = ?, content = ?, is_public = ? WHERE id = ? AND user_id = ?",
+            )
+            .run(
+                recipe.title,
+                recipe.category,
+                recipe.content,
+                recipe.is_public ? 1 : 0,
+                recipe.id,
+                recipe.user_id,
+            );
+    }
+
+    public deleteRecipe(id: number, user_id: number) {
+        return this.db
+            .prepare("DELETE FROM recipes WHERE id = ? AND user_id = ?")
+            .run(id, user_id);
+    }
 }

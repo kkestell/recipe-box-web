@@ -151,7 +151,6 @@ button {
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
-	width: 100vw;
 	background-color: var(--bg-color);
 	color: var(--text-color);
 }
@@ -356,6 +355,7 @@ main.homepage {
 			&:hover:disabled,
 			&:active:hover:disabled {
 				background-color: var(--primary-action-bg-color);
+                cursor: not-allowed;
 			}
 		}
 

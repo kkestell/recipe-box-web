@@ -1,7 +1,7 @@
 import { serve } from "bun";
 import { randomBytes } from "node:crypto";
 import homepage from "@/index.html";
-import { Recipe } from "@/shared/recipe.ts";
+import {parseRecipe, type Recipe, serializeRecipe} from "@/shared/recipe.ts";
 import { Database } from "./database.ts";
 
 const db = new Database();
@@ -122,18 +122,18 @@ const server = serve({
 				const user_id = getUserFromRequest(req);
 				if (!user_id || String(user_id) !== req.params.user_id)
 					return authFail();
-
-				const { content } = await req.json();
-				const recipe = Recipe.parse(content);
-				const result = db.createRecipe(recipe, content, user_id);
-
-				const newRecipe = {
-					id: result.lastInsertRowid,
-					title: recipe.title,
-					category: recipe.category,
-					content,
-				};
-				return Response.json(newRecipe, { status: 201 });
+				const content = await req.text();
+				const parsedRecipe = parseRecipe(content);
+                const serializedContent = serializeRecipe(parsedRecipe);
+                const newRecipe = {
+                    user_id: user_id,
+                    title: parsedRecipe.title,
+                    category: parsedRecipe.category,
+                    is_public: parsedRecipe.is_public,
+                    content: serializedContent
+                }
+				const recipe = db.createRecipe(newRecipe);
+				return Response.json(recipe, { status: 201 });
 			},
 		},
 
@@ -142,12 +142,20 @@ const server = serve({
 				const user_id = getUserFromRequest(req);
 				if (!user_id || String(user_id) !== req.params.user_id)
 					return authFail();
-
 				const { id } = req.params;
 				const content = await req.text();
-				const recipe = Recipe.parse(content);
-				db.updateRecipe(Number(id), recipe, content, user_id);
-				return new Response(`Recipe '${id}' updated.`);
+                const parsedRecipe = parseRecipe(content);
+                const serializedContent = serializeRecipe(parsedRecipe);
+				const recipe = {
+                    id: Number(id),
+                    user_id: user_id,
+                    title: parsedRecipe.title,
+                    category: parsedRecipe.category,
+                    is_public: parsedRecipe.is_public,
+                    content: serializedContent,
+                }
+				db.updateRecipe(recipe);
+				return Response.json(recipe, { status: 200 });
 			},
 			DELETE(req) {
 				const user_id = getUserFromRequest(req);
