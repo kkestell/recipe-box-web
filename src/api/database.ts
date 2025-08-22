@@ -1,6 +1,6 @@
 import { Database as BunDatabase } from "bun:sqlite";
 import { join } from "node:path";
-import {type Recipe, ParsedRecipe, serializeRecipe, type NewRecipe} from "@/shared/recipe.ts";
+import {type Recipe, type NewRecipe, type ExistingRecipe, parseRecipe} from "@/shared/recipe.ts";
 
 const DB_PATH = join(process.cwd(), "data", "recipes.sqlite");
 
@@ -105,42 +105,47 @@ export class Database {
         }));
     }
 
-    public createRecipe(recipe: NewRecipe): Recipe {
+    public createRecipe(content: string, user_id: number): ExistingRecipe {
+        const [parsed, errors] = parseRecipe(content);
         const result = this.db
             .prepare(
                 "INSERT INTO recipes (title, category, content, is_public, user_id) VALUES (?, ?, ?, ?, ?)",
             )
             .run(
-                recipe.title,
-                recipe.category,
-                recipe.content,
-                recipe.is_public ? 1 : 0,
-                recipe.user_id,
+                parsed.title ?? "Untitled Recipe",
+                parsed.metadata["category"] ?? "Uncategorized",
+                content,
+                parsed.metadata["public"]?.toLowerCase() === 'true' ? 1 : 0,
+                user_id,
             );
-
-        return {
-            id: Number(result.lastInsertRowid),
-            title: recipe.title,
-            user_id: recipe.user_id,
-            category: recipe.category,
-            content: recipe.content,
-            is_public: recipe.is_public,
-        }
+        return this.getRecipeById(result.lastInsertRowid as number);
     }
 
-    public updateRecipe(recipe: Recipe) {
-        return this.db
+    public getRecipeById(recipe_id: number): ExistingRecipe {
+        const row = this.db
+            .query(
+                "SELECT id, user_id, title, category, is_public, content FROM recipes WHERE id = ?",
+            )
+            .get(recipe_id);
+        if (!row)
+            throw new Error("Could not find recipe");
+        return row as ExistingRecipe;
+    }
+
+    public updateRecipe(id: number, content: string): ExistingRecipe {
+        const [parsed, errors] = parseRecipe(content);
+        this.db
             .prepare(
-                "UPDATE recipes SET title = ?, category = ?, content = ?, is_public = ? WHERE id = ? AND user_id = ?",
+                "UPDATE recipes SET title = ?, category = ?, content = ?, is_public = ? WHERE id = ?",
             )
             .run(
-                recipe.title,
-                recipe.category,
-                recipe.content,
-                recipe.is_public ? 1 : 0,
-                recipe.id,
-                recipe.user_id,
+                parsed.title ?? "Untitled Recipe",
+                parsed.metadata["category"] ?? "Uncategorized",
+                content,
+                parsed.metadata["public"]?.toLowerCase() === 'true' ? 1 : 0,
+                id
             );
+        return this.getRecipeById(id);
     }
 
     public deleteRecipe(id: number, user_id: number) {

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import {type Recipe} from "@/shared/recipe.ts";
+import {type Recipe, type ExistingRecipe, type NewRecipe} from "@/shared/recipe.ts";
 
 type User = { id: number; username: string };
 
 export function useRecipes(user: User | null) {
-	const [recipes, setRecipes] = useState<Recipe[]>([]);
+	const [recipes, setRecipes] = useState<ExistingRecipe[]>([]);
 
 	// Fetch recipes when the user logs in.
 	useEffect(() => {
@@ -18,36 +18,41 @@ export function useRecipes(user: User | null) {
 			})
 	}, [user]);
 
-	const saveRecipe = async (id: number | null, content: string) => {
-		if (!user) return null;
+    const createRecipe = async (content: string): Promise<ExistingRecipe> => {
+        if (!user)
+            throw new Error("User not found");
+        const res = await fetch(`/api/users/${user.id}/recipes`, {
+            method: "POST",
+            headers: { "Content-Type": "text/plain" },
+            body: content,
+        });
+        if (!res.ok)
+            throw new Error("Could not create recipe");
+        const recipe: ExistingRecipe = await res.json();
+        setRecipes((prev) => [...prev, recipe]);
+        return recipe;
+    }
 
-        // Create a new recipe
-        if (id === null) {
-            const res = await fetch(`/api/users/${user.id}/recipes`, {
-                method: "POST",
-                headers: { "Content-Type": "text/plain" },
-                body: content,
-            });
-            if (!res.ok) return null;
-            const newRecipe: Recipe = await res.json();
-            setRecipes((prev) => [...prev, newRecipe]);
-            return newRecipe;
-        }
-        // Update an existing recipe
-        else {
-            const res = await fetch(`/api/users/${user.id}/recipes/${id}`, {
-                method: "PUT",
-                headers: { "Content-Type": "text/plain" },
-                body: content,
-            });
-            if (!res.ok) return null;
-            const updatedRecipe: Recipe = await res.json();
-            setRecipes((prev) =>
-                prev.map((r) => (r.id === id ? updatedRecipe : r)),
-            );
-            return updatedRecipe;
-        }
-	};
+    const updateRecipe = async (recipe: ExistingRecipe, content: string) => {
+        if (!user)
+            throw new Error("User not found");
+
+        const res = await fetch(`/api/users/${user.id}/recipes/${recipe.id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "text/plain" },
+            body: content,
+        });
+
+        if (!res.ok)
+            throw new Error("Could not create recipe");
+
+        const updatedRecipe: ExistingRecipe = await res.json();
+        setRecipes((prev) =>
+            prev.map((r) => (r.id === recipe.id ? updatedRecipe : r)),
+        );
+
+        return updatedRecipe;
+    }
 
 	const deleteRecipe = async (id: number) => {
 		if (!user) return;
@@ -59,5 +64,5 @@ export function useRecipes(user: User | null) {
         }
 	};
 
-	return { recipes, setRecipes, saveRecipe, deleteRecipe };
+	return { recipes, setRecipes, createRecipe, updateRecipe, deleteRecipe };
 }

@@ -17,6 +17,7 @@ import { useAuth } from "./hooks/useAuth.ts";
 import { useRecipes } from "./hooks/useRecipes.ts";
 import "@/app/css/reset.css";
 import "@/app/css/main.css";
+import {makeNewRecipe} from "@/shared/recipe.ts";
 
 function ProtectedRoute({
                             user,
@@ -40,7 +41,7 @@ function ProtectedRoute({
 
 function AppContent() {
     const { user, setUser, logout, isLoading } = useAuth();
-    const { recipes, saveRecipe, deleteRecipe, setRecipes } = useRecipes(user);
+    const { recipes, createRecipe, updateRecipe, deleteRecipe, setRecipes } = useRecipes(user);
     const navigate = useNavigate();
 
     const [selectedId, setSelectedId] = useState<number | null>(null);
@@ -61,16 +62,25 @@ function AppContent() {
         setIsCreating(true);
     };
 
-    const handleSave = async (id: number | null, content: string) => {
-        const savedRecipe = await saveRecipe(id, content);
-        if (savedRecipe) {
-            setSelectedId(savedRecipe.id);
-            setIsCreating(false);
-        }
+    const handleSave = async (content: string) => {
+        if (!user)
+            throw new Error("No user!");
+
+        const savedRecipe = selectedRecipe
+            ? await updateRecipe(selectedRecipe, content)
+            : await createRecipe(content);
+
+        if (!savedRecipe)
+            throw new Error("Failed to save recipe!");
+
+        setSelectedId(savedRecipe.id);
+        setIsCreating(false);
     };
 
-    const handleDelete = async (id: number) => {
-        await deleteRecipe(id);
+    const handleDelete = async () => {
+        if (!selectedRecipe)
+            throw new Error("No recipe selected!");
+        await deleteRecipe(selectedRecipe.id);
         setSelectedId(null);
     };
 
@@ -98,7 +108,7 @@ function AppContent() {
                 {(selectedRecipe || isCreating) && (
                     <Editor
                         key={selectedRecipe?.id ?? "new"}
-                        recipe={selectedRecipe ?? { content: "" }}
+                        recipe={selectedRecipe ?? makeNewRecipe()}
                         onSave={handleSave}
                         onDelete={handleDelete}
                     />

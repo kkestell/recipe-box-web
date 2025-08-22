@@ -7,13 +7,13 @@ import {
 } from "@codemirror/language";
 import { simpleMode } from "@codemirror/legacy-modes/mode/simple-mode";
 import { EditorView } from "@codemirror/view";
-import {parseRecipe, type Recipe} from "@/shared/recipe.ts";
+import {isExistingRecipe, parseRecipe, type Recipe} from "@/shared/recipe.ts";
 import { tags } from "@lezer/highlight";
 
 type EditorProps = {
-    recipe: Partial<Recipe>;
-    onSave: (id: number | null, content: string) => void;
-    onDelete: (id: number) => void;
+    recipe: Recipe;
+    onSave: (content: string) => void;
+    onDelete: () => void;
 };
 
 const recipeSyntaxHighlighting = StreamLanguage.define(
@@ -39,21 +39,20 @@ const recipeHighlightStyle = HighlightStyle.define([
 ]);
 
 export function Editor({ recipe, onSave, onDelete }: EditorProps) {
-    const [content, setContent] = useState(recipe.content ?? "");
+    const [content, setContent] = useState(recipe.content);
     const [title, setTitle] = useState(() => {
-        try {
-            const parsedRecipe = parseRecipe(recipe.content || "")
-            return parsedRecipe.title || "Untitled Recipe";
-        } catch {
+        const [parsed, errors] = parseRecipe(recipe.content);
+        if (parsed.title)
+            return parsed.title;
+        else
             return "Untitled Recipe";
-        }
     });
     const [error, setError] = useState<string | null>(null);
 
     // When a new recipe is selected, update the editor's content.
     useEffect(() => {
-        setContent(recipe.content ?? "");
-    }, [recipe.id, recipe.content]);
+        setContent(recipe.content);
+    }, [recipe.content]);
 
     // Handle parsing the recipe content for title and errors after edits.
     useEffect(() => {
@@ -63,14 +62,9 @@ export function Editor({ recipe, onSave, onDelete }: EditorProps) {
                 setError("");
                 return;
             }
-            try {
-                const parsedRecipe = parseRecipe(content);
-                setTitle(parsedRecipe.title || "Untitled Recipe");
-                setError(null);
-            } catch (e: any) {
-                setTitle("Untitled Recipe");
-                setError(e.message);
-            }
+            const [parsed, errors] = parseRecipe(content);
+            setTitle(parsed.title ?? "Untitled Recipe");
+            setError(errors.length > 0 ? errors.join("\n") : null);
         }, 250);
 
         return () => clearTimeout(handler);
@@ -80,12 +74,12 @@ export function Editor({ recipe, onSave, onDelete }: EditorProps) {
     const isDirty = content.trim() !== (recipe.content ?? "").trim();
 
     const handleSave = () => {
-        onSave(recipe.id ?? null, content);
+        onSave(content);
     };
 
     const handleDelete = () => {
-        if (recipe.id) {
-            onDelete(recipe.id);
+        if (isExistingRecipe(recipe)) {
+            onDelete();
             setContent("");
         }
     };
@@ -101,7 +95,7 @@ export function Editor({ recipe, onSave, onDelete }: EditorProps) {
                     Save
                 </button>
                 <h2 className="editor-title">{isDirty ? `* ${title}` : title}</h2>
-                {recipe.id && (
+                {isExistingRecipe(recipe) && (
                     <button className="delete" onClick={handleDelete}>
                         Delete
                     </button>

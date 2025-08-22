@@ -1,7 +1,6 @@
 import { serve } from "bun";
 import { randomBytes } from "node:crypto";
 import homepage from "@/index.html";
-import {parseRecipe, type Recipe, serializeRecipe} from "@/shared/recipe.ts";
 import { Database } from "./database.ts";
 
 const db = new Database();
@@ -114,7 +113,6 @@ const server = serve({
 				const user_id = getUserFromRequest(req);
 				if (!user_id || String(user_id) !== req.params.user_id)
 					return authFail();
-
 				const recipes = db.getUserRecipes(user_id);
 				return Response.json(recipes);
 			},
@@ -123,16 +121,7 @@ const server = serve({
 				if (!user_id || String(user_id) !== req.params.user_id)
 					return authFail();
 				const content = await req.text();
-				const parsedRecipe = parseRecipe(content);
-                const serializedContent = serializeRecipe(parsedRecipe);
-                const newRecipe = {
-                    user_id: user_id,
-                    title: parsedRecipe.title,
-                    category: parsedRecipe.category,
-                    is_public: parsedRecipe.is_public,
-                    content: serializedContent
-                }
-				const recipe = db.createRecipe(newRecipe);
+				const recipe = db.createRecipe(content, user_id);
 				return Response.json(recipe, { status: 201 });
 			},
 		},
@@ -144,24 +133,13 @@ const server = serve({
 					return authFail();
 				const { id } = req.params;
 				const content = await req.text();
-                const parsedRecipe = parseRecipe(content);
-                const serializedContent = serializeRecipe(parsedRecipe);
-				const recipe = {
-                    id: Number(id),
-                    user_id: user_id,
-                    title: parsedRecipe.title,
-                    category: parsedRecipe.category,
-                    is_public: parsedRecipe.is_public,
-                    content: serializedContent,
-                }
-				db.updateRecipe(recipe);
+				const recipe = db.updateRecipe(Number(id), content);
 				return Response.json(recipe, { status: 200 });
 			},
 			DELETE(req) {
 				const user_id = getUserFromRequest(req);
 				if (!user_id || String(user_id) !== req.params.user_id)
 					return authFail();
-
 				const { id } = req.params;
 				db.deleteRecipe(Number(id), user_id);
 				return new Response(`Recipe '${id}' deleted.`);
