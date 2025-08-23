@@ -1,168 +1,165 @@
 export interface Step {
-    readonly text: string;
-    readonly ingredients?: string[];
+	readonly text: string;
+	readonly ingredients?: string[];
 }
 
 export interface Component {
-    readonly name?: string;
-    readonly steps: Step[];
+	readonly name?: string;
+	readonly steps: Step[];
 }
 
 export interface NewRecipe {
-    readonly content: string;
+	readonly content: string;
 }
 
 export function makeNewRecipe(content: string = ""): NewRecipe {
-    return {
-        content: content
-    };
+	return {
+		content: content,
+	};
 }
 
 export interface ExistingRecipe extends NewRecipe {
-    readonly id: number;
-    readonly user_id: number;
-    readonly title: string;
-    readonly category: string;
-    readonly is_public: boolean;
+	readonly id: number;
+	readonly user_id: number;
+	readonly title: string;
+	readonly category: string;
+	readonly is_public: boolean;
 }
 
 export type Recipe = NewRecipe | ExistingRecipe;
 
 export function isExistingRecipe(recipe: Recipe): recipe is ExistingRecipe {
-    return (recipe as ExistingRecipe).id !== undefined;
+	return (recipe as ExistingRecipe).id !== undefined;
 }
 
 export interface ParsedRecipe {
-    readonly title?: string;
-    readonly metadata: Record<string, string>;
-    readonly components: readonly Component[];
+	readonly title?: string;
+	readonly metadata: Record<string, string>;
+	readonly components: readonly Component[];
 }
 
 // --- Parser Function ---
 
 export function parseRecipe(recipeText: string): [ParsedRecipe, string[]] {
-    const errors: string[] = [];
+	const errors: string[] = [];
 
-    // An empty input results in an empty recipe object.
-    if (!recipeText.trim()) {
-        return [{ title: undefined, metadata: {}, components: [] }, errors];
-    }
+	// An empty input results in an empty recipe object.
+	if (!recipeText.trim()) {
+		return [{ title: undefined, metadata: {}, components: [] }, errors];
+	}
 
-    const lines = recipeText.trim().split("\n");
-    let metadata: Record<string, string> = {};
-    let contentLines = lines;
-    let recipeTitle: string | undefined;
+	const lines = recipeText.trim().split("\n");
+	const metadata: Record<string, string> = {};
+	let contentLines = lines;
+	let recipeTitle: string | undefined;
 
-    // --- Metadata parsing ---
-    if (lines[0]?.trim() === "---") {
-        const endMetaIndex = lines.slice(1).indexOf("---") + 1;
-        if (endMetaIndex > 0) {
-            const metaLines = lines.slice(1, endMetaIndex);
-            contentLines = lines.slice(endMetaIndex + 1);
-            for (const line of metaLines) {
-                const parts = line.split(":");
-                if (parts.length > 1) {
-                    const key = parts[0]!.trim();
-                    const value = parts.slice(1).join(":").trim();
-                    metadata[key] = value;
-                }
-            }
-        }
-    }
+	// --- Metadata parsing ---
+	if (lines[0]?.trim() === "---") {
+		const endMetaIndex = lines.slice(1).indexOf("---") + 1;
+		if (endMetaIndex > 0) {
+			const metaLines = lines.slice(1, endMetaIndex);
+			contentLines = lines.slice(endMetaIndex + 1);
+			for (const line of metaLines) {
+				const parts = line.split(":");
+				if (parts.length > 1) {
+					const key = parts[0]!.trim();
+					const value = parts.slice(1).join(":").trim();
+					metadata[key] = value;
+				}
+			}
+		}
+	}
 
-    const recipeNotes: string[] = [];
-    const finalComponents: Component[] = [];
-    let currentComponentName: string | undefined;
-    let currentComponentSteps: Step[] = [];
-    let currentStepText: string | undefined;
-    let currentStepIngredients: string[] = [];
+	const recipeNotes: string[] = [];
+	const finalComponents: Component[] = [];
+	let currentComponentName: string | undefined;
+	let currentComponentSteps: Step[] = [];
+	let currentStepText: string | undefined;
+	let currentStepIngredients: string[] = [];
 
-    // Finalizes the current step and adds it to the current component.
-    const finalizeStep = () => {
-        if (currentStepText) {
-            const step: Step = {
-                text: currentStepText,
-                ingredients:
-                    currentStepIngredients.length > 0
-                        ? currentStepIngredients
-                        : undefined,
-            };
-            currentComponentSteps.push(step);
-        }
-        currentStepText = undefined;
-        currentStepIngredients = [];
-    };
+	// Finalizes the current step and adds it to the current component.
+	const finalizeStep = () => {
+		if (currentStepText) {
+			const step: Step = {
+				text: currentStepText,
+				ingredients:
+					currentStepIngredients.length > 0
+						? currentStepIngredients
+						: undefined,
+			};
+			currentComponentSteps.push(step);
+		}
+		currentStepText = undefined;
+		currentStepIngredients = [];
+	};
 
-    // Finalizes the current component and adds it to the recipe.
-    const finalizeComponent = () => {
-        finalizeStep();
-        if (currentComponentSteps.length > 0) {
-            const component: Component = {
-                name: currentComponentName,
-                steps: currentComponentSteps,
-            };
-            finalComponents.push(component);
-        }
-        currentComponentName = undefined;
-        currentComponentSteps = [];
-    };
+	// Finalizes the current component and adds it to the recipe.
+	const finalizeComponent = () => {
+		finalizeStep();
+		if (currentComponentSteps.length > 0) {
+			const component: Component = {
+				name: currentComponentName,
+				steps: currentComponentSteps,
+			};
+			finalComponents.push(component);
+		}
+		currentComponentName = undefined;
+		currentComponentSteps = [];
+	};
 
-    const lineRegex = /^([=>+#-])\s*(.*)$/;
-    for (const line of contentLines) {
-        const trimmedLine = line.trimStart();
-        if (!trimmedLine) continue;
+	const lineRegex = /^([=>+#-])\s*(.*)$/;
+	for (const line of contentLines) {
+		const trimmedLine = line.trimStart();
+		if (!trimmedLine) continue;
 
-        const match = trimmedLine.match(lineRegex);
-        if (!match) continue;
+		const match = trimmedLine.match(lineRegex);
+		if (!match) continue;
 
-        const [, prefix, content] = match;
-        const trimmedContent = (content ?? "").trim();
+		const [, prefix, content] = match;
+		const trimmedContent = (content ?? "").trim();
 
-        switch (prefix) {
-            case "=":
-                recipeTitle = trimmedContent;
-                break;
-            case ">":
-                recipeNotes.push(trimmedContent);
-                break;
-            case "+":
-                finalizeComponent();
-                currentComponentName = trimmedContent;
-                break;
-            case "#":
-                finalizeStep();
-                currentStepText = trimmedContent;
-                break;
-            case "-":
-                if (currentStepText === undefined) {
-                    // An ingredient must be part of a step.
-                    errors.push(
-                        `Ingredient "${trimmedContent}" must belong to a step.`
-                    );
-                } else {
-                    currentStepIngredients.push(trimmedContent);
-                }
-                break;
-        }
-    }
+		switch (prefix) {
+			case "=":
+				recipeTitle = trimmedContent;
+				break;
+			case ">":
+				recipeNotes.push(trimmedContent);
+				break;
+			case "+":
+				finalizeComponent();
+				currentComponentName = trimmedContent;
+				break;
+			case "#":
+				finalizeStep();
+				currentStepText = trimmedContent;
+				break;
+			case "-":
+				if (currentStepText === undefined) {
+					// An ingredient must be part of a step.
+					errors.push(`Ingredient "${trimmedContent}" must belong to a step.`);
+				} else {
+					currentStepIngredients.push(trimmedContent);
+				}
+				break;
+		}
+	}
 
-    finalizeComponent();
+	finalizeComponent();
 
-    if (recipeNotes.length > 0) {
-        metadata["notes"] = recipeNotes.join("\n");
-    }
+	if (recipeNotes.length > 0) {
+		metadata["notes"] = recipeNotes.join("\n");
+	}
 
-    // Construct the recipe object with whatever was found.
-    const recipe: ParsedRecipe = {
-        title: recipeTitle,
-        metadata: metadata,
-        components: finalComponents,
-    };
+	// Construct the recipe object with whatever was found.
+	const recipe: ParsedRecipe = {
+		title: recipeTitle,
+		metadata: metadata,
+		components: finalComponents,
+	};
 
-    // Return the parsed recipe and any errors that occurred.
-    return [recipe, errors];
+	// Return the parsed recipe and any errors that occurred.
+	return [recipe, errors];
 }
-
 
 //
 // /**

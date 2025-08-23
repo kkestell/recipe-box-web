@@ -8,6 +8,7 @@
     "build": "bun build ./src/index.html --outdir=dist --sourcemap --target=browser --minify --define:process.env.NODE_ENV='\"production\"' --env='BUN_PUBLIC_*'",
     "compile": "bun build ./src/api/index.tsx --compile --outfile bin/recipe-box",
     "start": "NODE_ENV=production bun src/api/index.tsx",
+    "check": "bunx biome check --write src/ test/",
     "format": "bunx biome format --write src/ test/"
   },
   "dependencies": {

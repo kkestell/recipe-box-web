@@ -1,121 +1,119 @@
-import { useState, useEffect } from "react";
-import CodeMirror from "@uiw/react-codemirror";
 import {
-    HighlightStyle,
-    StreamLanguage,
-    syntaxHighlighting,
+	HighlightStyle,
+	StreamLanguage,
+	syntaxHighlighting,
 } from "@codemirror/language";
 import { simpleMode } from "@codemirror/legacy-modes/mode/simple-mode";
 import { EditorView } from "@codemirror/view";
-import {isExistingRecipe, parseRecipe, type Recipe} from "@/shared/recipe.ts";
 import { tags } from "@lezer/highlight";
+import CodeMirror from "@uiw/react-codemirror";
+import { useEffect, useState } from "react";
+import { isExistingRecipe, parseRecipe, type Recipe } from "@/shared/recipe.ts";
 
 type EditorProps = {
-    recipe: Recipe;
-    onSave: (content: string) => void;
-    onDelete: () => void;
+	recipe: Recipe;
+	onSave: (content: string) => void;
+	onDelete: () => void;
 };
 
 const recipeSyntaxHighlighting = StreamLanguage.define(
-    simpleMode({
-        start: [
-            { regex: /([a-z_]+:.*)|(-{3})/, token: "unit", sol: true },
-            { regex: /=.*/, token: "heading", sol: true },
-            { regex: />.*/, token: "comment", sol: true },
-            { regex: /\+.*/, token: "keyword", sol: true },
-            { regex: /#.*/, token: "number", sol: true },
-            { regex: /- .*/, token: "string", sol: true },
-        ],
-    }),
+	simpleMode({
+		start: [
+			{ regex: /([a-z_]+:.*)|(-{3})/, token: "unit", sol: true },
+			{ regex: /=.*/, token: "heading", sol: true },
+			{ regex: />.*/, token: "comment", sol: true },
+			{ regex: /\+.*/, token: "keyword", sol: true },
+			{ regex: /#.*/, token: "number", sol: true },
+			{ regex: /- .*/, token: "string", sol: true },
+		],
+	}),
 );
 
 const recipeHighlightStyle = HighlightStyle.define([
-    { tag: tags.unit, color: "#666", fontFamily: "monospace" },
-    { tag: tags.keyword, color: "#aaa", fontWeight: "bold" },
-    { tag: tags.comment, color: "#888" },
-    { tag: tags.string, color: "#aaa", marginLeft: "1rem" },
-    { tag: tags.number, color: "#eee" },
-    { tag: tags.heading, fontWeight: "bold", color: "#fff" },
+	{ tag: tags.unit, color: "#666", fontFamily: "monospace" },
+	{ tag: tags.keyword, color: "#aaa", fontWeight: "bold" },
+	{ tag: tags.comment, color: "#888" },
+	{ tag: tags.string, color: "#aaa", marginLeft: "1rem" },
+	{ tag: tags.number, color: "#eee" },
+	{ tag: tags.heading, fontWeight: "bold", color: "#fff" },
 ]);
 
 export function Editor({ recipe, onSave, onDelete }: EditorProps) {
-    const [content, setContent] = useState(recipe.content);
-    const [title, setTitle] = useState(() => {
-        const [parsed, errors] = parseRecipe(recipe.content);
-        if (parsed.title)
-            return parsed.title;
-        else
-            return "Untitled Recipe";
-    });
-    const [error, setError] = useState<string | null>(null);
+	const [content, setContent] = useState(recipe.content);
+	const [title, setTitle] = useState(() => {
+		const [parsed, errors] = parseRecipe(recipe.content);
+		if (parsed.title) return parsed.title;
+		else return "Untitled Recipe";
+	});
+	const [error, setError] = useState<string | null>(null);
 
-    // When a new recipe is selected, update the editor's content.
-    useEffect(() => {
-        setContent(recipe.content);
-    }, [recipe.content]);
+	// When a new recipe is selected, update the editor's content.
+	useEffect(() => {
+		setContent(recipe.content);
+	}, [recipe.content]);
 
-    // Handle parsing the recipe content for title and errors after edits.
-    useEffect(() => {
-        const handler = setTimeout(() => {
-            // Prevent showing validation errors for new recipes
-            if (content.trim().length === 0) {
-                setError("");
-                return;
-            }
-            const [parsed, errors] = parseRecipe(content);
-            setTitle(parsed.title ?? "Untitled Recipe");
-            setError(errors.length > 0 ? errors.join("\n") : null);
-        }, 250);
+	// Handle parsing the recipe content for title and errors after edits.
+	useEffect(() => {
+		const handler = setTimeout(() => {
+			// Prevent showing validation errors for new recipes
+			if (content.trim().length === 0) {
+				setError("");
+				return;
+			}
+			const [parsed, errors] = parseRecipe(content);
+			setTitle(parsed.title ?? "Untitled Recipe");
+			setError(errors.length > 0 ? errors.join("\n") : null);
+		}, 250);
 
-        return () => clearTimeout(handler);
-    }, [content]);
+		return () => clearTimeout(handler);
+	}, [content]);
 
-    // Derive the dirty state on every render.
-    const isDirty = content.trim() !== (recipe.content ?? "").trim();
+	// Derive the dirty state on every render.
+	const isDirty = content.trim() !== (recipe.content ?? "").trim();
 
-    const handleSave = () => {
-        onSave(content);
-    };
+	const handleSave = () => {
+		onSave(content);
+	};
 
-    const handleDelete = () => {
-        if (isExistingRecipe(recipe)) {
-            onDelete();
-            setContent("");
-        }
-    };
+	const handleDelete = () => {
+		if (isExistingRecipe(recipe)) {
+			onDelete();
+			setContent("");
+		}
+	};
 
-    return (
-        <section className="editor">
-            <div className="editor-header">
-                <button
-                    className="save"
-                    onClick={handleSave}
-                    disabled={!isDirty || error !== null}
-                >
-                    Save
-                </button>
-                <h2 className="editor-title">{isDirty ? `* ${title}` : title}</h2>
-                {isExistingRecipe(recipe) && (
-                    <button className="delete" onClick={handleDelete}>
-                        Delete
-                    </button>
-                )}
-            </div>
-            <div className="editor-content">
-                <CodeMirror
-                    value={content}
-                    height="100%"
-                    className="editor-codemirror"
-                    basicSetup={{ lineNumbers: false, foldGutter: false }}
-                    extensions={[
-                        recipeSyntaxHighlighting,
-                        EditorView.lineWrapping,
-                        syntaxHighlighting(recipeHighlightStyle),
-                    ]}
-                    onChange={(value) => setContent(value)}
-                />
-            </div>
-            {error && <p className="editor-error">{error}</p>}
-        </section>
-    );
+	return (
+		<section className="editor">
+			<div className="editor-header">
+				<button
+					className="save"
+					onClick={handleSave}
+					disabled={!isDirty || error !== null}
+				>
+					Save
+				</button>
+				<h2 className="editor-title">{isDirty ? `* ${title}` : title}</h2>
+				{isExistingRecipe(recipe) && (
+					<button className="delete" onClick={handleDelete}>
+						Delete
+					</button>
+				)}
+			</div>
+			<div className="editor-content">
+				<CodeMirror
+					value={content}
+					height="100%"
+					className="editor-codemirror"
+					basicSetup={{ lineNumbers: false, foldGutter: false }}
+					extensions={[
+						recipeSyntaxHighlighting,
+						EditorView.lineWrapping,
+						syntaxHighlighting(recipeHighlightStyle),
+					]}
+					onChange={(value) => setContent(value)}
+				/>
+			</div>
+			{error && <p className="editor-error">{error}</p>}
+		</section>
+	);
 }

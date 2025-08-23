@@ -1,5 +1,5 @@
-import { serve } from "bun";
 import { randomBytes } from "node:crypto";
+import { serve } from "bun";
 import homepage from "@/index.html";
 import { Database } from "./database.ts";
 
@@ -38,22 +38,16 @@ const server = serve({
 			async POST(req) {
 				const { username, password } = await req.json();
 				const hash = await Bun.password.hash(password, { algorithm: "bcrypt" });
-				try {
-					const result = db.createUser(username, hash);
-					const token = makeSession(Number(result.lastInsertRowid));
-					return new Response(
-						JSON.stringify({ id: result.lastInsertRowid, username }),
-						{
-							status: 201,
-							headers: {
-								"Content-Type": "application/json",
-								"Set-Cookie": setSessionCookie(token),
-							},
-						},
-					);
-				} catch {
-					return new Response("Username already exists", { status: 400 });
-				}
+				const user = db.createUser(username, hash);
+				if (!user) return new Response("Error creating user", { status: 400 });
+				const token = makeSession(user.id);
+				return new Response(JSON.stringify({ id: user.id, username }), {
+					status: 201,
+					headers: {
+						"Content-Type": "application/json",
+						"Set-Cookie": setSessionCookie(token),
+					},
+				});
 			},
 		},
 
@@ -105,6 +99,17 @@ const server = serve({
 			GET() {
 				const publicRecipes = db.getPublicRecipes();
 				return Response.json(publicRecipes);
+			},
+		},
+
+		"/api/recipes/:id": {
+			GET(req) {
+				const user_id = getUserFromRequest(req);
+				const recipe = db.getRecipeById(Number(req.params.id));
+				// Allow access if recipe is public OR user owns the recipe
+				if (!recipe.is_public && (!user_id || user_id !== recipe.user_id))
+					return authFail();
+				return Response.json(recipe, { status: 200 });
 			},
 		},
 
