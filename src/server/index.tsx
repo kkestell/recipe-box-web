@@ -4,6 +4,8 @@ import homepage from '@/client/index.html'
 import { Database } from '@/shared/database.ts'
 import { parseRecipe } from '@/shared/serialization.ts'
 import { TypstRenderer } from '@/shared/typst_renderer.ts'
+import { join } from 'node:path'
+import { mkdir } from 'node:fs/promises'
 
 const db = new Database()
 await db.init_db()
@@ -156,9 +158,11 @@ const server = serve({
                 const [parsed] = parseRecipe(recipe.content)
                 const typstSrc = TypstRenderer.render(parsed)
 
+                const tmpDir = join(process.cwd(), 'tmp')
+                await mkdir(tmpDir, { recursive: true })
                 const id = crypto.randomUUID()
-                const srcPath = `/tmp/recipe-${recipe.id}-${id}.typ`
-                const pdfPath = `/tmp/recipe-${recipe.id}-${id}.pdf`
+                const srcPath = join(tmpDir, `recipe-${recipe.id}-${id}.typ`)
+                const pdfPath = join(tmpDir, `recipe-${recipe.id}-${id}.pdf`)
 
                 await Bun.write(srcPath, typstSrc)
 

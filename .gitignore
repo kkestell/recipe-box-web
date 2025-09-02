@@ -5,7 +5,8 @@ node_modules
 out
 dist
 *.tgz
-recipes.sqlite*
+data
+tmp
 
 # code coverage
 coverage
