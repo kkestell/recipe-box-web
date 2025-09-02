@@ -12,9 +12,8 @@
   "dependencies": {
     "react": "^19",
     "react-dom": "^19",
-    "react-quill": "^2.0.0",
     "react-router-dom": "^7.8.2",
-    "typst": "^0.10.0-8"
+    "@kkestell/typst": "0.13.1"
   },
   "devDependencies": {
     "@biomejs/biome": "2.0.6",
