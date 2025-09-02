@@ -1,0 +1,38 @@
+---
+yield: 9 muffins
+prep_time: 15 minutes
+cook_time: 20 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Blueberry Muffins
+
+# Heat oven to 400°F. Line a standard muffin tin with 9 paper liners.
+
+# In a large bowl, sift together the flours, sugar, baking powder, and salt.
+
+- 180 grams all-purpose flour
+- 150 grams granulated sugar
+- 2 teaspoons baking powder
+- 1/2 teaspoon fine sea salt
+
+# In a 2-cup measuring cup, combine the oil, egg, and vanilla extract. Whisk until thoroughly blended, then add enough milk to bring the total liquid volume to the 1-cup mark. Whisk again until well combined.
+
+- 1/3 cup vegetable oil
+- 1 large egg
+- 1 teaspoon vanilla extract
+- 1/3 cup whole milk
+
+# Make a well in the center of the dry ingredients. Pour in the wet ingredients and stir with a rubber spatula just until no dry flour remains. The batter will be very thick; do not overmix.
+
+# Gently fold the blueberries into the batter until evenly distributed.
+
+- 1 cup fresh blueberries
+
+# Divide the batter among the prepared muffin cups, filling each to the top. The cups will be very full.
+
+# Bake for 20 minutes, or until a toothpick inserted into the center comes out clean and tops are golden brown.
+
+# Let cool in pan for 5 minutes, then transfer to wire rack to cool completely.

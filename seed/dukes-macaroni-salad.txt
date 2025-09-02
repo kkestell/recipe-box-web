@@ -1,0 +1,33 @@
+---
+yield: 8 servings
+prep_time: 20 minutes
+category: Salads
+cuisine: American
+public: true
+---
+
+= Duke's Macaroni Salad
+
+# In a large bowl, combine the chopped sweet pickles, onion, bell pepper, sugar, and mayonnaise.
+
+- 1/2 cup sweet pickles
+- 1/2 cup onion
+- 1/2 cup bell peppers
+- 4 tablespoons granulated sugar
+- 2 cups mayonnaise
+
+# Pour the mixture over the cooled macaroni and mix well until evenly coated.
+
+- 16 ounces macaroni
+
+# Gently fold in the chopped eggs.
+
+- 6 hard-boiled eggs
+
+# Sprinkle paprika on top.
+
+- 1/2 teaspoon paprika
+- Table salt
+- Black pepper
+
+# Cover and chill the salad for at least 4 hours before serving.

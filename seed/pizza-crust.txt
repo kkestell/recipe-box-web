@@ -1,0 +1,32 @@
+---
+yield: 2-4 pizza crusts
+prep_time: 35 minutes
+category: Bread
+subcategory: Yeast
+cuisine: Italian
+public: true
+---
+
+= Pizza Crust
+
+# Mix the yeast and sugar with the water. Let it sit for 5 minutes.
+
+- 2 1/4 teaspoons Active Dry Yeast
+- 1/4 teaspoon Granulated Sugar
+- 370 grams Water
+
+# Mix the flour and salt in a bowl.
+
+- 440 grams Bread Flour
+- 60 grams Whole Wheat Flour
+- 10 grams Table Salt
+
+# Add the water to the flour.
+
+# Knead with the dough hook on a KitchenAid. Mix on low for a minute or two until dough ball forms.
+
+# Rest the dough for 15 minutes.
+
+# Knead for another couple minutes on medium-low speed.
+
+# Bake on a pizza stone at 550°F until it's done.

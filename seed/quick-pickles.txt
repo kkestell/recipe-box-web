@@ -1,0 +1,19 @@
+---
+yield: 2 cups
+prep_time: 10 minutes
+category: Canning & Preserving
+cuisine: American
+public: true
+---
+
+= Quick Pickles
+
+# Combine vinegar, water, and salt in a 2-cup glass measuring cup and stir until salt is dissolved.
+
+- 1/2 cup Rice Vinegar
+- 1/2 cup Water
+- 1 teaspoon Sea Salt
+
+# Thinly slice vegetables and add to the vinegar mixture.
+
+# Refrigerate for a couple of hours before serving.

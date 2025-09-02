@@ -1,0 +1,29 @@
+---
+yield: 4-6 servings
+prep_time: 15 minutes
+cook_time: 1 hour
+category: Main Dishes
+cuisine: American
+source: Nancybeth Thayer
+public: true
+---
+
+= Honey Chicken
+
+# Heat oven to 375°F.
+
+# Melt butter. Add honey, mustard, salt, and curry powder and stir to combine.
+
+- 4 tablespoons butter
+- 1/2 cup honey
+- 1/4 cup prepared mustard
+- 1 teaspoon salt (or less)
+- 1 teaspoon curry powder
+
+# Roll chicken in mixture to coat. Arrange in a single layer in a baking dish.
+
+- 3 pounds chicken
+
+# Cover with remaining sauce.
+
+# Bake for 1 hour, or until chicken is tender.

@@ -1,0 +1,20 @@
+---
+yield: 4 servings
+prep_time: 5 minutes
+category: Marinades
+cuisine: Asian
+public: true
+---
+
+= Tofu Marinade
+
+# Combine marinade ingredients in a small bowl and mix well.
+
+- 14 1/2 ounces extra-firm tofu
+- 4 tablespoons low sodium soy sauce
+- 3 tablespoons seasoned rice vinegar
+- 1 tablespoon maple syrup
+- 1 teaspoon toasted sesame oil
+- 2 each garlic cloves, minced
+- 1 tablespoon grated ginger
+- 2-3 tablespoons avocado oil

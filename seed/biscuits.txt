@@ -1,0 +1,31 @@
+---
+yield: 6 biscuits
+prep_time: 15 minutes
+cook_time: 10 minutes
+category: Bread
+subcategory: Quick
+cuisine: American
+public: true
+---
+
+= Biscuits
+
+# Preheat oven to 450 °F.
+
+# Sift flour, baking powder, and salt.
+
+- 240 grams all-purpose flour
+- 1 tablespoon baking powder
+- 1/2 teaspoon Kosher salt
+
+# Cut in lard with a fork.
+
+- 100 grams lard
+
+# Add the milk, mixing with a fork, until the mixture comes together.
+
+- 180 grams buttermilk
+
+# Roll 2/3" thick and cut with a biscuit cutter or mason jar ring (you'll get about 6).
+
+# Bake for about 10 minutes.

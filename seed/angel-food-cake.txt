@@ -1,0 +1,47 @@
+---
+yield: 12 servings
+prep_time: 20 minutes
+cook_time: 45 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Angel Food Cake
+
+# Adjust the oven rack to the lower middle position and preheat oven to 325°F.
+
+# In a food processor or blender, pulse the sugar until fine and powdery. Remove 200 grams and set aside to use later. Add cake flour and salt to the food processor. Pulse 5-10 times until the mixture is aerated and light.
+
+- 350 grams Granulated Sugar
+- 133 grams Cake Flour
+- 1/4 teaspoon Salt
+
+# In a large bowl, whip egg whites and cream of tartar together on medium-low until foamy, about 1 minute.
+
+- 12 each Egg Whites
+- 1 1/2 teaspoons Cream of Tartar
+
+# Switch to medium-high and slowly add the 1 cup of sugar set aside earlier. Whip until soft peaks form, about 5-6 minutes.
+
+- 200 grams Granulated Sugar
+
+# Add vanilla extract, then beat just until incorporated.
+
+- 1 1/2 teaspoons Vanilla Extract
+
+# In 3 additions, slowly sift the flour mixture into the egg white mixture using a fine mesh strainer, gently folding with a rubber spatula after each addition. Do not add all at once to avoid deflating the batter.
+
+# Pour and spread the batter into an ungreased 9 or 10-inch tube pan. Shimmy the pan on the counter to smooth the surface.
+
+# Bake the cake until a toothpick inserted comes out clean, about 40-45 minutes. Rotate the pan halfway through baking.
+
+# Remove from the oven, then cool completely upside-down on a wire rack for about 3 hours.
+
+# Once cooled, run a thin knife around the edges and gently tap the pan on the counter until the cake releases.
+
+# If desired, dust with confectioners' sugar. Slice with a sharp serrated knife. Serve with whipped cream and fresh berries.
+
+- Confectioners' Sugar
+- Whipped Cream
+- Berries

@@ -1,0 +1,32 @@
+---
+yield: 8 servings
+prep_time: 10 minutes
+cook_time: 30 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Jiffy Cornbread Cake
+
+# Preheat oven to 350°F. Grease a 9-inch pan.
+
+# Thoroughly mix all wet ingredients in a large measuring cup.
+
+- 2 each Eggs
+- 1/2 cup Sour Cream
+- 1/4 cup Vegetable Oil
+
+# Add dry ingredients to a mixing bowl and stir to combine.
+
+- 1 each Cornbread Mix
+- 1 tablespoon Granulated Sugar
+- 1/2 teaspoon Table Salt
+
+# Add wet ingredients to dry ingredients and mix until just combined.
+
+# Pour the batter into the prepared pan.
+
+# Bake for 30 minutes, or until a toothpick inserted into center comes out clean.
+
+# Let cool in pan for 10 minutes before serving.

@@ -1,0 +1,33 @@
+---
+yield: 1 layer cake
+prep_time: 15 minutes
+cook_time: 35 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Chocolate Mayonnaise Cake
+
+# Cream together sugar and mayonnaise until well blended.
+
+- 1 1/2 cups granulated sugar
+- 1 1/2 cups mayonnaise
+
+# In a separate bowl, sift together cocoa, baking soda, flour, and salt.
+
+- 1/2 cup unsweetened cocoa powder
+- 3 teaspoons baking soda
+- 3 cups all-purpose flour
+- 3/4 teaspoon salt
+
+# Add dry ingredients to creamed mixture alternately with water and vanilla, beginning and ending with dry ingredients.
+
+- 1 1/2 cups water
+- 1 1/2 teaspoons vanilla extract
+
+# Pour batter into greased and floured cake pan or pans.
+
+# Bake at 350°F for about 35 minutes, until toothpick inserted in center comes out clean.
+
+# Cool in pan for 10 minutes before turning out onto wire rack. Serve with butterscotch frosting if desired.

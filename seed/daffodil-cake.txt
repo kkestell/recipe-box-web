@@ -1,0 +1,40 @@
+---
+yield: 1 tube cake
+prep_time: 20 minutes
+cook_time: 45 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Daffodil Cake
+
+# Beat egg whites until stiff peaks form. Gradually add sugar and salt, beating until well combined.
+
+- 6 large egg whites
+- 3/4 cup granulated sugar
+- 1/4 teaspoon salt
+
+# Combine cream of tartar with cake flour, then gently fold into beaten egg whites. Fold in vanilla extract.
+
+- 1/2 teaspoon cream of tartar
+- 1/2 cup cake flour
+- 1 teaspoon vanilla extract
+
+# In a separate bowl, beat egg yolks until light and fluffy. Add sugar and cold water, beating until well combined.
+
+- 6 large egg yolks
+- 1/2 cup granulated sugar
+- 2 tablespoons cold water
+
+# Sift together cake flour and baking powder, then fold into yolk mixture along with vanilla.
+
+- 1/2 cup cake flour
+- 1 teaspoon baking powder
+- 1 teaspoon vanilla extract
+
+# Place white mixture into ungreased tube pan first, then pour yellow mixture over top. Cut through with a knife to create marbled effect.
+
+# Bake at 325°F for 45 minutes, until golden and cake springs back when lightly touched.
+
+# Cool completely in pan before removing.

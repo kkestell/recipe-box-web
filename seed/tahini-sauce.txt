@@ -1,0 +1,28 @@
+---
+yield: 1 cup
+prep_time: 10 minutes
+category: Sauces & Seasonings
+cuisine: Middle Eastern
+public: true
+---
+
+= Tahini Sauce
+
+# In a medium bowl, whisk together garlic and lemon juice. Let sit for 10 minutes.
+
+- 4 each Garlic
+- 1/4 cup Lemon Juice
+
+# Strain garlic-lemon juice mixture through a fine-mesh sieve into a medium bowl, pressing on solids to extract as much liquid as possible.
+
+# Add tahini, salt, and cumin to the bowl. Whisk until combined.
+
+- 1/2 cup Tahini
+- 1/2 teaspoon Sea Salt
+- 1/8 teaspoon Ground Cumin
+
+# Add ice water, 1 tablespoon at a time, whisking until sauce is smooth and creamy. Add more water as needed to reach desired consistency.
+
+- 6 tablespoons Water
+
+# Adjust seasoning to taste.

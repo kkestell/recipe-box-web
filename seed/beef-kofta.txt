@@ -1,0 +1,29 @@
+---
+category: Main Dishes
+cuisine: Middle-Eastern
+public: true
+---
+
+= Beef Kofta
+
+# Add onion, garlic, and parsley to a food processor and process until finely chopped.
+
+- 1/2 each Yellow Onion
+- 3 cloves Garlic
+- 1/2 cup Parsley
+
+# Add ground beef, cumin, coriander, turmeric, cinnamon, salt, and pepper and pulse until combined.
+
+- 1 pound Ground Beef
+- 1 1/2 teaspoons Ground Cumin
+- 1/2 teaspoon Ground Coriander
+- 1/4 teaspoon Ground Turmeric
+- 1/4 teaspoon Ground Cinnamon
+- 1 1/4 teaspoons Kosher Salt
+- 1/2 teaspoon Black Pepper
+
+# Divide the mixture into 6 balls. Mold each ball over a skewer, forming a kebab approximately an inch in diameter.
+
+# Grill until golden brown and cooked through.
+
+# Serve with pita, tzatziki, cucumber, tomato, and red onion.

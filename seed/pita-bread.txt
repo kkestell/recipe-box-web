@@ -1,0 +1,55 @@
+---
+yield: 16 pitas
+prep_time: 2 hours
+cook_time: 3 minutes
+category: Bread
+cuisine: Middle Eastern
+public: true
+---
+
+= Pita Bread
+
++ Making the Starter
+
+# Put lukewarm water in the bowl of a stand mixer. Add yeast and sugar. Stir to dissolve with a wooden spoon.
+
+- 470 milliliters (2 cups) water
+- 4 teaspoons active dry yeast
+- 1 teaspoon sugar
+
+# Add the whole-wheat and all-purpose flour. Mix with a wooden spoon until combined.
+
+- 100 grams (1 cup) whole-wheat flour
+- 100 grams (3/4 cup) all-purpose flour
+
+# Put bowl in a warm (not hot) place, uncovered, until mixture is frothy and bubbling, about 15 minutes.
+
++ Making the Dough
+
+# Add salt, olive oil, and all-purpose flour.
+
+- 2 teaspoons Kosher salt
+- 4 tablespoons olive oil
+- 500 grams (4 1/8 cups) all-purpose flour
+
+# With a wooden spoon, stir until the mixture forms a shaggy mass. Attach the dough hook.
+
+# Knead with the dough hook on medium-low speed (Speed 2 on a KitchenAid) for 3-4 minutes until the dough is just smooth and pulls away from the sides of the bowl. Be careful not to over-knead - we want tender pita, not chewy bread. The dough should be soft and slightly tacky but not sticky. Add minimal additional flour if needed.
+
+# Optionally, refrigerate for several hours or overnight if needed. When ready to use, bring dough back to room temperature, knead into a ball, and proceed with recipe.
+
++ Fermentation
+
+# Place the dough into a lightly oiled bowl and cover tightly with plastic wrap and a towel. Place in a warm (not hot) place.
+
+# Place a heavy-duty baking sheet, cast-iron pan, or pizza stone on the lowest rack position and heat the oven to 475°F.
+
+# Let the dough double in size, about 1 hour.
+
++ Baking the Pita
+
+# Punch down the dough and divide into 16 equal pieces. Shape each piece into a ball, cover with a damp towel, and let rest for 10 minutes.
+
+# Roll each dough ball into an 8" circle, about 1/8 inch thick, dusting with flour as needed.
+
+# Place the dough circle onto the preheated pizza stone. Bake for 2 minutes until puffed, then turn over and bake for 1 more minute. Transfer warm pita to a napkin-lined basket and cover to keep soft. Repeat with the remaining dough.

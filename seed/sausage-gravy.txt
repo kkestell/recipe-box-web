@@ -1,0 +1,26 @@
+---
+yield: 4 servings
+prep_time: 5 minutes
+cook_time: 10 minutes
+category: Sauces & Seasonings
+cuisine: American
+public: true
+---
+
+= Sausage Gravy
+
+# Brown breakfast sausage in a heavy skillet.
+
+- 1/2 pound Breakfast Sausage
+
+# Add flour and stir until the sausage is coated and the flour takes on a blonde color.
+
+- 1/4 cup All-Purpose Flour
+
+# Add milk and bring to a boil while stirring constantly.
+
+- 2 1/4 cups Whole Milk
+
+# Simmer for 2 minutes.
+
+# Season to taste.

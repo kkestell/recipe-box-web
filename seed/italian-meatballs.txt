@@ -1,0 +1,35 @@
+---
+yield: 4 servings
+prep_time: 10 minutes
+cook_time: 35 minutes
+category: Main Dishes
+cuisine: Italian
+public: true
+---
+
+= Italian Meatballs
+
+# In a large bowl, whisk together eggs and milk. Add bread crumbs and let mixture soak for 10 minutes to form a panade.
+
+- 2 large eggs
+- 1 cup milk
+- 1 cup bread crumbs
+
+# Add Pecorino Romano, salt, and Italian seasoning to the panade, stirring to combine.
+
+- 1/4 cup pecorino romano cheese
+- 1 teaspoon table salt
+- 1 teaspoon italian seasoning
+
+# Add sausage and ground beef to the bowl. Mix gently with your hands just until ingredients are evenly combined. Do not overmix.
+
+- 1 pound italian sausage
+- 1-1 1/2 pounds ground beef
+
+# Heat oven to 375°F. Set a wire rack inside a rimmed baking sheet.
+
+# Form mixture into meatballs of desired size (about 2 tablespoons each), being careful not to pack too tightly.
+
+# Arrange meatballs on the prepared rack, leaving space between each.
+
+# Bake for 30-35 minutes, or until meatballs are golden brown and cooked through.

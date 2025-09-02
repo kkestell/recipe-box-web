@@ -1,0 +1,40 @@
+---
+yield: 9 cups
+prep_time: 15 minutes
+cook_time: 1 hour 45 minutes
+category: Soups & Stews
+cuisine: American
+public: true
+---
+
+= Split Pea Soup
+
+# Heat olive oil in a large dutch oven over medium heat. Add onion and celery and saute 3 minutes. Add garlic and saute 1 minute longer.
+
+- 1 tablespoon olive oil
+- 1 1/2 cups yellow onion, chopped
+- 1 1/4 cups celery, chopped
+- 1 teaspoon garlic, minced
+
+# Pour in chicken broth and water. Add split peas, bay leaves and thyme. Season lightly with salt and with pepper to taste.
+
+- 4 cups chicken broth
+- 4 cups water
+- 1 bag (16 ounces) dried split peas, picked over and rinsed
+- 2 each bay leaves
+- 1/2 teaspoon thyme
+- Salt
+- Black pepper
+
+# Nestle ham bone into soup mixture. Bring mixture to a boil, then reduce to low. Cover and let simmer, stirring occasionally until peas and ham are tender, about 60-80 minutes.
+
+- 1 1/2 pounds meaty ham bone or ham shanks
+
+# Remove ham from soup, let rest 10 minutes then shred or dice meat portion into pieces, cover.
+
+# Meanwhile add carrots to soup. Cover soup and continue to simmer, stirring occasionally, until peas have mostly broken down, about 30 minutes longer.
+
+- 1 cup carrots, chopped
+- fresh parsley
+
+# Stir ham into soup, season with more salt as needed. Serve warm garnished with parsley if desired.

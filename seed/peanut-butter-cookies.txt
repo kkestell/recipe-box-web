@@ -1,0 +1,39 @@
+---
+yield: 25-30 cookies
+prep_time: 1-2 hours
+cook_time: 12-14 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Peanut Butter Cookies
+
+# Whisk the flour, baking soda, and salt together in a medium bowl. Set aside.
+
+- 150 grams (1 1/4 cup) all-purpose flour
+- 1/2 teaspoon baking soda
+- 1/2 teaspoon salt
+
+# Using a hand mixer, beat the butter for 1 minute on high speed until creamy. Switch to medium-high speed and beat in the peanut butter for 2 minutes.
+
+- 1/2 cup unsalted butter, softened to room temperature
+- 3/4 cup peanut butter
+
+# Add white sugar and brown sugar and beat for an additional 2 minutes.
+
+- 1/2 cup white sugar
+- 1/2 cup brown sugar
+
+# Add egg and vanilla and beat until combined.
+
+- 1 egg
+- 1 teaspoon vanilla extract
+
+# Stir in dry ingredients.
+
+# Chill dough for a couple hours.
+
+# Heat oven to 350°F. Line large baking sheets with parchment paper.
+
+# Bake for 12-14 minutes.

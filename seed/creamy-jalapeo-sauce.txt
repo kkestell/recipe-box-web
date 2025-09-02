@@ -1,0 +1,28 @@
+---
+yield: 2 cups
+prep_time: 10 minutes
+category: Sauces & Seasonings
+cuisine: Mexican
+public: true
+---
+
+= Creamy Jalapeño Sauce
+
+# Gather all ingredients.
+
+- 3 each jalapeños
+- 1 cup cilantro
+- 2 each garlic
+- 1/2 cup mayonnaise
+- 1/4 cup sour cream
+- 2 teaspoons lime juice
+- 1 teaspoon white vinegar
+- 1 1/2 teaspoons Kosher salt
+- 1/2 teaspoon black pepper
+- 2 tablespoons avocado oil
+
+# Combine jalapeños, cilantro, garlic, mayonnaise, sour cream, lime juice, vinegar, salt, and pepper in a blender. Blend until smooth.
+
+# With blender running, slowly drizzle in oil.
+
+# Refrigerate until ready to use.

@@ -1,0 +1,45 @@
+---
+yield: 24 cookies
+prep_time: 3 hours 30 minutes
+cook_time: 10 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Gingerbread Cookies
+
+# In a large bowl, whisk together the flour, baking soda, salt, ginger, cinnamon, allspice, and cloves.
+
+- 440 grams All-Purpose Flour
+- 1 teaspoon Baking Soda
+- 1/2 teaspoon Table Salt
+- 1 tablespoon Ground Ginger
+- 1 tablespoon Cinnamon
+- 1/2 teaspoon Ground Allspice
+- 1/2 teaspoon Ground Cloves
+
+# In a separate large bowl, beat the butter with an electric mixer on medium speed until smooth and creamy, about 1 minute. Add brown sugar and molasses, beating on medium-high speed until well combined and creamy, scraping bowl as needed.
+
+- 145 grams Unsalted Butter
+- 150 grams Brown Sugar
+- 200 grams Molasses
+
+# Beat in egg and vanilla on high speed for 2 minutes, scraping bowl as needed. Don't worry if the mixture looks slightly separated.
+
+- 1 each Eggs
+- 1 teaspoon Vanilla Extract
+
+# Add the flour mixture to the wet ingredients and beat on low speed until combined. Dough will be thick and slightly sticky.
+
+# Divide dough in half. Shape each half into a disc and wrap tightly in plastic wrap. Refrigerate for at least 3 hours or up to 3 days.
+
+# Preheat oven to 350°F. Line baking sheets with parchment paper.
+
+# Working with one disc at a time, roll dough on a generously floured surface to 1/4-inch thickness. If dough cracks, let it warm slightly and use fingers to press cracks together. Cut into desired shapes and place 1 inch apart on prepared sheets.
+
+# Bake for 9-10 minutes for 4-inch cookies, 8 minutes for smaller cookies, or 11 minutes for larger cookies. Rotate pans halfway through baking.
+
+# Let cool on sheets for 5 minutes, then transfer to wire rack to cool completely.
+
+# Decorate cooled cookies with icing if desired.

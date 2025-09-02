@@ -1,0 +1,38 @@
+---
+yield: 12 muffins
+prep_time: 15 minutes
+cook_time: 22 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Pumpkin Muffins
+
+# Preheat oven to 425°F. Line a standard 12-cup muffin tin with paper liners.
+
+# In a large bowl, whisk together the flour, baking soda, cinnamon, pumpkin pie spice, ginger, and salt until well combined.
+
+- 220 grams all-purpose flour
+- 1 teaspoon baking soda
+- 1 1/2 teaspoons cinnamon
+- 1 1/2 teaspoons pumpkin pie spice
+- 1/4 teaspoon ground ginger
+- 1/2 teaspoon table salt
+
+# In a medium bowl, whisk together the oil, granulated sugar, and brown sugar until combined. Add pumpkin puree, eggs, and milk, whisking until smooth.
+
+- 120 milliliters vegetable oil
+- 100 grams granulated sugar
+- 100 grams brown sugar
+- 340 grams pumpkin puree
+- 2 large eggs
+- 60 milliliters milk
+
+# Make a well in the center of the dry ingredients. Pour in the wet ingredients and fold together gently with a rubber spatula just until no dry flour remains. Do not overmix.
+
+# Divide batter among the prepared muffin cups, filling each to the top.
+
+# Bake at 425°F for 5 minutes, then, without opening the oven door, reduce temperature to 350°F. Continue baking for 16-17 minutes, or until a toothpick inserted into center comes out clean.
+
+# Let cool in pan for 5 minutes, then transfer to wire rack to cool completely.

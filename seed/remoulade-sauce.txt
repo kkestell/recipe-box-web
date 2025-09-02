@@ -1,0 +1,24 @@
+---
+yield: 1 cup
+prep_time: 10 minutes
+category: Sauces & Seasonings
+cuisine: American
+public: true
+---
+
+= Remoulade Sauce
+
+# In a small bowl, stir together the mayonnaise, mustard, hot sauce, paprika, garlic, scallion, lemon juice, onion powder, cayenne, pickles, and capers.
+
+- 1/2 cup Mayonnaise
+- 1 tablespoon Mustard
+- 1 teaspoon Lemon Juice
+- 1 teaspoon Hot Sauce
+- 1/2 teaspoon Paprika
+- 1 each Scallions
+- 1 tablespoon Dill Pickles
+- 1 tablespoon Capers
+- 2 each Garlic
+- 1/8 teaspoon Onion Powder
+- 1/8 teaspoon Cayenne Pepper
+- 1 teaspoon Chives

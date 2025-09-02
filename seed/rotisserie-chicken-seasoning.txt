@@ -1,0 +1,20 @@
+---
+yield: 1/4 cup
+prep_time: 5 minutes
+category: Sauces & Seasonings
+cuisine: American
+public: true
+---
+
+= Rotisserie Chicken Seasoning
+
+# Combine all ingredients in a small bowl and whisk together until thoroughly mixed.
+
+- 2 teaspoons Table Salt
+- 1 teaspoon Paprika
+- 1/2 teaspoon Onion Powder
+- 1/2 teaspoon Dried Thyme
+- 1/2 teaspoon White Pepper
+- 1/4 teaspoon Black Pepper
+- 1/4 teaspoon Cayenne Pepper
+- 1/4 teaspoon Garlic Powder

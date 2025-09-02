@@ -1,0 +1,30 @@
+---
+yield: 4 servings
+prep_time: 5 minutes
+cook_time: 25 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Rice Pudding
+
+# Simmer rice, 1 1/2 cups milk, and salt until thick and creamy, 15 to 20 minutes.
+
+- 1 1/2 cups leftover white rice
+- 1 1/2 cups whole milk
+- 1/4 teaspoon table salt
+
+# Add remaining 1/2 cup milk, raisins, egg, and sugar. Continue cooking until thickened, 2 to 3 minutes.
+
+- 1/2 cup whole milk
+- 2/3 cup raisins
+- 1 each eggs
+- 1/3 cup granulated sugar
+
+# Remove from heat and stir in butter and vanilla.
+
+- 1 tablespoon unsalted butter
+- 1/2 teaspoon vanilla extract
+
+# Serve with cinnamon and nutmeg.

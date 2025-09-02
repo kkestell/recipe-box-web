@@ -1,0 +1,24 @@
+---
+yield: 12 servings
+prep_time: 5 minutes
+cook_time: 50 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Dump Cake
+
+# Layer ingredients in order in ungreased 9x13 inch pan.
+
+- 1 can crushed pineapple with juice
+- 1 can cherry pie filling
+- 1 box yellow cake mix
+- 1 cup shredded coconut
+- 1 cup chopped nuts
+
+# Pour melted butter evenly over top.
+
+- 2 sticks butter, melted
+
+# Bake at 350°F for 50 minutes, until golden brown on top.

@@ -1,0 +1,28 @@
+---
+yield: 8 servings
+prep_time: 10 minutes
+cook_time: 2 hours
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Grasshopper Pie
+
+# Crush cookies and set aside 1/4 cup of crumbs. Place remaining crumbs in a medium bowl and mix in melted butter; press mixture firmly into the bottom and sides of a 9-inch springform pan.
+
+- 25 chocolate sandwich cookies
+- 1/2 cup butter, melted
+
+# Mix marshmallow fluff and crème de menthe together in a large mixing bowl until smooth.
+
+- 2 cups marshmallow fluff
+- 1/4 cup crème de menthe liqueur
+
+# Beat cream in a chilled glass or metal bowl with an electric mixer until soft peaks form; fold into marshmallow mixture.
+
+- 2 cups heavy whipping cream
+
+# Pour mixture into prepared crust and sprinkle reserved cookie crumbs on top. Freeze until firm, at least 2 hours.
+
+# Remove from freezer 20 minutes before serving to soften slightly.

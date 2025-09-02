@@ -1,0 +1,41 @@
+---
+yield: 24 cookies
+prep_time: 15 minutes
+cook_time: 10 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Chocolate Chip Cookies
+
+# Preheat oven to 350°F. Line baking sheets with parchment paper.
+
+# In a large bowl, beat the softened butter until smooth. Add both white and brown sugars gradually, beating until light and fluffy, about 3 minutes.
+
+- 1/2 cup Unsalted Butter
+- 100 grams Granulated Sugar
+- 100 grams Brown Sugar
+
+# Beat in the egg until fully incorporated, then stir in the vanilla extract until combined.
+
+- 1 each Eggs
+- 1 teaspoon Vanilla Extract
+
+# In a small bowl, dissolve the baking soda in hot water. Add to the butter mixture along with the salt, stirring until well combined.
+
+- 1/2 teaspoon Baking Soda
+- 1 teaspoon Water
+- 1/4 teaspoon Table Salt
+
+# Gradually stir in the flour until just combined. Fold in the chocolate chips and walnuts until evenly distributed.
+
+- 180 grams All-Purpose Flour
+- 1 cup Chocolate Chips
+- 1/2 cup Walnuts
+
+# Drop rounded tablespoons of dough onto the prepared baking sheets, spacing them 2 inches apart.
+
+# Bake for 10 minutes, or until edges are golden brown and centers are set but still soft.
+
+# Let cool on sheets for 5 minutes, then transfer to wire rack to cool completely.

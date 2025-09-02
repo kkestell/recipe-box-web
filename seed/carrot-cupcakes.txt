@@ -1,0 +1,44 @@
+---
+yield: 12 cupcakes
+prep_time: 20 minutes
+cook_time: 23 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Carrot Cupcakes
+
+# Preheat the oven to 350°F (175°C). Line a 12-cup muffin pan with cupcake liners.
+
+# In a large bowl, whisk together flour, baking powder, baking soda, salt, cinnamon, ginger, and nutmeg.
+
+- 166 grams all-purpose flour
+- 1 teaspoon baking powder
+- 1/2 teaspoon baking soda
+- 1/2 teaspoon table salt
+- 1 teaspoon cinnamon
+- 3/4 teaspoon ground ginger
+- 1/4 teaspoon ground nutmeg
+
+# In another bowl, whisk together oil, brown sugar, eggs, applesauce, and vanilla extract until combined. Whisk in grated carrots.
+
+- 100 milliliters vegetable oil
+- 200 grams packed brown sugar
+- 2 eggs
+- 80 grams applesauce
+- 1 teaspoon vanilla extract
+- 200 grams carrots, grated
+
+# Fold the wet ingredients into the dry ingredients until just combined. Fold in walnuts and raisins if using. The batter will be slightly thick.
+
+- 60 grams walnuts, chopped
+- 75 grams raisins
+
+# Fill the liners about 3/4 full with batter.
+
+# Bake for 21 to 23 minutes, or until a toothpick inserted into the center comes out clean.
+
+# Let the cupcakes cool in the pan for 5 minutes, then transfer them to a wire rack to cool completely before serving.
+
+# Serve the cupcakes warm or at room temperature, garnished with fresh berries if desired.

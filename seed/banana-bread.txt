@@ -1,0 +1,39 @@
+---
+category:  Desserts
+cuisine:   American
+yield:     8"x4" loaf
+prep_time: 20 minutes
+cook_time: 50-55 minutes
+public:    true
+public: true
+---
+
+= Banana Bread
+
+# Heat oven to 350 °F. Grease an 8"×4" loaf pan.
+
+# Sift together flour, salt, baking soda, and baking powder.
+
+- 1 1/2 cups all-purpose flour
+- 1/4 teaspoon table salt
+- 1 teaspoon baking soda
+- 1/2 teaspoon baking powder
+
+# In a large bowl, beat butter until smooth, then gradually add sugar, beating until light and fluffy (about 3 minutes).
+
+- 1/2 cup unsalted butter
+- 1 cup granulated sugar
+
+# Beat in eggs one at a time until fully incorporated. Add mashed bananas and vanilla extract, stirring until well combined.
+
+- 2 eggs
+- 2 bananas
+- 1 teaspoon vanilla extract
+
+# Add dry ingredients to wet ingredients in three additions, mixing until almost combined after each addition.
+
+# Gently fold in walnuts until just distributed.
+
+- 1/2 cup walnuts
+
+# Transfer batter to prepared pan and smooth top with spatula. Bake for 50-55 minutes, or until toothpick inserted into center comes out clean. Cool in pan for 10 minutes, then remove and cool completely on wire rack.

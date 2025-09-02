@@ -1,0 +1,41 @@
+---
+yield: 1 pie
+prep_time: 20 minutes
+cook_time: 55 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Pumpkin Pie
+
+# If using homemade or sheet crust, line a 9-inch pie dish and crimp edges. Chill until ready to use.
+
+- 1 each Pie Crust
+
+# Preheat oven to 400°F.
+
+# Whisk sugar, spices, and salt in a large bowl.
+
+- 3/4 cup Light Brown Sugar
+- 1/2 teaspoon Cinnamon
+- 1/2 teaspoon Ground Ginger
+- 1/4 teaspoon Ground Nutmeg
+- 1/8 teaspoon Ground Cloves
+- 1/2 teaspoon Table Salt
+
+# Add pumpkin, milk, and eggs. Whisk until well combined.
+
+- 15 ounces Pumpkin Puree
+- 12 ounces Evaporated Milk
+- 3 each Eggs
+
+# Pour into pie shell. Brush edges with egg wash if desired.
+
+# Bake for 15 minutes. Reduce temperature to 350°F.
+
+# Continue baking for another 40 minutes, or until filling is puffed and center jiggles slightly.
+
+# Cool completely on wire rack.
+
+# If making ahead, cover and refrigerate up to 2 days.

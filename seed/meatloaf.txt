@@ -1,0 +1,33 @@
+---
+yield: 6 servings
+prep_time: 10 minutes
+cook_time: 1 hour
+category: Main Dishes
+cuisine: American
+public: true
+---
+
+= Meatloaf
+
+# In a large bowl, combine bread and milk, let soak for 10 minutes, then mash with a fork to form a panade. Lightly beat egg. Finely mince onion and garlic. Combine all ingredients in a large bowl and mix gently until just combined. Do not overmix.
+
+- 1 pound ground beef
+- 1/2 pound ground pork
+- 3 slices white bread
+- 1 cup milk
+- 1 large egg
+- 1/4 cup onion
+- 1 tablespoon Worcestershire sauce
+- 1 1/2 teaspoons table salt
+- 1/2 teaspoon ground mustard
+- 1/4 teaspoon black pepper
+- 1/4 teaspoon ground sage
+- 1 each garlic
+
+# Heat oven to 350°F. Shape mixture into a loaf and place in a 9x13-inch baking pan or loaf pan.
+
+# Spread ketchup evenly over the top of the loaf.
+
+- 1/2 cup Ketchup
+
+# Bake for about 1 hour, or until center reaches 160°F.

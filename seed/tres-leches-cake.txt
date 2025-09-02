@@ -1,0 +1,52 @@
+---
+yield: 12 servings
+prep_time: 30 minutes
+cook_time: 26 minutes
+category: Desserts
+cuisine: Mexican
+public: true
+---
+
+= Tres Leches Cake
+
+# Preheat oven to 350°F and grease a 9×13-inch baking pan with cooking spray.
+
+# Whisk flour, baking powder, and salt in a large bowl.
+
+- 1/2 cup All-Purpose Flour
+- 1/2 teaspoon Baking Powder
+- 1/2 teaspoon Kosher Salt
+
+# In a separate bowl, beat egg yolks and sugar until stiff ribbons form. Beat in vanilla.
+
+- 5 each Eggs
+- 1 cup Granulated Sugar
+- 1 teaspoon Vanilla Extract
+
+# In another bowl, beat egg whites until soft peaks form. Gradually add sugar and continue beating until stiff peaks form.
+
+- 1/4 cup Granulated Sugar
+
+# Combine yolk mixture with dry ingredients. Add milk and melted butter, and beat until combined.
+
+- 1/2 cup Milk
+- 1/2 cup Unsalted Butter
+
+# Gently fold in egg whites.
+
+# Pour batter into pan. Bake for 26 minutes or until a toothpick comes out clean. Let cool.
+
+# Whisk sweetened condensed milk, evaporated milk, milk, and vanilla in a medium bowl.
+
+- 14 ounces Sweetened Condensed Milk
+- 12 ounces Evaporated Milk
+- 1/2 cup Milk
+- 1 teaspoon Vanilla Extract
+
+# Poke holes all over the cake with a fork. Pour milk mixture evenly over the cake. Refrigerate until absorbed, at least 1 hour, but preferably overnight.
+
+# Frost cake with whipped cream and sprinkle with cinnamon-sugar. Serve with strawberries.
+
+- 2 cups Heavy Cream
+- 1/2 cup Granulated Sugar
+- 1/4 cup Cinnamon Sugar

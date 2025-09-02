@@ -1,0 +1,41 @@
+---
+yield: 24 cookies
+prep_time: 3 hours 15 minutes
+cook_time: 12 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Double Chocolate Chip Cookies
+
+# Preheat oven to 350°F. Line baking sheets with parchment paper or silicone baking mats.
+
+# In a large bowl using a hand-held or stand mixer fitted with a paddle attachment, beat the softened butter, granulated sugar, and brown sugar on medium-high speed until fluffy and light in color, about 2-3 minutes.
+
+- 1/2 cup Unsalted Butter
+- 1/2 cup Granulated Sugar
+- 1/2 cup Brown Sugar
+
+# Add the egg and vanilla extract, and then beat on high speed until combined. Scrape down the sides and bottom of the bowl as needed.
+
+- 1 each Egg
+- 1 teaspoon Vanilla Extract
+
+# In a separate bowl, whisk the flour, cocoa powder, baking soda, and salt together until combined. With the mixer running on low speed, slowly add to the wet ingredients and mix until combined.
+
+- 1 cup All-Purpose Flour
+- 2/3 cup Natural Unsweetened Cocoa Powder
+- 1 teaspoon Baking Soda
+- 1/8 teaspoon Table Salt
+
+# On high speed, beat in the milk and then fold in the chocolate chips. Cover dough tightly and chill in the refrigerator for at least 3 hours and up to 3 days.
+
+- 1 tablespoon Milk
+- 1 1/4 cups Semi-Sweet Chocolate Chips
+
+# Let the chilled dough sit at room temperature for 10-20 minutes to soften slightly. Scoop and roll dough into balls about 1 1/2 tablespoons each (35-40g), shaping them taller than wide for thicker cookies.
+
+# Arrange dough balls 2-3 inches apart on prepared baking sheets. Bake for 11-12 minutes or until edges appear set and centers look soft. If cookies aren't spreading by minute 9, lightly bang the baking sheet on the counter 2-3 times, then return to the oven.
+
+# Cool cookies on the baking sheet for 5 minutes. Optionally, press a few extra chocolate chips into the tops while warm for decoration. Transfer to a wire rack to cool completely.

@@ -1,0 +1,50 @@
+---
+yield: 9 rolls
+prep_time: 1 hour 15 minutes
+cook_time: 30 minutes
+category: Bread
+cuisine: American
+public: true
+---
+
+= Dinner Rolls
+
+# Dissolve 1 tablespoon sugar in warm water. Sprinkle yeast over water. Let stand until foamy, about 5 minutes.
+
+- 2 1/4 teaspoons active dry yeast
+- 1/4 cup water
+- 1 tablespoon granulated sugar
+
+# Mix potato flakes and flours in a medium bowl.
+
+- 1/2 cup instant potatoes
+- 1 cup whole wheat flour
+- 2 cups all-purpose flour
+
+# In a large bowl, combine buttermilk, butter, sugar, salt, and egg.
+
+- 1 cup buttermilk
+- 3 tablespoons unsalted butter
+- 2 tablespoons granulated sugar
+- 1 teaspoon table salt
+- 1 large eggs
+
+# Add yeast mixture to buttermilk mixture. Gradually stir in flour mixture until a soft dough forms.
+
+# Knead on a floured surface until smooth and elastic, about 3 minutes.
+
+# Form dough into a ball, oil surface lightly. Let rise until doubled, about 1 hour.
+
+- 1/2 teaspoon vegetable oil
+
+# Punch down dough. Divide into 9 pieces and shape into balls.
+
+# Place rolls in a greased 8x8 pan, touching slightly. Brush with melted butter.
+
+- 2 tablespoons unsalted butter
+
+# Cover; let rise until doubled and crowding the pan, 30-45 minutes.
+
+# Bake at 400°F until golden brown, 25-30 minutes.
+
+# Brush hot rolls with butter. Cool slightly before serving warm.

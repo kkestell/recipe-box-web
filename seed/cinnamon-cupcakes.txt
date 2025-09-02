@@ -1,0 +1,60 @@
+---
+yield: 12 cupcakes
+prep_time: 15 minutes
+cook_time: 20-22 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Cinnamon Cupcakes
+
++ Cupcakes
+
+# Heat oven to 350°F. Line a standard muffin tin with 12 paper liners.
+
+# In a large bowl, whisk together the flour, baking powder, baking soda, salt, and cinnamon. Set aside.
+
+- 210 grams (1 2/3 cups) all-purpose flour
+- 1 teaspoon baking powder
+- 1/4 teaspoon baking soda
+- 1/2 teaspoon salt
+- 2 teaspoons ground cinnamon
+
+# In a medium bowl, whisk together the melted butter and sugar until combined (mixture will be gritty). Whisk in the egg, sour cream, milk, and vanilla extract until combined.
+
+- 1/2 cup unsalted butter, melted and slightly cooled
+- 200 grams (1 cup) granulated sugar
+- 1 large egg, room temperature
+- 60 grams (1/4 cup) sour cream or plain yogurt, room temperature
+- 180 grams (3/4 cup) whole milk, room temperature
+- 1 tablespoon pure vanilla extract
+
+# Pour the wet ingredients into the dry ingredients and whisk until the batter is completely combined. Batter should be creamy and mostly smooth; a few small lumps are OK.
+
+# In a small bowl, mix together the remaining sugar and cinnamon. Set aside.
+
+- 2 tablespoons granulated sugar
+- 2 teaspoons ground cinnamon
+
+# Spoon 2 scant tablespoons of cupcake batter into each cupcake liner. Top with 1 teaspoon of the cinnamon-sugar mixture. Top with 1 heaping tablespoon of cupcake batter, until the cupcake liners are about 3/4 full.
+
+# Top each cupcake with 1/4 teaspoon of cinnamon-sugar. Swirl each gently with a toothpick.
+
+# Bake for 20-22 minutes, or until a toothpick inserted in the center comes out clean.
+
+# Let cool in pan for 10 minutes, then transfer to wire rack to cool completely. Shake off any excess cinnamon-sugar that isn't sticking to the tops before frosting.
+
++ Frosting
+
+# With a hand-held mixer on low, mix butter, cinnamon, honey, vanilla, and confectioners sugar until combined.
+
+- 3 tablespoons unsalted butter, softened to room temperature
+- 2 teaspoons ground cinnamon
+- 1 tablespoon honey
+- 1 teaspoon vanilla extract
+- 125 grams (1 cup) confectioners' sugar
+
+# Slowly add milk, one tablespoon at a time, until desired consistency is reached.
+
+- 1/2-1 tablespoon whole milk

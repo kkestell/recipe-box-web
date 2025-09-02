@@ -1,0 +1,32 @@
+---
+yield: 4 servings
+prep_time: 30 minutes
+cook_time: 1 hour
+category: Side Dishes
+cuisine: American
+public: true
+---
+
+= Lima Beans with Bacon
+
+# Add lima beans to 6 cups of water in a large pot. Bring to a boil, then remove from heat and let stand for 30 minutes. Drain.
+
+- 16 ounces Lima Beans
+
+# Cook bacon in the same pot until crispy. Remove and set aside.
+
+- 1/2 pound Bacon
+
+# In the pot, sauté onion and garlic until translucent.
+
+- 1/2 each Yellow Onion
+- 1 tablespoon Garlic
+
+# Add chicken stock, lima beans, sugar, salt, and pepper. Bring to a boil, then simmer for 1 hour or until beans are tender.
+
+- 6 cups Chicken Stock
+- 2 teaspoons Granulated Sugar
+- 2 teaspoons Kosher Salt
+- 1/2 teaspoon Black Pepper
+
+# Crumble bacon over beans before serving.

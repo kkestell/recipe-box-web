@@ -1,0 +1,39 @@
+---
+yield: 1 pie
+prep_time: 30 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= French Silk Pie
+
+# Pour the heavy cream into a large mixing bowl and whip on medium-low speed until foamy, about 1 minute. Increase the speed to medium-high and continue to whip until stiff peaks form, 2 to 4 minutes. Transfer the whipped cream to a small bowl and refrigerate until needed.
+
+- 1 cup Heavy Cream
+
+# Place the chocolate in a microwave-safe bowl and microwave on 50% power in 30-second increments, stirring after each, until completely melted and smooth. Set aside.
+
+- 8 ounces Bittersweet Chocolate
+
+# In a large, heatproof bowl, whisk together the eggs, sugar and water. Beat the mixture on medium speed until pale yellow and thick, about 5 minutes.
+
+- 3 each Eggs
+- 3/4 cup Ultrafine Baker's Sugar
+- 2 tablespoons Water
+
+# Set the bowl over a medium saucepan filled ~½-inch of barely simmering water over low heat, and warm the mixture, stirring occasionally, until it reaches 160 degrees F on an instant-read thermometer. Remove the bowl from the heat and beat the mixture on medium speed until it is light and fluffy and cooled to room temperature, about 8 minutes.
+
+# Add the melted chocolate and vanilla extract to the cooled egg mixture and beat until incorporated.
+
+- 1 tablespoon Vanilla Extract
+
+# Beat in the butter, a few pieces at a time, until well combined.
+
+- 8 tablespoons Unsalted Butter
+
+# Using a rubber spatula, fold in the whipped cream until no white streaks remain.
+
+# Scrape the filling into the pie crust and refrigerate until set, at least 3 hours or up to 24 hours.
+
+- 1 each Pie Crust

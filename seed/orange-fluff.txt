@@ -1,0 +1,27 @@
+---
+yield: 8 servings
+prep_time: 8 hours
+cook_time: 10 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Orange Fluff
+
+# Stir pudding powder into boiling water. Add jello and mix well. Cook according to package directions and refrigerate overnight.
+
+- 1 6-ounce package orange jello
+- 1 package vanilla pudding (not instant)
+- 4 1/2 cups boiling water
+
+# Next day, whisk or beat jello mixture until fluffy.
+
+# Add whipped topping and whip until mixed well.
+
+- 12 ounces frozen whipped topping
+
+# Fold in mandarin oranges and marshmallows if using.
+
+- 1 large can mandarin oranges, drained
+- 1 cup mini marshmallows (optional)

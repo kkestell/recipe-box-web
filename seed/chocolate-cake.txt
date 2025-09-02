@@ -1,0 +1,35 @@
+---
+yield: 1 bundt cake
+prep_time: 20 minutes
+cook_time: 45 minutes
+category: Desserts
+cuisine: American
+source: Liz Kestell
+public: true
+---
+
+= Chocolate Cake
+
+# Preheat oven to 350°F. Spray a bundt cake pan with cooking spray.
+
+# In a large mixing bowl, combine sugar, flour, cocoa powder, baking powder, baking soda, and salt.
+
+- 400 grams (2 cups) granulated sugar
+- 210 grams (1 3/4 cups) all-purpose flour
+- 75 grams (1 cup - 2 tablespoons) natural unsweetened cocoa powder
+- 1 1/2 teaspoons baking powder
+- 1 1/2 teaspoons baking soda
+- 1 teaspoon table salt
+
+# Make a well in the center of the dry ingredients and add eggs, milk, vegetable oil, and vanilla extract. Beat for 2 minutes at medium speed. Stir in boiling water with espresso powder. The batter will be thin.
+
+- 2 each eggs
+- 1 cup milk
+- 1/2 cup vegetable oil
+- 2 teaspoons vanilla extract
+- 1 cup water, boiling
+- 2 teaspoons espresso powder
+
+# Pour batter into the prepared pan. Bake for 35-45 minutes, or until a toothpick inserted into center comes out clean.
+
+# Cool in pan for 10 minutes, then invert onto wire rack to cool completely.

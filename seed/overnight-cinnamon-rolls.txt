@@ -1,0 +1,44 @@
+---
+yield: 12 rolls
+prep_time: 12 hours
+cook_time: 25 minutes
+category: Bread
+subcategory: Yeast
+cuisine: American
+public: true
+---
+
+= Overnight Cinnamon Rolls
+
+# Whisk warm milk, 2 tablespoons sugar, and yeast together in the bowl of a stand mixer fitted with dough hook or paddle attachment. Cover and let sit for about 5 minutes until foamy.
+
+- 1 cup whole milk, warmed to about 100 degF
+- 2 tablespoons granulated sugar
+- 1 1/2 tablespoons (2 packets) active dry yeast
+
+# On medium speed, beat in remaining sugar and softened butter until slightly broken up. Add eggs and salt, beat on medium speed until combined. Add flour 1 cup at a time on low speed, making sure each addition is fully incorporated. Beat until dough comes together and pulls away from the sides of the bowl, about 3 minutes.
+
+- 1/2 cup granulated sugar
+- 1/2 cup unsalted butter, softened and cut into 4 pieces
+- 2 large eggs, room temperature
+- 1/2 teaspoon salt
+- 540 grams all-purpose flour
+
+# Continue kneading with dough hook (or by hand on floured surface) for 5 more minutes until dough is soft and slightly tacky. Place in a lightly oiled bowl, turning to coat. Cover and let rise in a warm spot until doubled, about 2 hours.
+
+- 2 teaspoons oil, for bowl
+
+# Punch down dough. On a lightly floured surface, roll into a 12x18" rectangle. Spread softened butter over dough, then sprinkle with cinnamon-sugar mixture. Tightly roll up dough to form an 18" log. Cut into 12 even rolls, about 1 1/2" each. Arrange in a greased 9x13" baking pan. Cover tightly and refrigerate overnight for 8-12 hours.
+
+- 1/2 cup unsalted butter, softened
+- 2/3 cup brown sugar
+- 1 1/2 tablespoons ground cinnamon
+
+# In the morning, remove rolls from refrigerator and let sit at room temperature for 1-2 hours until puffy. Preheat oven to 350°F. Bake for 25-28 minutes, tenting with foil after 15 minutes to prevent over-browning. Remove from oven and cool on wire rack for 10 minutes while making icing.
+
+# Beat cream cheese until smooth. Add confectioners' sugar, cream, and vanilla. Beat on low for 30 seconds, then on high for 1 minute. Spread over warm rolls.
+
+- 4 ounces cream cheese, softened
+- 1 cup confectioners' sugar
+- 1 tablespoon heavy cream
+- 1/2 teaspoon vanilla extract

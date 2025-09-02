@@ -1,0 +1,31 @@
+---
+yield: 8 servings
+prep_time: 10 minutes
+cook_time: 10 minutes
+category: Beverages
+cuisine: Mexican
+public: true
+---
+
+= Agua de Jamaica
+
+# Put 4 cups of the water and the sugar in a medium saucepan. Add optional cinnamon, ginger slices, and/or a few allspice berries. Heat until boiling and the sugar has dissolved.
+
+- 4 cups water
+- 1 cup granulated sugar
+- cinnamon
+- ginger
+- 3 allspice berries
+
+# Remove from heat. Stir in the dried hibiscus flowers. Cover and steep for 20 minutes.
+
+- 1 cup dried hibiscus flowers
+
+# Strain into a pitcher and discard the used hibiscus flowers. Store the concentrate chilled until ready to make the drink.
+
+# Add the remaining 4 cups of water and lime juice to the concentrate.
+
+- 4 cups water
+- Lime juice
+
+# Serve over ice with a slice of orange or lime.

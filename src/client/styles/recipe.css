@@ -1,0 +1,130 @@
+.recipe {
+    line-height: 1.6;
+    padding: 2rem;
+
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.recipe-notes {
+    margin: 2rem 0;
+
+    p {
+        margin: 1rem 0;
+        color: var(--color-text-secondary);
+    }
+}
+
+.recipe-meta {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: auto auto;
+    grid-auto-columns: max-content;
+    column-gap: 2rem;
+    margin: 2rem 0;
+    font-size: 0.9rem;
+
+    dt {
+        font-weight: bold;
+    }
+
+    dd {
+        margin: 0;
+    }
+}
+
+.recipe-component {
+    width: 100%;
+
+    h3 {
+        font-size: 1.3rem;
+        margin: 2rem 0 1.5rem 0;
+    }
+}
+
+.recipe-steps {
+    /*border-bottom: 1px solid var(--color-border-ui);*/
+}
+
+.recipe-step {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    /*border-top: 1px solid var(--color-border-ui);*/
+
+    &:first-child {
+        border-top: 0;
+    }
+
+    &.completed {
+        p {
+            text-decoration: line-through;
+            color: var(--color-text-secondary);
+        }
+    }
+
+    .recipe-step-number {
+        flex-grow: 0;
+        flex-shrink: 0;
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        margin: 1rem 1rem 1rem 0;
+
+        .form-check {
+            display: none;
+        }
+
+        span {
+            font-weight: bold;
+            width: 1rem;
+            text-align: center;
+        }
+    }
+
+    p {
+        flex: 1;
+        margin: 0;
+        padding: 1rem 2rem 1rem 0.5rem;
+    }
+
+    ul {
+        flex: 0 0 40%;
+        line-height: 1.4;
+        padding: 1rem 1rem 1rem 2rem;
+        margin: 0;
+
+        li {
+            list-style-type: none;
+            margin-left: 0;
+            margin-bottom: 0.5rem;
+
+            input {
+                vertical-align: middle;
+                margin-right: 0.6em;
+                border-radius: 0;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        li:has(input:checked) {
+            color: var(--color-text-secondary);
+            text-decoration: line-through;
+        }
+    }
+}
+
+.recipe-step-number:hover .form-check,
+.recipe-step.completed .recipe-step-number .form-check {
+    display: block;
+}
+
+.recipe-step-number:hover span,
+.recipe-step.completed .recipe-step-number span {
+    display: none;
+}

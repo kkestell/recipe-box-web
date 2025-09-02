@@ -1,0 +1,32 @@
+---
+yield: 1 loaf
+prep_time: 15 minutes
+cook_time: 3 hours
+category: Bread
+cuisine: Japanese
+public: true
+---
+
+= Milk Bread
+
+# Combine ingredients in a small saucepan. Whisk until no lumps remain. Cook over low heat, whisking constantly, until thick and whisk leaves lines on bottom of pan, 3-5 minutes. Let cool to room temperature.
+
+- 3 tablespoons water
+- 3 tablespoons milk
+- 2 tablespoons bread flour
+
+# Once tangzhong has cooled, add ingredients to bread machine pan in this order:
+
+- 1/2 cup milk
+- 1 egg, beaten
+- 4 tablespoons unsalted butter, melted and cooled
+- cooled tangzhong
+- 300 grams (2 1/2 cups) bread flour
+- 2 tablespoons dry milk
+- 1/4 cup honey or granulated sugar
+- 1 teaspoon salt
+- 1 1/4 teaspoons instant yeast
+
+# Select "Basic" or "White Bread" setting, 1 pound loaf, light crust. Start machine.
+
+# Remove bread promptly when baking completes. Turn out onto a rack to cool completely.

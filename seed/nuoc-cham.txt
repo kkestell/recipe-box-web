@@ -1,0 +1,23 @@
+---
+yield: 1 cup
+prep_time: 5 minutes
+category: Sauces & Seasonings
+cuisine: Vietnamese
+public: true
+---
+
+= Nước Chấm
+
+# Microwave water for 30 seconds, then add sugar and stir until dissolved.
+
+- 5 tablespoons water
+- 2 tablespoons granulated sugar
+
+# Add remaining ingredients and stir to combine.
+
+- 1 1/2 tablespoons lime juice
+- 2 tablespoons fish sauce
+- 1 each garlic
+- 1 Thai chili
+
+# Cool to room temperature and serve.

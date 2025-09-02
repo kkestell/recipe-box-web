@@ -1,0 +1,20 @@
+---
+yield: 1 cup
+prep_time: 5 minutes
+category: Sauces & Seasonings
+cuisine: American
+public: true
+---
+
+= McDonald's Hamburger Seasoning
+
+# Combine all ingredients in a small bowl. Mix well.
+
+- 4 tablespoons Table Salt
+- 2 tablespoons MSG
+- 1 teaspoon Black Pepper
+- 1/4 teaspoon Onion Powder
+
+# Store in an airtight container.
+
+# Use as desired to season hamburgers.

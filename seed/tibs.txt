@@ -1,0 +1,34 @@
+---
+yield: 4 servings
+prep_time: 15 minutes
+cook_time: 30 minutes
+category: Main Dishes
+cuisine: Ethiopian
+public: true
+---
+
+= Tibs
+
+# Melt butter in a large skillet over medium heat, then reduce heat to medium low. Add onions and cook until caramelized, about 45 minutes.
+
+- 5 tablespoons Unsalted Butter
+- 2 cups Onion, chopped
+
+# Add garlic, ginger, and berbere and cook for a few more minutes.
+
+- 2 tablespoons Ginger
+- 2 tablespoons Garlic
+- 2 tablespoons Berbere
+
+# Process onion mixture in a blender or food processor until almost smooth. Season to taste.
+
+# Sear sirloin in a separate skillet over high heat.
+
+- 1 pound Beef Sirloin
+
+# Add onion mixture to sirloin and cook until meat is done.
+
+# Stir in lemon juice and serve.
+
+- 1 teaspoon Lemon Juice
+- Salt

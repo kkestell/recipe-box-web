@@ -1,0 +1,30 @@
+---
+yield: 12 servings
+prep_time: 10 minutes
+cook_time: 10 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Microwave Peanut Brittle
+
+# Stir peanuts, sugar, syrup, and salt in 1 1/2-quart baking dish.
+
+- 1 cup Raw Peanuts
+- 1 cup Granulated Sugar
+- 1/2 cup Corn Syrup
+- 1/8 teaspoon Table Salt
+
+# Microwave on high for 7-8 minutes, stirring after 4 minutes.
+
+# Add butter and vanilla. Cook 1-2 minutes until mixture browns slightly.
+
+- 1 teaspoon Unsalted Butter
+- 1 teaspoon Vanilla Extract
+
+# Stir in baking soda until light and foamy.
+
+- 1 teaspoon Baking Soda
+
+# Pour onto greased cookie sheet. Cool, then break into pieces.

@@ -1,0 +1,38 @@
+---
+yield: 12 servings
+prep_time: 30 minutes
+cook_time: 10 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Fruit Pizza
+
+# Spread sugar cookie dough 1/8 inch thick on pizza pan. Bake at 350°F for 10 minutes. Cool completely.
+
+- 18 ounces sugar cookie dough
+
+# Mix cream cheese and whipped topping until smooth. Spread over cooled crust.
+
+- 8 ounces cream cheese, softened
+- 8 ounces frozen whipped topping, thawed
+
+# Arrange fruit decoratively over cream cheese layer.
+
+- Kiwi, sliced
+- Strawberries, sliced
+- Bananas, sliced
+- Pineapple chunks
+- Fresh blueberries
+- Peaches, sliced
+
+# For glaze, combine all ingredients in small saucepan. Bring to boil and cook 1 minute, stirring constantly. Cool completely.
+
+- 1/3 cup granulated sugar
+- 1/4 cup water
+- 1 tablespoon cornstarch
+- 1/2 cup orange juice
+- 2 tablespoons lemon juice
+
+# Brush glaze over fruit. Refrigerate until ready to serve.

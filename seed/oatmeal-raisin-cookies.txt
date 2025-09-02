@@ -1,0 +1,39 @@
+---
+yield: 24 cookies
+prep_time: 15 minutes
+cook_time: 10 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Oatmeal Raisin Cookies
+
+# Heat oven to 375°F. Line cookie sheets with parchment.
+
+# Toast walnuts for 5-7 minutes, or until fragrant. Let cool.
+
+- 115 grams (1 cup) walnuts
+
+# Cream butter, white sugar, and brown sugar until smooth. Beat in eggs and vanilla until fluffy.
+
+- 170 grams (3/4 cup) unsalted butter, room temperature
+- 150 grams (3/4 cup) granulated sugar
+- 160 grams (3/4 cup) light brown sugar
+- 2 large eggs, room temperature
+- 1 teaspoon vanilla extract
+
+# Mix flour, baking soda, cinnamon, and salt. Gradually add to butter mixture. Stir in oats, raisins, and walnuts.
+
+- 150 grams (1 1/4 cups) all-purpose flour
+- 1 teaspoon baking soda
+- 3/4 teaspoon cinnamon
+- 1/2 teaspoon table salt
+- 310 grams (2 3/4 cups) rolled oats
+- 150 grams (1 cup) raisins
+
+# Drop teaspoonfuls of dough onto prepared sheets.
+
+# Bake 8-10 minutes, or until golden brown, rotating sheets halfway through.
+
+# Let cookies rest on sheets for 1-2 minutes before transferring to a wire rack to cool completely.

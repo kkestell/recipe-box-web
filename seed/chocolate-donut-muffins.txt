@@ -1,0 +1,43 @@
+---
+yield: 12 muffins
+prep_time: 10 minutes
+cook_time: 40 minutes
+category: Desserts
+cuisine: American
+public: true
+---
+
+= Chocolate Donut Muffins
+
+# Heat oven to 375°F with rack set in center. Generously butter a 12-cup muffin tin.
+
+# In a large bowl, combine eggs and sugar and whisk until well combined. Add sour cream, butter, oil, nutmeg and salt; whisk until well combined.
+
+- 2 each Eggs
+- 3/4 cup Granulated Sugar
+- 1 cup Sour Cream
+- 1/2 cup Unsalted Butter, melted
+- 1 tablespoon Vegetable Oil
+- 1 1/2 teaspoons Nutmeg, freshly grated
+- 1 1/8 teaspoons Kosher Salt
+
+# Whisk in cocoa powder, followed by baking powder and baking soda. Then fold in flour until just incorporated.
+
+- 45 grams Dutch-Process Cocoa Powder
+- 1 1/2 teaspoons Baking Powder
+- 1/4 teaspoon Baking Soda
+- 128 grams All-Purpose Flour
+
+# Divide mixture among the 12 wells and bake until muffins are puffed and toothpick inserted in center comes out with a few moist crumbs attached, 18 to 23 minutes.
+
+# While the muffins bake, combine remaining sugar, cinnamon and salt in a shallow bowl.
+
+- 1/4 cup Granulated Sugar
+- 1 tablespoon Ground Cinnamon
+- 1 pinch Kosher Salt
+
+# Let muffins cool in pan for 5 minutes then transfer to a rack. Working with one warm muffin at a time, brush with melted butter then toss in cinnamon sugar; repeat with remaining muffins.
+
+- 4 tablespoons Unsalted Butter, melted
+
+# Store any extras in an airtight container at room temperature for up to 4 days. The sugar will gradually melt into the muffins as they sit, but you can reroll the muffins in cinnamon sugar, if desired.

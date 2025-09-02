@@ -1,0 +1,27 @@
+---
+yield: 4 servings
+prep_time: 10 minutes
+cook_time: 15 minutes
+category: Breakfast & Brunch
+cuisine: American
+public: true
+---
+
+= Overnight Buttermilk Pancakes
+
+# In a large bowl, whisk together the flour, yeast, baking powder, sugar, baking soda, and salt.
+
+- 2 cups all-purpose flour
+- 1/2 tablespoon instant yeast
+- 1/2 tablespoon baking powder
+- 1/2 tablespoon granulated sugar
+- 1 teaspoon baking soda
+- 1/2 teaspoon table salt
+
+# Add the eggs, buttermilk, and oil. Mix until combined.
+
+- 2 large eggs
+- 2 cups buttermilk
+- 2 tablespoons canola oil
+
+# Cover the bowl and refrigerate for at least 8 hours (or up to 24 hours).

@@ -1,0 +1,23 @@
+---
+yield: 9 servings
+prep_time: 5 minutes
+cook_time: 35 minutes
+category: Desserts
+cuisine: American
+public: true
+public: true
+---
+
+= Chocolate Frosting
+
+# With a hand-held mixer on low, mix butter, cocoa, honey, vanilla, and confectioners sugar until combined.
+
+- 3 tablespoons unsalted butter, softened to room temperature
+- 3 tablespoons Dutch processed cocoa powder
+- 1 tablespoon honey
+- 1 teaspoon vanilla extract
+- 125 grams (1 cup) confectioners' sugar
+
+# Slowly add milk, one tablespoon at a time, until desired consistency is reached.
+
+- 2-4 tablespoons whole milk

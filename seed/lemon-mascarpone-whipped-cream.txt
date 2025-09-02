@@ -1,0 +1,22 @@
+---
+yield: 2 cups
+prep_time: 10 minutes
+category: Desserts
+cuisine: Italian
+public: true
+---
+
+= Lemon Mascarpone Whipped Cream
+
+# Whip heavy cream in a large bowl until stiff peaks form.
+
+- 1/2 cup Heavy Cream
+
+# In a separate bowl, whisk together mascarpone cheese, powdered sugar, lemon zest, and lemon juice.
+
+- 1/2 cup Mascarpone Cheese
+- 2 tablespoons Powdered Sugar
+- 1 tablespoon Lemon Zest
+- 1 tablespoon Lemon Juice
+
+# Fold whipped cream into mascarpone mixture until combined.
