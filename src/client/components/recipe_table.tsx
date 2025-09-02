@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { parseRecipe } from '@/shared/serialization.ts'
 import { useRecipeTable } from '@/client/hooks/use_recipe_table.ts'
+import { useEffect, useState } from 'react'
 
 export function RecipeTable() {
     const {
@@ -19,6 +20,26 @@ export function RecipeTable() {
         changeCuisine,
     } = useRecipeTable()
 
+    const [categories, setCategories] = useState<string[]>(['All Categories'])
+    const [cuisines, setCuisines] = useState<string[]>(['All Cuisines'])
+
+    useEffect(() => {
+        ;(async () => {
+            const [catsRes, cuisRes] = await Promise.all([
+                fetch('/api/categories'),
+                fetch('/api/cuisines'),
+            ])
+            if (catsRes.ok) {
+                const data: string[] = await catsRes.json()
+                setCategories(['All Categories', ...data])
+            }
+            if (cuisRes.ok) {
+                const data: string[] = await cuisRes.json()
+                setCuisines(['All Cuisines', ...data])
+            }
+        })()
+    }, [])
+
     return (
         <>
             <form
@@ -35,18 +56,18 @@ export function RecipeTable() {
                     onChange={(e) => setSearchDraft(e.target.value)}
                 />
                 <select value={category} onChange={(e) => changeCategory(e.target.value)}>
-                    <option>All Categories</option>
-                    <option>Appetizers</option>
-                    <option>Beverages</option>
-                    <option>Bread</option>
-                    <option>Breakfast & Brunch</option>
+                    {categories.map((c) => (
+                        <option key={c} value={c}>
+                            {c}
+                        </option>
+                    ))}
                 </select>
                 <select value={cuisine} onChange={(e) => changeCuisine(e.target.value)}>
-                    <option>All Cuisines</option>
-                    <option>American</option>
-                    <option>Chinese</option>
-                    <option>Italian</option>
-                    <option>Mexican</option>
+                    {cuisines.map((c) => (
+                        <option key={c} value={c}>
+                            {c}
+                        </option>
+                    ))}
                 </select>
                 <button type="submit">Search</button>
             </form>

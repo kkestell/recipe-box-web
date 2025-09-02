@@ -30,32 +30,32 @@ export class Database {
         // Recreate tables
         this.db.run(`
             CREATE TABLE IF NOT EXISTS users (
-                                                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                                 username TEXT NOT NULL UNIQUE,
-                                                 password_hash TEXT NOT NULL
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                username TEXT NOT NULL UNIQUE,
+                password_hash TEXT NOT NULL
             );
         `)
 
         this.db.run(`
             CREATE TABLE IF NOT EXISTS sessions (
-                                                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                                    user_id INTEGER NOT NULL,
-                                                    token TEXT NOT NULL UNIQUE,
-                                                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                                                    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-                );
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL,
+                token TEXT NOT NULL UNIQUE,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+            );
         `)
 
         this.db.run(`
             CREATE TABLE IF NOT EXISTS recipes (
-                                                   id TEXT PRIMARY KEY,
-                                                   title TEXT NOT NULL,
-                                                   category TEXT NOT NULL,
-                                                   content TEXT NOT NULL,
-                                                   is_public INTEGER NOT NULL DEFAULT 0,
-                                                   user_id INTEGER NOT NULL,
-                                                   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-                );
+                id TEXT PRIMARY KEY,
+                title TEXT NOT NULL,
+                category TEXT NOT NULL,
+                content TEXT NOT NULL,
+                is_public INTEGER NOT NULL DEFAULT 0,
+                user_id INTEGER NOT NULL,
+                FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+            );
         `)
 
         // Create the default user 'kyle'
@@ -122,26 +122,6 @@ export class Database {
         return this.db.prepare('DELETE FROM sessions WHERE token = ?').run(token)
     }
 
-    public getPublicRecipes(limit: number, offset: number): Recipe[] {
-        const rows = this.db
-            .query(
-                `SELECT r.id, r.user_id, u.username, r.title, r.category, r.is_public, r.content
-                 FROM recipes r
-                          JOIN users u ON r.user_id = u.id
-                 WHERE r.is_public = 1
-                 ORDER BY r.id DESC
-                     LIMIT ? OFFSET ?`,
-            )
-            .all(limit, offset) as (Omit<Recipe, 'is_public'> & {
-            is_public: 0 | 1
-        })[]
-
-        return rows.map((row) => ({
-            ...row,
-            is_public: row.is_public === 1,
-        }))
-    }
-
     public getPublicRecipesFiltered(
         filters: PublicFilters,
         limit: number,
@@ -170,10 +150,10 @@ export class Database {
         const sql = `
             SELECT r.id, r.user_id, u.username, r.title, r.category, r.is_public, r.content
             FROM recipes r
-                     JOIN users u ON r.user_id = u.id
+            JOIN users u ON r.user_id = u.id
             WHERE ${where.join(' AND ')}
-            ORDER BY r.id DESC
-                LIMIT ? OFFSET ?
+            ORDER BY r.title ASC
+            LIMIT ? OFFSET ?
         `
         params.push(limit, offset)
 
@@ -185,13 +165,6 @@ export class Database {
             ...row,
             is_public: row.is_public === 1,
         }))
-    }
-
-    public getPublicRecipeCount(): number {
-        const row = this.db
-            .query(`SELECT COUNT(*) as count FROM recipes WHERE is_public = 1`)
-            .get() as { count: number }
-        return row.count
     }
 
     public getPublicRecipeCountFiltered(filters: PublicFilters): number {
@@ -311,5 +284,28 @@ export class Database {
 
     public deleteRecipe(id: string, user_id: number) {
         return this.db.prepare('DELETE FROM recipes WHERE id = ? AND user_id = ?').run(id, user_id)
+    }
+
+    public getPublicCategories(): string[] {
+        const rows = this.db
+            .query(
+                `SELECT DISTINCT category FROM recipes WHERE is_public = 1 ORDER BY category ASC`,
+            )
+            .all() as { category: string }[]
+        return rows.map((r) => r.category)
+    }
+
+    public getPublicCuisines(): string[] {
+        const rows = this.db.query(`SELECT content FROM recipes WHERE is_public = 1`).all() as {
+            content: string
+        }[]
+
+        const set = new Set<string>()
+        for (const { content } of rows) {
+            const [parsed] = parseRecipe(content)
+            const c = parsed.metadata.cuisine?.trim()
+            if (c) set.add(c)
+        }
+        return Array.from(set).sort((a, b) => a.localeCompare(b))
     }
 }

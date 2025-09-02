@@ -215,6 +215,20 @@ const server = serve({
             },
         },
 
+        '/api/categories': {
+            GET() {
+                const categories = db.getPublicCategories()
+                return Response.json(categories)
+            },
+        },
+
+        '/api/cuisines': {
+            GET() {
+                const cuisines = db.getPublicCuisines()
+                return Response.json(cuisines)
+            },
+        },
+
         '/api/*': () => new Response('Not Found', { status: 404 }),
 
         '/*': homepage,
