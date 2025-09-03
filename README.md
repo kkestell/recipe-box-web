@@ -1,21 +1,7 @@
-# bun-react-template
+docker build -t recipe-box .
 
-To install dependencies:
-
-```bash
-bun install
-```
-
-To start a development server:
-
-```bash
-bun dev
-```
-
-To run for production:
-
-```bash
-bun start
-```
-
-This project was created using `bun init` in bun v1.2.20. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+docker run --rm --name recipe-box \
+-p 3000:3000 \
+-e DB_PATH=/usr/src/app/data/recipe-box.sqlite \
+-v "$(pwd)/data:/usr/src/app/data" \
+recipe-box

@@ -36,7 +36,7 @@ function setSessionCookie(token: string) {
 }
 
 const server = serve({
-    development: true,
+    development: false,
     routes: {
         '/api/auth/signup': {
             async POST(req) {
