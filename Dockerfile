@@ -33,6 +33,8 @@ COPY --from=prerelease /usr/src/app/package.json .
 COPY --from=prerelease /usr/src/app/tsconfig.json .
 COPY seed seed
 
+ENV NODE_ENV=production
+
 RUN chown -R bun:bun /usr/src/app
 
 # run the app
