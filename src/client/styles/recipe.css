@@ -45,14 +45,12 @@
 }
 
 .recipe-steps {
-    /*border-bottom: 1px solid var(--color-border-ui);*/
 }
 
 .recipe-step {
     display: flex;
     align-items: stretch;
     flex-wrap: nowrap;
-    /*border-top: 1px solid var(--color-border-ui);*/
 
     &:first-child {
         border-top: 0;
@@ -75,6 +73,10 @@
 
         .form-check {
             display: none;
+            margin-top: 0.15rem;
+
+            .form-check-input {
+            }
         }
 
         span {
@@ -101,10 +103,10 @@
             margin-left: 0;
             margin-bottom: 0.5rem;
 
-            input {
-                vertical-align: middle;
-                margin-right: 0.6em;
-                border-radius: 0;
+            .form-check {
+                .form-check-input {
+                    margin-right: 0.5rem;
+                }
             }
 
             &:last-child {

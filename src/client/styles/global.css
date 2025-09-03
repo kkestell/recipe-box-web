@@ -5,13 +5,12 @@
     --crust: #f0f0f0; /* UI Controls, headers */
     --surface0: #e8e8e8; /* Control hover states */
     --surface1: #d0d0d0; /* Control active states */
-    --text: #333333; /* Primary text */
+    --text: #222222; /* Primary text */
     --subtext0: #666666; /* Secondary text */
     --overlay2: #999999; /* Disabled text */
-    --accent: #555555; /* Accent & Links - clean gray */
-    --select-bg: #f5f5f5; /* Selection background */
-    --error: #666666; /* Error text */
-    --error-bg: #f8f8f8; /* Error background tint */
+    --accent: #666; /* Accent & Links - clean gray */
+    --select-bg: #eee; /* Selection background */
+    --error: #cc0000; /* Error text */
     --white: #ffffff;
 
     /* General */
@@ -165,6 +164,10 @@ button {
 
     &:hover {
         background-color: var(--color-background-button-hover);
+
+        a {
+            text-decoration: none;
+        }
     }
 
     &:active,
@@ -231,21 +234,20 @@ select {
 
 .form-check {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+
     gap: 0.5rem;
-    padding: 0.25rem 0;
 
     .form-check-input {
         appearance: none;
         -webkit-appearance: none;
-        width: 1.15em;
-        height: 1.15em;
+        width: 1rem;
+        height: 1rem;
         border-radius: 0.25rem;
         background-color: var(--crust);
         border: 1px solid var(--color-border-control);
         cursor: pointer;
         flex-shrink: 0;
-        margin-top: 0.2em;
 
         &:checked {
             background-color: var(--color-background-checkbox-checked);
@@ -266,8 +268,6 @@ select {
         font-size: 1rem;
         cursor: pointer;
         margin: 0;
-        padding-top: 0.1em;
-        color: var(--color-text-primary);
     }
 }
 
@@ -393,13 +393,9 @@ select {
     form {
         .error-message {
             color: var(--error);
-            background-color: var(--error-bg);
-            padding: 0.75rem;
-            border-radius: var(--radius-border);
             font-size: 0.9rem;
             text-align: center;
-            margin-bottom: 1rem;
-            border: 1px solid var(--surface0);
+            margin-bottom: 2rem;
         }
     }
 

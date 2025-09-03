@@ -56,7 +56,15 @@ export function RecipeView({ recipe }: RecipeViewProps) {
                     ))}
                 </dl>
 
-                {/* FIXME: Notes */}
+                {recipe.notes.length > 0 && (
+                    <div className="recipe-notes">
+                        {recipe.notes.map((note, noteIndex) => (
+                            <p className="recipe-note" key={`note-${noteIndex}`}>
+                                {fancy(note)}
+                            </p>
+                        ))}
+                    </div>
+                )}
 
                 {recipe.components.map((component, componentIndex) => (
                     <div className="recipe-component" key={`component-${componentIndex}`}>
@@ -64,7 +72,7 @@ export function RecipeView({ recipe }: RecipeViewProps) {
                         <div className="recipe-steps">
                             {component.steps.map((step, stepIndex) => {
                                 const stepId = `comp-${componentIndex}-step-${stepIndex}`
-                                const isCompleted = !!completedSteps[stepId]
+                                const isCompleted = completedSteps[stepId]
 
                                 return (
                                     <div
@@ -83,9 +91,10 @@ export function RecipeView({ recipe }: RecipeViewProps) {
                                             </div>
                                         </div>
                                         <p>{fancy(step.text)}</p>
-                                        {step.ingredients && step.ingredients.length > 0 && (
-                                            <ul>
-                                                {step.ingredients.map(
+                                        <ul>
+                                            {step.ingredients &&
+                                                step.ingredients.length > 0 &&
+                                                step.ingredients.map(
                                                     (ingredient, ingredientIndex) => {
                                                         const ingredientId = `${stepId}-ing-${ingredientIndex}`
                                                         return (
@@ -109,8 +118,7 @@ export function RecipeView({ recipe }: RecipeViewProps) {
                                                         )
                                                     },
                                                 )}
-                                            </ul>
-                                        )}
+                                        </ul>
                                     </div>
                                 )
                             })}

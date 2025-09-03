@@ -53,6 +53,10 @@ describe("parseRecipe", () => {
 
         expect(errors).toEqual([]);
         expect(recipe.title).toBe("Classic Spaghetti Carbonara");
+        expect(recipe.notes).toEqual([
+            "A classic Roman pasta dish.",
+            "Use guanciale for the most authentic flavor.",
+        ]);
         expect(recipe.metadata).toEqual({
             category: "Dinner",
             cook_time: "30",
@@ -61,8 +65,6 @@ describe("parseRecipe", () => {
             prep_time: "15",
             source: "Grandma's cookbook",
             yields: "4 servings",
-            notes:
-                "A classic Roman pasta dish.\nUse guanciale for the most authentic flavor.",
         });
 
         expect(recipe.components.length).toBe(2);
@@ -108,6 +110,7 @@ describe("parseRecipe", () => {
         expect(errors).toEqual([]);
         expect(recipe).toEqual({
             title: undefined,
+            notes: [],
             metadata: {},
             components: [],
         });

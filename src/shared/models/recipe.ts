@@ -41,6 +41,7 @@ export function isExistingRecipe(recipe: Recipe): recipe is ExistingRecipe {
 
 export interface ParsedRecipe {
     readonly title?: string
+    readonly notes: string[]
     readonly metadata: Record<string, string>
     readonly components: readonly Component[]
 }

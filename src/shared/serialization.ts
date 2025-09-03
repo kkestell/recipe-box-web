@@ -7,7 +7,7 @@ export function parseRecipe(recipeText: string): [ParsedRecipe, string[]] {
 
     // An empty input results in an empty recipe object.
     if (!recipeText.trim()) {
-        return [{ title: undefined, metadata: {}, components: [] }, errors]
+        return [{ title: undefined, notes: [], metadata: {}, components: [] }, errors]
     }
 
     const lines = recipeText.trim().split('\n')
@@ -105,13 +105,10 @@ export function parseRecipe(recipeText: string): [ParsedRecipe, string[]] {
 
     finalizeComponent()
 
-    if (recipeNotes.length > 0) {
-        metadata['notes'] = recipeNotes.join('\n')
-    }
-
     // Construct the recipe object with whatever was found.
     const recipe: ParsedRecipe = {
         title: recipeTitle,
+        notes: recipeNotes,
         metadata: metadata,
         components: finalComponents,
     }

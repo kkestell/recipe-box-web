@@ -11,9 +11,9 @@ type SidebarProps = {
 export function Sidebar({ recipes, selectedId, onSelectRecipe, onNewRecipe }: SidebarProps) {
     const [searchQuery, setSearchQuery] = useState('')
 
-    const filteredRecipes = recipes.filter((recipe) =>
-        recipe.title?.toLowerCase().includes(searchQuery.toLowerCase()),
-    )
+    const filteredRecipes = recipes
+        .filter((recipe) => recipe.title?.toLowerCase().includes(searchQuery.toLowerCase()))
+        .sort((a, b) => (a.title || '').localeCompare(b.title || ''))
 
     const recipesByCategory = filteredRecipes.reduce(
         (acc, recipe) => {
