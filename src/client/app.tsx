@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 import { Header } from '@/client/components/header'
 import { Homepage } from '@/client/pages/homepage'
+import { Help } from '@/client/pages/help.tsx'
 import { Login } from '@/client/pages/login.tsx'
 import { Signup } from '@/client/pages/signup.tsx'
 import { Library } from '@/client/pages/library.tsx'
@@ -48,6 +49,7 @@ function AppContent() {
                 <Header user={user} onLogout={logout} />
                 <Routes>
                     <Route path="/" element={<Homepage />} />
+                    <Route path="/help" element={<Help />} />
                     <Route path="/log-in" element={<Login />} />
                     <Route path="/sign-up" element={<Signup />} />
                     <Route

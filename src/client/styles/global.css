@@ -58,7 +58,6 @@
     --error: #cc0000;
 }
 
-
 * {
     margin: 0;
     padding: 0;
@@ -130,8 +129,8 @@ button {
     font-family: inherit;
     font-size: inherit;
     color: var(--color-text-control);
-    border-color: var(--color-border-control-outset) var(--color-border-control-inset) var(--color-border-control-inset)
-        var(--color-border-control-outset);
+    border-color: var(--color-border-control-outset) var(--color-border-control-inset)
+        var(--color-border-control-inset) var(--color-border-control-outset);
     border-radius: var(--radius-border);
     background: var(--color-background-button);
     cursor: pointer;
@@ -151,8 +150,8 @@ button {
     &.active {
         background: var(--color-background-button-active);
         border: 1px solid;
-        border-color: var(--color-border-control-inset) var(--color-border-control-outset) var(--color-border-control-outset)
-            var(--color-border-control-inset);
+        border-color: var(--color-border-control-inset) var(--color-border-control-outset)
+            var(--color-border-control-outset) var(--color-border-control-inset);
         box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
     }
 
@@ -211,14 +210,16 @@ select {
     outline: none;
     padding: 0.5rem;
     border: 1px solid;
-    transition: box-shadow 150ms ease-out, border-color 150ms ease-out;
+    transition:
+        box-shadow 150ms ease-out,
+        border-color 150ms ease-out;
 }
 
 input[type="text"],
 input[type="password"] {
     box-shadow: inset 1px 1px 2px var(--color-shadow-subtle);
-    border-color: var(--color-border-control-inset) var(--color-border-control-outset) var(--color-border-control-outset)
-    var(--color-border-control-inset);
+    border-color: var(--color-border-control-inset) var(--color-border-control-outset)
+        var(--color-border-control-outset) var(--color-border-control-inset);
 }
 
 input[type="text"],
@@ -239,11 +240,7 @@ select {
     background-image:
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M5 6.5L0 1.5h10L5 6.5z' fill='%23000000'/%3E%3C/svg%3E"), /* 2. New 1px Border */
         linear-gradient(to right, var(--color-border-control), var(--color-border-control)), /* 3. Handle (bottom layer) */
-        linear-gradient(
-            to right,
-            var(--color-background-control),
-            var(--color-background-control)
-        );
+        linear-gradient(to right, var(--color-background-control), var(--color-background-control));
     background-repeat: no-repeat; /* 1. Arrow Position */
     background-position:
         right 0.8125rem top 55%, /* 2. New Border Position (at the handle's edge) */
@@ -253,8 +250,8 @@ select {
         0.625em, /* 2. New Border Size */
         1px 100%, /* 3. Handle Size */
         2.25rem 100%;
-    border-color: var(--color-border-control-outset) var(--color-border-control-inset) var(--color-border-control-inset)
-    var(--color-border-control-outset);
+    border-color: var(--color-border-control-outset) var(--color-border-control-inset)
+        var(--color-border-control-inset) var(--color-border-control-outset);
 }
 
 .form-check {
@@ -340,7 +337,7 @@ select {
     }
 
     pre {
-        margin-top: 1rem;
+        margin-bottom: 1rem;
         padding: 1rem;
         border-radius: var(--radius-border);
         border: 1px solid var(--color-border-ui);
@@ -597,6 +594,14 @@ main {
     flex: 1;
     display: flex;
     flex-direction: column;
+
+    &.page {
+        padding: 1.5rem;
+
+        &.content {
+            max-width: 60rem;
+        }
+    }
 }
 
 .recipe-container {
