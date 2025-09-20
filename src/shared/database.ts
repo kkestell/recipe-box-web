@@ -23,9 +23,9 @@ export class Database {
 
     public async init_db() {
         // Drop existing tables to ensure a clean slate
-        this.db.run(`DROP TABLE IF EXISTS recipes;`)
-        this.db.run(`DROP TABLE IF EXISTS sessions;`)
-        this.db.run(`DROP TABLE IF EXISTS users;`)
+        // this.db.run(`DROP TABLE IF EXISTS recipes;`)
+        // this.db.run(`DROP TABLE IF EXISTS sessions;`)
+        // this.db.run(`DROP TABLE IF EXISTS users;`)
 
         // Recreate tables
         this.db.run(`
@@ -58,30 +58,30 @@ export class Database {
             );
         `)
 
-        // Create the default user 'kyle'
-        const password_hash = await Bun.password.hash('please')
-        const user = this.createUser('kyle', password_hash)
-        if (!user) {
-            console.error("Failed to create seed user 'kyle'.")
-            return
-        }
-
-        // Seed recipes from the ./seed directory
-        try {
-            const files = await readdir(SEED_PATH)
-            for (const file of files) {
-                if (file.endsWith('.txt')) {
-                    const content = await readFile(join(SEED_PATH, file), 'utf-8')
-                    this.createRecipe(content, user.id)
-                    console.log(`Imported recipe from ${file}`)
-                }
-            }
-        } catch (error) {
-            console.error(
-                `Could not read seed directory at ${SEED_PATH}. Make sure it exists.`,
-                error,
-            )
-        }
+        // // Create the default user 'kyle'
+        // const password_hash = await Bun.password.hash('please')
+        // const user = this.createUser('kyle', password_hash)
+        // if (!user) {
+        //     console.error("Failed to create seed user 'kyle'.")
+        //     return
+        // }
+        //
+        // // Seed recipes from the ./seed directory
+        // try {
+        //     const files = await readdir(SEED_PATH)
+        //     for (const file of files) {
+        //         if (file.endsWith('.txt')) {
+        //             const content = await readFile(join(SEED_PATH, file), 'utf-8')
+        //             this.createRecipe(content, user.id)
+        //             console.log(`Imported recipe from ${file}`)
+        //         }
+        //     }
+        // } catch (error) {
+        //     console.error(
+        //         `Could not read seed directory at ${SEED_PATH}. Make sure it exists.`,
+        //         error,
+        //     )
+        // }
 
         console.log('Database initialized and seeded.')
     }

@@ -1,70 +1,63 @@
 :root {
-    /* Modern Light Gray Palette */
-    --base: #ffffff; /* Main background */
-    --mantle: #fafafa; /* Surfaces like sidebars */
-    --crust: #f0f0f0; /* UI Controls, headers */
-    --surface0: #e8e8e8; /* Control hover states */
-    --surface1: #d0d0d0; /* Control active states */
-    --text: #222222; /* Primary text */
-    --subtext0: #666666; /* Secondary text */
-    --overlay2: #999999; /* Disabled text */
-    --accent: #666; /* Accent & Links - clean gray */
-    --select-bg: #eee; /* Selection background */
-    --error: #cc0000; /* Error text */
-    --white: #ffffff;
-
     /* General */
     --radius-border: 0.5rem;
     color-scheme: light;
-    accent-color: var(--accent);
+    accent-color: #666;
 
     /* Links */
-    --color-link: var(--accent);
+    --color-link: #666;
 
     /* Surfaces */
-    --color-background-surface: var(--mantle);
+    --color-background-surface: #fafafa;
     --color-background-overlay: rgba(250, 250, 250, 0.9);
-    --color-background-header: var(--crust);
-    --color-background-content-body: var(--base);
+    --color-background-header: #f0f0f0;
+    --color-background-content-header: #fafafa;
+    --color-background-content-body: #ffffff;
 
     /* Text */
-    --color-text-primary: var(--text);
-    --color-text-secondary: var(--subtext0);
+    --color-text-primary: #222222;
+    --color-text-secondary: #666666;
 
     /* Borders */
-    --color-border-ui: var(--surface0);
-    --color-border-control: var(--surface0);
+    --color-border-ui: #e8e8e8;
+    --color-border-control: #e8e8e8;
+    --color-border-control-inset: #ddd;
+    --color-border-control-outset: #fff;
 
     /* Controls */
-    --color-background-control: var(--crust);
-    --color-background-control-disabled: var(--mantle);
-    --color-background-button: var(--crust);
-    --color-background-button-hover: var(--surface0);
-    --color-background-button-active: var(--surface1);
-    --color-text-control: var(--text);
-    --color-text-control-disabled: var(--overlay2);
-    --color-outline-control-focused: var(--accent);
-    --color-background-checkbox-checked: var(--accent);
-    --color-shadow-subtle: rgba(0, 0, 0, 0.08);
+    --color-background-control: #f0f0f0;
+    --color-background-control-disabled: #fafafa;
+    --color-background-button: #f0f0f0;
+    --color-background-button-hover: #e8e8e8;
+    --color-background-button-active: #eee;
+    --color-text-control: #222222;
+    --color-text-control-disabled: #999999;
+    --color-outline-control-focused: #666;
+    --color-background-checkbox-checked: #666;
+    --color-shadow-subtle: rgba(0, 0, 0, 0.01);
 
     /* Tables */
-    --color-background-table-header: var(--crust);
-    --color-background-table-row-even: var(--base);
-    --color-background-table-row-odd: var(--mantle);
-    --color-border-table: var(--surface0);
+    --color-background-table-header: #f0f0f0;
+    --color-background-table-row-even: #ffffff;
+    --color-background-table-row-odd: #fafafa;
+    --color-border-table: #e8e8e8;
 
     /* Selection */
-    --color-text-selected: var(--text);
-    --color-background-selected: var(--select-bg);
+    --color-text-selected: #222222;
+    --color-background-selected: #eeeeee;
 
     /* Editor Syntax Highlighting - All grays */
-    --color-text-editor-title: var(--text);
-    --color-text-editor-note: var(--subtext0);
-    --color-text-editor-component: var(--text);
-    --color-text-editor-step: var(--text);
-    --color-text-editor-ingredient: var(--subtext0);
-    --color-text-editor-metadata: var(--overlay2);
+    --color-text-editor-title: #222222;
+    --color-text-editor-note: #666666;
+    --color-text-editor-component: #222222;
+    --color-text-editor-step: #222222;
+    --color-text-editor-ingredient: #666666;
+    --color-text-editor-metadata: #999999;
+
+    /* Status */
+    --error: #cc0000;
 }
+
 
 * {
     margin: 0;
@@ -125,54 +118,50 @@ a {
 }
 
 button,
-input,
-select,
-textarea {
-    transition:
-        background-color 0.15s ease,
-        box-shadow 0.15s ease;
-}
-
-button,
 input[type="text"],
 input[type="password"],
 select {
-    min-height: 2.5rem;
-    padding: 0.5rem 0.875rem;
-    font-family: inherit;
-    font-size: 0.95rem;
-    color: var(--color-text-control);
-    background: var(--color-background-control);
-    border: 1px solid var(--color-border-control);
-    border-radius: var(--radius-border);
-    outline: none;
-
-    &:focus-visible {
-        outline: 2px solid var(--color-outline-control-focused);
-        outline-offset: 2px;
-    }
+    min-height: 2.25rem;
+    box-shadow: 1px 1px 3px var(--color-shadow-subtle);
+    border: 1px solid;
 }
 
 button {
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--color-text-control);
+    border-color: var(--color-border-control-outset) var(--color-border-control-inset) var(--color-border-control-inset)
+        var(--color-border-control-outset);
+    border-radius: var(--radius-border);
+    background: var(--color-background-button);
     cursor: pointer;
-    font-weight: 500;
+    outline: none;
+    padding: 0.5rem 1rem;
 
     a {
         color: inherit;
         text-decoration: none;
-    }
 
-    &:hover {
-        background-color: var(--color-background-button-hover);
-
-        a {
+        &:hover {
             text-decoration: none;
         }
     }
 
     &:active,
     &.active {
-        background-color: var(--color-background-button-active);
+        background: var(--color-background-button-active);
+        border: 1px solid;
+        border-color: var(--color-border-control-inset) var(--color-border-control-outset) var(--color-border-control-outset)
+            var(--color-border-control-inset);
+        box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    &:active {
+        transform: translateY(1px);
+
+        &.active {
+            transform: none;
+        }
     }
 
     &:disabled {
@@ -184,16 +173,15 @@ button {
 
 .button-group {
     display: inline-flex;
-    box-shadow: 0 1px 2px var(--color-shadow-subtle);
-    border-radius: var(--radius-border);
 
     button {
         border-radius: 0;
-        box-shadow: none;
+        border-left-width: 0;
 
         &:first-child {
             border-top-left-radius: var(--radius-border);
             border-bottom-left-radius: var(--radius-border);
+            border-left-width: 1px;
         }
 
         &:last-child {
@@ -201,7 +189,7 @@ button {
             border-bottom-right-radius: var(--radius-border);
         }
 
-        &:focus-visible {
+        &:focus {
             position: relative;
             z-index: 1;
         }
@@ -210,6 +198,27 @@ button {
             transform: none;
         }
     }
+}
+
+input[type="text"],
+input[type="password"],
+select {
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--color-text-control);
+    background: var(--color-background-control);
+    border-radius: var(--radius-border);
+    outline: none;
+    padding: 0.5rem;
+    border: 1px solid;
+    transition: box-shadow 150ms ease-out, border-color 150ms ease-out;
+}
+
+input[type="text"],
+input[type="password"] {
+    box-shadow: inset 1px 1px 2px var(--color-shadow-subtle);
+    border-color: var(--color-border-control-inset) var(--color-border-control-outset) var(--color-border-control-outset)
+    var(--color-border-control-inset);
 }
 
 input[type="text"],
@@ -225,42 +234,53 @@ select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    padding-right: 2.5rem;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23666666' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    background-size: 1.25em;
+    padding-right: 3rem;
+    background-color: var(--color-background-control); /* 1. Arrow SVG (top layer) */
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M5 6.5L0 1.5h10L5 6.5z' fill='%23000000'/%3E%3C/svg%3E"), /* 2. New 1px Border */
+        linear-gradient(to right, var(--color-border-control), var(--color-border-control)), /* 3. Handle (bottom layer) */
+        linear-gradient(
+            to right,
+            var(--color-background-control),
+            var(--color-background-control)
+        );
+    background-repeat: no-repeat; /* 1. Arrow Position */
+    background-position:
+        right 0.8125rem top 55%, /* 2. New Border Position (at the handle's edge) */
+        right 2.25rem center, /* 3. Handle Position */
+        right center; /* 1. Arrow Size */
+    background-size:
+        0.625em, /* 2. New Border Size */
+        1px 100%, /* 3. Handle Size */
+        2.25rem 100%;
+    border-color: var(--color-border-control-outset) var(--color-border-control-inset) var(--color-border-control-inset)
+    var(--color-border-control-outset);
 }
 
 .form-check {
     display: flex;
-    align-items: center;
-
-    gap: 0.5rem;
+    align-items: flex-start;
+    gap: 0.25rem;
 
     .form-check-input {
         appearance: none;
         -webkit-appearance: none;
         width: 1rem;
         height: 1rem;
-        border-radius: 0.25rem;
-        background-color: var(--crust);
         border: 1px solid var(--color-border-control);
+        border-radius: 4px;
+        background-color: var(--color-background-control);
         cursor: pointer;
         flex-shrink: 0;
+        margin-top: 0.175rem;
 
         &:checked {
             background-color: var(--color-background-checkbox-checked);
+            border-color: var(--color-background-checkbox-checked);
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
             background-size: 100%;
             background-position: center;
             background-repeat: no-repeat;
-            border-color: var(--color-background-checkbox-checked);
-        }
-
-        &:focus-visible {
-            outline: 2px solid var(--color-outline-control-focused);
-            outline-offset: 2px;
         }
     }
 
@@ -292,7 +312,7 @@ select {
             margin-right: 1rem;
 
             a {
-                color: var(--text);
+                color: var(--color-text-primary);
                 text-decoration: none;
                 font-size: 1.25rem;
             }
@@ -323,7 +343,6 @@ select {
         margin-top: 1rem;
         padding: 1rem;
         border-radius: var(--radius-border);
-        background-color: var(--mantle);
         border: 1px solid var(--color-border-ui);
     }
 
@@ -418,13 +437,6 @@ select {
     .btn-submit {
         width: 100%;
         margin-top: 1.5rem;
-        background-color: var(--accent);
-        color: var(--white);
-        font-weight: 600;
-
-        &:hover {
-            background-color: var(--text);
-        }
     }
 
     .form-switch {
@@ -476,13 +488,6 @@ select {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background-color: var(--accent);
-                color: var(--white);
-                border-color: var(--accent);
-
-                &:hover {
-                    background-color: var(--text);
-                }
 
                 svg {
                     width: 1rem;
@@ -507,7 +512,7 @@ select {
                 font-weight: bold;
                 padding: 0.5rem 0;
                 font-size: 0.8rem;
-                color: var(--subtext0);
+                color: var(--color-text-secondary);
                 text-transform: uppercase;
                 letter-spacing: 0.05em;
             }
@@ -523,7 +528,7 @@ select {
                 transition: background-color 150ms ease-out;
 
                 &:hover {
-                    background-color: var(--crust);
+                    background-color: var(--color-background-surface);
                 }
 
                 &.selected {
@@ -556,7 +561,7 @@ select {
     gap: 1rem;
     padding: 1rem 1.5rem;
     border-bottom: 1px solid var(--color-border-ui);
-    background-color: var(--mantle);
+    background-color: var(--color-background-content-header);
 
     h2 {
         grid-column: 2;
