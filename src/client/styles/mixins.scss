@@ -1,0 +1,48 @@
+/* mixins.scss */
+@use "sass:color";
+
+$radius-border: 0.5rem;
+
+$color-background-content-body:     color.to-space(#fafafa, oklch);
+$color-background-surface:          color.to-space(#ffffff, oklch);
+
+$color-text-primary:                color.to-space(#050505, oklch);
+$color-text-control:                color.to-space(#222222, oklch);
+$color-text-control-disabled:       color.to-space(#999999, oklch);
+$color-text-secondary:              color.to-space(#666666, oklch);
+
+$color-border-ui:                   color.to-space(#e8e8e8, oklch);
+$color-border-control:              color.to-space(#e8e8e8, oklch);
+$color-border-control-inset:        color.to-space(#cccccc, oklch);
+$color-border-control-outset:       color.to-space(#dadada, oklch);
+
+$color-background-control:          color.to-space(#f0f0f0, oklch);
+$color-background-control-disabled: color.to-space(#fafafa, oklch);
+
+$color-background-button-active:    color.to-space(#eeeeee, oklch);
+$color-background-checkbox-checked: color.to-space(#666666, oklch);
+
+$color-shadow-subtle:               color.to-space(rgba(0, 0, 0, 0.01), oklch);
+
+$error:                             color.to-space(#cc0000, oklch);
+
+@mixin control-border-outset {
+  border: 1px solid;
+  border-color: $color-border-control-outset $color-border-control-inset
+  $color-border-control-inset $color-border-control-outset;
+}
+
+@mixin control-border-inset {
+  border: 1px solid;
+  border-color: $color-border-control-inset $color-border-control-outset
+  $color-border-control-outset $color-border-control-inset;
+}
+
+@mixin control-base {
+  font-family: inherit;
+  font-size: inherit;
+  color: $color-text-control;
+  background: $color-background-control;
+  border-radius: $radius-border;
+  outline: none;
+}

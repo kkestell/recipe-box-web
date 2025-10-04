@@ -19,6 +19,9 @@ export function Header({ user, onLogout }: HeaderProps) {
                 {user ? (
                     <>
                         <Link to="/library">Library</Link>
+                        <a href={`/api/users/${user.id}/export`} download>
+                            Export
+                        </a>
                         <a onClick={onLogout}>Log Out</a>
                     </>
                 ) : (

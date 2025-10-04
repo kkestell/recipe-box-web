@@ -21,13 +21,14 @@
     /* Borders */
     --color-border-ui: #e8e8e8;
     --color-border-control: #e8e8e8;
-    --color-border-control-inset: #ddd;
-    --color-border-control-outset: #fff;
+    --color-border-control-inset: #cacaca;
+    --color-border-control-outset: #d6d6d6;
 
     /* Controls */
     --color-background-control: #f0f0f0;
     --color-background-control-disabled: #fafafa;
-    --color-background-button: #f0f0f0;
+    --color-background-button-top: lch(from #eee calc(l + 5%) c h);
+    --color-background-button-bottom: lch(from #ddd calc(l + 5%) c h);
     --color-background-button-hover: #e8e8e8;
     --color-background-button-active: #eee;
     --color-text-control: #222222;
@@ -130,9 +131,13 @@ button {
     font-size: inherit;
     color: var(--color-text-control);
     border-color: var(--color-border-control-outset) var(--color-border-control-inset)
-        var(--color-border-control-inset) var(--color-border-control-outset);
+    var(--color-border-control-inset) var(--color-border-control-outset);
     border-radius: var(--radius-border);
-    background: var(--color-background-button);
+    background: linear-gradient(
+        to bottom,
+        var(--color-background-button-top),
+        var(--color-background-button-bottom)
+    );
     cursor: pointer;
     outline: none;
     padding: 0.5rem 1rem;
@@ -151,7 +156,7 @@ button {
         background: var(--color-background-button-active);
         border: 1px solid;
         border-color: var(--color-border-control-inset) var(--color-border-control-outset)
-            var(--color-border-control-outset) var(--color-border-control-inset);
+        var(--color-border-control-outset) var(--color-border-control-inset);
         box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
     }
 
@@ -169,6 +174,7 @@ button {
         cursor: not-allowed;
     }
 }
+
 
 .button-group {
     display: inline-flex;

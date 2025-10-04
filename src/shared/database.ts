@@ -27,7 +27,7 @@ export class Database {
         // this.db.run(`DROP TABLE IF EXISTS sessions;`)
         // this.db.run(`DROP TABLE IF EXISTS users;`)
 
-        // Recreate tables
+        // Create tables
         this.db.run(`
             CREATE TABLE IF NOT EXISTS users (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,

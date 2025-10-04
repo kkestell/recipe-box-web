@@ -1,0 +1,21 @@
+/* reset.scss */
+@use "./mixins" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  height: 100dvh;
+  font-family: "Inter", system-ui;
+  background-color: $color-background-content-body;
+  color: $color-text-primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

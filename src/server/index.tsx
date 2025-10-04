@@ -6,6 +6,7 @@ import { parseRecipe } from '@/shared/serialization.ts'
 import { TypstRenderer } from '@/shared/typst_renderer.ts'
 import { join } from 'node:path'
 import { mkdir } from 'node:fs/promises'
+import JSZip from 'jszip'
 
 const db = new Database()
 await db.init_db()
@@ -196,6 +197,35 @@ const server = serve({
                 return Response.json(recipe, { status: 201 })
             },
         },
+
+        '/api/users/:user_id/export': {
+            async GET(req) {
+                const user_id = getUserFromRequest(req)
+                if (!user_id || String(user_id) !== req.params.user_id) return authFail()
+                const list = db.getUserRecipes(user_id)
+                const slug = (s: string, f: string) => (s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || f)
+                const seen = new Map<string, number>()
+                const zip = new JSZip()
+                for (const r of list as any[]) {
+                    const first = String(r.content || '').split(/\r?\n/).find(x => x.trim()) || `recipe-${r.id}`
+                    let base = slug(first, r.id)
+                    if (!base.endsWith('.txt')) base += '.txt'
+                    const n = seen.get(base) || 0
+                    seen.set(base, n + 1)
+                    const name = n ? base.replace(/\.txt$/i, `-${n}.txt`) : base
+                    zip.file(name, String(r.content ?? ''), { binary: false })
+                }
+                const blob = await zip.generateAsync({ type: 'blob', compression: 'DEFLATE', compressionOptions: { level: 6 } })
+                return new Response(blob, {
+                    headers: {
+                        'Content-Type': 'application/zip',
+                        'Content-Disposition': `attachment; filename="recipes.zip"`,
+                        'Cache-Control': 'no-store',
+                    },
+                })
+            },
+        },
+
 
         '/api/users/:user_id/recipes/:id': {
             async PUT(req) {

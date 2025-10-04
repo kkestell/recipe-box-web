@@ -1,0 +1,256 @@
+/* forms.scss */
+@use "sass:color";
+@use "./mixins" as *;
+
+button,
+input[type="text"],
+input[type="password"],
+select {
+  min-height: 2.25rem;
+  box-shadow: 1px 1px 3px $color-shadow-subtle;
+  @include control-border-outset;
+}
+
+/* Buttons */
+button {
+  @include control-base;
+  background: linear-gradient(
+                  to bottom,
+                  color.adjust($color-background-control, $lightness: 5%),
+                  $color-background-control
+  );
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &:not(:disabled):active,
+  &:not(:disabled).active {
+    background: $color-background-button-active;
+    @include control-border-inset;
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
+  }
+
+  &:not(:disabled):active {
+    transform: translateY(1px);
+
+    &.active {
+      transform: none;
+    }
+  }
+
+  &:disabled {
+    color: $color-text-control-disabled;
+    background: $color-background-control-disabled;
+    cursor: not-allowed;
+  }
+}
+
+/* Button groups */
+.button-group {
+  display: inline-flex;
+
+  button {
+    border-radius: 0;
+    border-left-width: 0;
+
+    &:first-child {
+      border-top-left-radius: $radius-border;
+      border-bottom-left-radius: $radius-border;
+      border-left-width: 1px;
+    }
+
+    &:last-child {
+      border-top-right-radius: $radius-border;
+      border-bottom-right-radius: $radius-border;
+    }
+
+    &:focus {
+      position: relative;
+      z-index: 1;
+    }
+
+    &:active {
+      transform: none;
+
+      &:not(:first-child) {
+        border-left: none;
+      }
+    }
+  }
+}
+
+/* Text inputs */
+input[type="text"],
+input[type="password"] {
+  @include control-base;
+  padding: 0.5rem;
+  box-shadow: inset 1px 1px 2px $color-shadow-subtle;
+  @include control-border-inset;
+  transition:
+          box-shadow 150ms ease-out,
+          border-color 150ms ease-out;
+
+  &:disabled {
+    color: $color-text-control-disabled;
+    background-color: $color-background-control-disabled;
+    cursor: not-allowed;
+  }
+}
+
+/* Selects */
+select {
+  @include control-base;
+  padding: 0.5rem;
+  padding-right: 3rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* Arrow, separator, full-bleed vertical gradient */
+  background-image:
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M5 6.5L0 1.5h10L5 6.5z' fill='%23000000'/%3E%3C/svg%3E"),
+          linear-gradient(to right, $color-border-control, $color-border-control),
+          linear-gradient(to bottom, color.adjust($color-background-control, $lightness: 5%), $color-background-control);
+
+  background-repeat: no-repeat, no-repeat, no-repeat;
+
+  background-position:
+          right 0.8125rem top 55%,
+          right 2.25rem center,
+          center;
+
+  background-size:
+          0.625em,
+          1px 100%,
+          100% 100%;
+
+  @include control-border-outset;
+
+  transition:
+          box-shadow 150ms ease-out,
+          border-color 150ms ease-out;
+}
+
+/* Checkbox */
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+
+  .form-check-input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid $color-border-control;
+    border-radius: 4px;
+    background-color: $color-background-control;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 0.175rem;
+
+    &:checked {
+      background-color: $color-background-checkbox-checked;
+      border-color: $color-background-checkbox-checked;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+      background-size: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &:disabled {
+      border-color: $color-border-control;
+      background-color: $color-background-control-disabled;
+      cursor: not-allowed;
+    }
+  }
+
+  .form-check-label {
+    font-size: 1rem;
+    line-height: 1.5;
+    cursor: pointer;
+  }
+}
+
+/* Form layout */
+.main-container-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: $color-background-content-body;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 25rem;
+  padding: 2.5rem;
+  border-radius: $radius-border;
+  background-color: $color-background-surface;
+  box-shadow: 0 4px 12px $color-shadow-subtle;
+  border: 1px solid $color-border-ui;
+
+  h2 {
+    text-align: center;
+    margin: 0 0 1.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  form {
+    .error-message {
+      color: $error;
+      font-size: 0.9rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: $color-text-secondary;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    select {
+      width: 100%;
+    }
+  }
+
+  .btn-submit {
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+
+  .form-switch {
+    text-align: center;
+    margin: 1.5rem 0 0 0;
+    font-size: 0.9rem;
+    color: $color-text-secondary;
+  }
+}
+
+.form-container .form-group .form-check .form-check-label {
+  margin: 0 0 0 0.25rem;
+}
+
+@media (max-width: 48rem) {
+  .form-container {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,242 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  height: 100dvh;
+  font-family: "Inter", system-ui;
+  background-color: oklch(98.510365173% 0 none);
+  color: oklch(11.4918276348% 0 none);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input[type=text],
+input[type=password],
+select {
+  min-height: 2.25rem;
+  box-shadow: 1px 1px 3px oklch(0% 0 none / 0.01);
+  border: 1px solid;
+  border-color: oklch(88.8369650001% 0 none) oklch(84.5222255813% 0 none) oklch(84.5222255813% 0 none) oklch(88.8369650001% 0 none);
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  color: oklch(25.1964749864% 0 none);
+  background: oklch(95.5140050255% 0 none);
+  border-radius: 0.5rem;
+  outline: none;
+  background: linear-gradient(to bottom, oklch(100% 0 none), oklch(95.5140050255% 0 none));
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+button a {
+  color: inherit;
+  text-decoration: none;
+}
+button a:hover {
+  text-decoration: none;
+}
+button:not(:disabled):active, button:not(:disabled).active {
+  background: oklch(94.9119260594% 0 none);
+  border: 1px solid;
+  border-color: oklch(84.5222255813% 0 none) oklch(88.8369650001% 0 none) oklch(88.8369650001% 0 none) oklch(84.5222255813% 0 none);
+  box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
+}
+button:not(:disabled):active {
+  transform: translateY(1px);
+}
+button:not(:disabled):active.active {
+  transform: none;
+}
+button:disabled {
+  color: oklch(68.2953401313% 0 none);
+  background: oklch(98.510365173% 0 none);
+  cursor: not-allowed;
+}
+
+/* Button groups */
+.button-group {
+  display: inline-flex;
+}
+.button-group button {
+  border-radius: 0;
+  border-left-width: 0;
+}
+.button-group button:first-child {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-left-width: 1px;
+}
+.button-group button:last-child {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+.button-group button:focus {
+  position: relative;
+  z-index: 1;
+}
+.button-group button:active {
+  transform: none;
+}
+.button-group button:active:not(:first-child) {
+  border-left: none;
+}
+
+/* Text inputs */
+input[type=text],
+input[type=password] {
+  font-family: inherit;
+  font-size: inherit;
+  color: oklch(25.1964749864% 0 none);
+  background: oklch(95.5140050255% 0 none);
+  border-radius: 0.5rem;
+  outline: none;
+  padding: 0.5rem;
+  box-shadow: inset 1px 1px 2px oklch(0% 0 none / 0.01);
+  border: 1px solid;
+  border-color: oklch(84.5222255813% 0 none) oklch(88.8369650001% 0 none) oklch(88.8369650001% 0 none) oklch(84.5222255813% 0 none);
+  transition: box-shadow 150ms ease-out, border-color 150ms ease-out;
+}
+input[type=text]:disabled,
+input[type=password]:disabled {
+  color: oklch(68.2953401313% 0 none);
+  background-color: oklch(98.510365173% 0 none);
+  cursor: not-allowed;
+}
+
+/* Selects */
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: oklch(25.1964749864% 0 none);
+  background: oklch(95.5140050255% 0 none);
+  border-radius: 0.5rem;
+  outline: none;
+  padding: 0.5rem;
+  padding-right: 3rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Arrow, separator, full-bleed vertical gradient */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M5 6.5L0 1.5h10L5 6.5z' fill='%23000000'/%3E%3C/svg%3E"), linear-gradient(to right, oklch(93.0999141119% 0 none), oklch(93.0999141119% 0 none)), linear-gradient(to bottom, oklch(100% 0 none), oklch(95.5140050255% 0 none));
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: right 0.8125rem top 55%, right 2.25rem center, center;
+  background-size: 0.625em, 1px 100%, 100% 100%;
+  border: 1px solid;
+  border-color: oklch(88.8369650001% 0 none) oklch(84.5222255813% 0 none) oklch(84.5222255813% 0 none) oklch(88.8369650001% 0 none);
+  transition: box-shadow 150ms ease-out, border-color 150ms ease-out;
+}
+
+/* Checkbox */
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+.form-check .form-check-input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid oklch(93.0999141119% 0 none);
+  border-radius: 4px;
+  background-color: oklch(95.5140050255% 0 none);
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-top: 0.175rem;
+}
+.form-check .form-check-input:checked {
+  background-color: oklch(51.0278358302% 0 none);
+  border-color: oklch(51.0278358302% 0 none);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.form-check .form-check-input:disabled {
+  border-color: oklch(93.0999141119% 0 none);
+  background-color: oklch(98.510365173% 0 none);
+  cursor: not-allowed;
+}
+.form-check .form-check-label {
+  font-size: 1rem;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+/* Form layout */
+.main-container-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: oklch(98.510365173% 0 none);
+}
+
+.form-container {
+  width: 100%;
+  max-width: 25rem;
+  padding: 2.5rem;
+  border-radius: 0.5rem;
+  background-color: oklch(100% 0 none);
+  box-shadow: 0 4px 12px oklch(0% 0 none / 0.01);
+  border: 1px solid oklch(93.0999141119% 0 none);
+}
+.form-container h2 {
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.form-container form .error-message {
+  color: oklch(53.0761849244% 0.2177996633 29.2338802796deg);
+  font-size: 0.9rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.form-container .form-group {
+  margin-bottom: 1.25rem;
+}
+.form-container .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: oklch(51.0278358302% 0 none);
+}
+.form-container .form-group input[type=text],
+.form-container .form-group input[type=password],
+.form-container .form-group select {
+  width: 100%;
+}
+.form-container .btn-submit {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+.form-container .form-switch {
+  text-align: center;
+  margin: 1.5rem 0 0 0;
+  font-size: 0.9rem;
+  color: oklch(51.0278358302% 0 none);
+}
+
+.form-container .form-group .form-check .form-check-label {
+  margin: 0 0 0 0.25rem;
+}
+
+@media (max-width: 48rem) {
+  .form-container {
+    padding: 1.5rem;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
